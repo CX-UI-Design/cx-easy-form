@@ -1,0 +1,87 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin box-sizing {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@mixin border-radius($R) {
+  -moz-border-radius: $R;
+  -ms-border-radius: $R;
+  -o-border-radius: $R;
+  border-radius: $R;
+}
+
+@mixin scrollBar {
+  &::-webkit-scrollbar-track-piece {
+    background: #d3dce6;
+  }
+  /*滚动条垂直方向的宽度*/
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  /* 垂直滚动条的滑动块 */
+  &::-webkit-scrollbar-thumb:vertical {
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: rgba(129, 129, 129, 0.5);
+  }
+  /* 水平滚动条的滑动块 */
+  &::-webkit-scrollbar-thumb:horizontal {
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: rgba(129, 129, 129, 0.5);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #99a9bf;
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-thumb:vertical:hover, ::-webkit-scrollbar-thumb:horizontal:hover {
+    background-color: rgba(255, 255, 255, 0.68);
+  }
+}
+
+@mixin transition( $property,$duration,$timing-function) {
+  -moz-transition: $property $duration $timing-function;
+  -webkit-transition: $property $duration $timing-function;
+  -o-transition: $property $duration $timing-function;
+  transition: $property $duration $timing-function;
+}
+
+@mixin blur($color,$num) {
+  background-color: $color;
+  -webkit-filter: blur($num);
+  -moz-filter: blur($num);
+  -ms-filter: blur($num);
+  -o-filter: blur($num);
+  filter: blur($num);
+}
+
+//size-inherit
+@mixin size-inherit {
+  width: inherit;
+  height: inherit;
+  line-height: inherit;
+  min-height: inherit;
+  //max-height: inherit;
+  //min-width: inherit;
+  //max-width: inherit;
+}
+
+@mixin setClassByBatch($baseName,$start,$end) {
+  $class-slug: $baseName !default;
+  @for $i from $start to $end {
+    &.#{$class-slug}-#{$i} {
+      .el-form-item__error {
+        margin-left: $i+px;
+      }
+    }
+  }
+}

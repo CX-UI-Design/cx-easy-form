@@ -1,0 +1,21 @@
+@import "../../../assets/public";
+
+.cx-separator {
+  color: $--color-black;
+  .cx-separator-content {
+    height: inherit;
+    label.separator-tit-more {
+      cursor: pointer;
+    }
+    .line {
+      height: 1px;
+      border-bottom: 1px solid $--color-text-placeholder;
+    }
+  }
+  &:after {
+    content: '.';
+    height: 0px;
+    clear: both;
+    visibility: hidden;
+  }
+}

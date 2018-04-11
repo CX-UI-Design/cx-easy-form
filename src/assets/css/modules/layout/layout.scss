@@ -1,0 +1,131 @@
+@import "../../public.scss";
+@import "../../mixin/mixin";
+
+//左侧导航栏宽度
+$sideWidth: 200px;
+//顶部导航高度
+$navH: 50px;
+//顶部导航下拉菜单，各个部分高度
+$navH_p: 36px;
+//顶部导航上 padding
+$navH_pt: 10px;
+//顶部导航下 padding
+$navH_pb: 10px;
+//顶部导航右 padding
+$navH_pr: 20px;
+//顶部导航左 padding
+$navH_pl: 10px;
+//顶部导航右 padding
+$navH_pr: 20px;
+//logo，height值
+$logo_H: 0px;
+//logo，padding - top/bottom值
+$logo_pt: 0px;
+//logo，padding - left/right值
+$logo_pl: 0px;
+
+//---- 右侧窗口悬浮显示 上下左右 空隙值 ----
+$win_gapT: 10px;
+$win_gapB: 10px;
+$win_gapR: 10px;
+$win_gapL: 10px;
+//win 内边距
+$win_pt: 10px;
+$win_pb: 10px;
+$win_pl: 10px;
+$win_pr: 10px;
+
+$header_back: rgba(255, 255, 255, 0.98);
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+/*布局*/
+#layout.app-wrapper {
+  width: 1140px;
+  margin: 0 auto;
+  /* ------------ 左侧导航栏模块 ------------*/
+  .cx-sidebar {
+    min-height: 100vh;
+    .cx-sidebar__container:not(.el-menu--collapse) {
+      width: $sideWidth;
+    }
+  }
+  /* ------------ 内容 模块 ------------ */
+  .main-container {
+    z-index: 1;
+    overflow: hidden;
+    /* ------------  顶部模块 ------------  */
+    .header {
+      position: relative;
+      width: 100%;
+      /*顶部 内容 部分*/
+      .headNav {
+        height: $navH;
+        line-height: $navH;
+        padding: $navH_pt $navH_pr $navH_pb $navH_pl;
+        //头像内容下拉模块
+        .avatar-container {
+          display: inline-block;
+          height: 100%;
+          line-height: $navH;
+          padding-right: $navH_pr;
+          cursor: pointer;
+          .avatar-wrapper {
+            height: 0.8*$navH;
+            padding: 0.1*$navH 0;
+            line-height: 0.8*$navH;
+            img {
+              height: 100%;
+              border-radius: 0.2*$navH;
+            }
+            i {
+              position: absolute;
+              right: 0;
+              top: $navH*0.5;
+              font-size: 12px;
+            }
+          }
+        }
+        // 欢迎 名字
+        .hello {
+          height: 100%;
+          line-height: $navH;
+          font-size: 14px;
+          font-weight: bold;
+          margin: 0 5px 0 10px;
+          span {
+            padding-left: 5px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    /* ------------  右侧内容模块整体（固定不变，占位） ------------ */
+    .app-main {
+      height: calc(100vh - (#{$navH} + #{$navH_pt} + #{$navH_pb}));
+      padding: $win_gapT $win_gapR $win_gapB $win_gapL;
+      @include box-sizing();
+      overflow: auto;
+      .win {
+        width: 100%;
+        min-height: 100%;
+        padding: $win_pt $win_pr $win_pb $win_pl;
+        @include box-sizing();
+      }
+      //dashboard 主页 布局
+      #dashboard.win {
+        min-height: calc(100vh - #{$navH});
+        padding: 0;
+        .wm {
+          min-height: calc(100vh - #{$navH});
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+

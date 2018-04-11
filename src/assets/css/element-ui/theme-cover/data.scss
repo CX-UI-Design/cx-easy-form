@@ -1,0 +1,75 @@
+@import "../../../../lib/assets/public";
+@import "../../../../lib/assets/mixin/mixin";
+
+/* ============ 分页 =========== */
+.el-pagination {
+  display: inline-block;
+  color: $--color-text-regular;
+  //前往 ... 第x页
+  .el-pagination__jump .el-input__inner {
+    height: 22px;
+  }
+  //文字标签 共xx条/x页
+  span.page {
+    margin-top: -3px;
+  }
+  //页面数字按钮
+  .el-pager li {
+    border-radius: 2px;
+    margin-left: 6px;
+    &.active {
+      background-color: $--color-primary;
+      color: #FFFFFF;
+      border-radius: 2px;
+      border: none
+    }
+    &:hover {
+      background-color: $--color-primary;
+      color: #FFFFFF;
+      border-radius: 2px;
+      border: none
+    }
+  }
+  //左箭头按钮
+  .btn-prev {
+    padding-right: 0px;
+  }
+}
+
+/* =========== table =========== */
+.el-table {
+  @include box-sizing;
+  font-size: 13px;
+
+  th, td {
+    @include box-sizing;
+    height: 32px;
+    max-height: 32px;
+    padding: 4px 0;
+  }
+  .cell, .el-table__row .cell .td-txt {
+    word-break: normal;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 32px;
+    line-height: 32px;
+  }
+  .el-table__fixed {
+    overflow: hidden;
+  }
+  .el-table__fixed-right {
+    overflow: hidden;
+  }
+}
+
+.el-table--border td {
+  border-right: 0px;
+  border-left: 0px;
+}
+
+.el-table__fixed--border td {
+  border-right: 0px;
+}
+
+

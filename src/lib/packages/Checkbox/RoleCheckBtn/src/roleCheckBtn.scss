@@ -1,0 +1,73 @@
+@import "../../../../assets/public";
+@import "../../../../assets/mixin/mixin";
+
+$base-height: 32px; //基础高度/行高
+$base-gap: 5px; //基础间距
+$base-btn-width: 88px; //按钮宽度
+
+.cx-roleCheckBtn {
+  overflow: hidden;
+  /* title */
+  .moduleTit {
+    width: 100%;
+    height: $base-height;
+    line-height: $base-height;
+    padding: 0 $base-gap*2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    @include box-sizing;
+    //主标题
+    &.mainTit {
+      padding-left: 0;
+      margin-bottom: $base-gap;
+      span.mainTit-text {
+        padding: 0 $base-gap 0 $base-gap*4;
+      }
+      &.firstModuleTit {
+        margin-top: $base-gap;
+        font-weight: bold;
+        svg.cx-svg-icon {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  /* first module */
+  .firstModule {
+    width: 100%;
+    /* first module content */
+    .firstContent {
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+      @include transition(all, .2s, linear);
+      &.opened {
+        height: auto;
+        padding: $base-gap 0;
+      }
+      span.subTit-text {
+        display: inline-block;
+        padding: 0 $base-gap*2;
+        @include box-sizing;
+      }
+      /* second module title */
+      .secondModuleTit {
+        padding: 0 $base-gap*2;
+        margin-bottom: $base-gap;
+        /* manage-range component in role-check-Btn component*/
+        .cx-manage__range {
+          padding: 0 $base-gap*2;
+        }
+      }
+      /* second module content */
+      .secondContent {
+        /* third module title */
+        .thirdModuleTit {
+          display: inline-block;
+          text-align: right;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,98 @@
+@import "../../../../assets/mixin/mixin";
+
+$fixedCol-borderColor: #409EFF; //固定栏边框颜色
+$cell: 40px; //单元格高度
+$cell-bigger-lh: 24px; //行高
+$shadowColor: #333;
+.info-table-show {
+  .el-table {
+    /*border-left: 2px solid #d6e2ed;*/
+    .el-table__body-wrapper {
+      /*overflow: visible;*/
+    }
+    //单元格内部样式
+    .cell {
+      .detailed {
+        width: 100%;
+        overflow: hidden;
+        cursor: pointer;
+        &:hover {
+          .detailed-bigger {
+            display: block;
+            &.no-bigger {
+              display: none;
+            }
+          }
+        }
+        span.detailed-text {
+          z-index: 9999;
+          &.nullMark {
+            color: #409EFF;
+          }
+          &.errMark {
+            color: #FA5555;
+          }
+          &.successMark {
+            color: #67C23A;
+          }
+        }
+        .detailed-bigger {
+          display: none;
+          position: absolute;
+          top: -50%;
+          left: 0;
+          color: #fff;
+          font-size: 1.5em;
+          min-height: $cell;
+          padding: $cell/4 $cell/2;
+          line-height: $cell-bigger-lh;
+          word-wrap: break-word;
+          white-space: normal;
+          z-index: 99999;
+          box-sizing: border-box;
+          background: rgba(0, 0, 0, .72);
+          box-shadow: 0px 0px 20px $shadowColor;
+          border-radius: 4%;
+          &.detailed-bigger-top {
+            top: 0;
+          }
+          &.no-bigger {
+            display: none;
+          }
+        }
+      }
+    }
+    //表格样式
+    &.el-table--border td {
+      border-right: 1px solid #d6e2ed;
+    }
+    //固定栏样式
+    .el-table__fixed {
+      box-sizing: border-box;
+      border: 2px solid $fixedCol-borderColor;
+      border-left: 3px solid $fixedCol-borderColor;
+      td {
+        border-right: 1px solid #d6e2ed;
+      }
+    }
+    //按钮
+    .el-button {
+      /*color: #fff !important;*/
+      /*border: none;*/
+      /*&:hover {*/
+      /*border: none !important;*/
+      /*}*/
+    }
+  }
+  //dialog
+  .cx-dialog {
+    .cx-muster-item {
+      margin: 0 auto;
+      .cx-text {
+        .cx-text-span {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

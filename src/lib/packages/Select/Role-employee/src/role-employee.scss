@@ -1,0 +1,13 @@
+//下拉框ul => li
+.role-employee-option {
+  overflow: hidden;
+  .el-select-dropdown__item {
+    font-size: 12px;
+    &.selected::after {
+      visibility: hidden;
+    }
+    span.role-employee-text {
+      padding: 0 10px;
+    }
+  }
+}

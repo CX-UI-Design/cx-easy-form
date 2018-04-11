@@ -1,0 +1,278 @@
+$page-gap: 20px;
+$container-gap: 50px;
+$base-size: 15px;
+$page-back: rgba(240, 242, 245, 1);
+$info-color: rgba(128, 128, 128, .98);
+
+//401 tit
+$tit-color: #484848;
+//404 tit
+$tit-color2: rgba(20, 130, 240, .98);
+//404 skin
+$skin-color: #008489;
+
+/* =====  error page scss style func ===== */
+@mixin font-style($type,$base-size,$color) {
+  font-weight: normal;
+  color: $color;
+  opacity: 0;
+  @if ($type == 'large') {
+    font-size: $base-size*4;
+    line-height: $base-size*4*1.25;
+    font-weight: bold;
+    margin: $base-size/3 0 $base-size/3*4;
+  } @else if ($type == 'middle') {
+    font-size: $base-size*3;
+    line-height: $base-size*3*1.25;
+    margin: $base-size/3 0 $base-size/3*3;
+  } @else if ($type == 'small') {
+    font-size: $base-size*2;
+    line-height: $base-size*2*1.25;
+    margin: $base-size/3 0 $base-size/3*2;
+  } @else {
+    font-size: $base-size;
+    line-height: $base-size*1.8;
+    margin: $base-size/3 0 $base-size/3;
+  }
+}
+
+@mixin animation-setting($name,$duration,$delay,$mode) {
+  animation-name: $name;
+  animation-duration: $duration;
+  animation-delay: $delay;
+  animation-fill-mode: $mode;
+}
+
+.errPage401 {
+  position: absolute;
+  width: calc(100% - #{$page-gap} * 2);
+  height: calc(100% - #{$page-gap} * 2);
+  padding: $page-gap;
+  //background-color: $page-back;
+  .errPage401-container {
+    position: relative;
+    overflow: hidden;
+    margin-top: $container-gap*2;
+    .pan-back-btn {
+      background: $skin-color;
+      color: #fff;
+      margin: $container-gap/2 0 $container-gap/2;
+      border: none;
+    }
+    .pan-img {
+      display: block;
+      margin: 0 auto;
+    }
+    .text-oops {
+      @include font-style('large', $base-size, $tit-color);
+      @include animation-setting(slideUp, 0.5s, 0.2s, forwards);
+    }
+    .text-subtit {
+      @include font-style('small', $base-size, $tit-color);
+      @include animation-setting(slideUp, 0.6s, 0.2s, forwards);
+    }
+    .text-info {
+      @include font-style('mini', $base-size, $tit-color);
+      @include animation-setting(slideUp, 0.7s, 0.2s, forwards);
+    }
+
+    .list-unstyled {
+      @include font-style('mini', $base-size, $tit-color);
+      @include animation-setting(slideUp, 0.8s, 0.2s, forwards);
+      li {
+        padding-bottom: 5px;
+      }
+      a {
+        color: $skin-color;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    @keyframes slideUp {
+      0% {
+        transform: translateY(60px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    .epilogue {
+      width: calc(100% - #{$container-gap / 5} * 2);
+      padding: $container-gap $container-gap / 5 0;
+      @include font-style('mini', 12px, $tit-color);
+      opacity: 1;
+    }
+  }
+}
+
+.errPage404 {
+  position: absolute;
+  width: calc(100% - #{$page-gap} * 2);
+  height: calc(100% - #{$page-gap} * 2);
+  padding: $page-gap;
+  background: $page-back;
+  .errPage404-container {
+    position: relative;
+    padding: $container-gap*2;
+    overflow: hidden;
+    .pic-404 {
+      position: relative;
+      float: left;
+      width: 100%;
+      padding-top: $container-gap;
+      overflow: hidden;
+      &__parent {
+        width: 100%;
+      }
+      &__child {
+        position: absolute;
+        &.left {
+          width: 80px;
+          top: 17px;
+          left: 220px;
+          opacity: 0;
+          @include animation-setting(cloudLeft, 2s, 1s, forwards);
+          animation-timing-function: linear;
+        }
+        &.mid {
+          width: 46px;
+          top: 10px;
+          left: 420px;
+          opacity: 0;
+          @include animation-setting(cloudLeft, 2s, 1.2s, forwards);
+          animation-timing-function: linear;
+        }
+        &.right {
+          width: 62px;
+          top: 100px;
+          left: 500px;
+          opacity: 0;
+          @include animation-setting(cloudLeft, 2s, 1s, forwards);
+          animation-timing-function: linear;
+        }
+        @keyframes cloudLeft {
+          0% {
+            top: 17px;
+            left: 220px;
+            opacity: 0;
+          }
+          20% {
+            top: 33px;
+            left: 188px;
+            opacity: 1;
+          }
+          80% {
+            top: 81px;
+            left: 92px;
+            opacity: 1;
+          }
+          100% {
+            top: 97px;
+            left: 60px;
+            opacity: 0;
+          }
+        }
+        @keyframes cloudMid {
+          0% {
+            top: 10px;
+            left: 420px;
+            opacity: 0;
+          }
+          20% {
+            top: 40px;
+            left: 360px;
+            opacity: 1;
+          }
+          70% {
+            top: 130px;
+            left: 180px;
+            opacity: 1;
+          }
+          100% {
+            top: 160px;
+            left: 120px;
+            opacity: 0;
+          }
+        }
+        @keyframes cloudRight {
+          0% {
+            top: 100px;
+            left: 500px;
+            opacity: 0;
+          }
+          20% {
+            top: 120px;
+            left: 460px;
+            opacity: 1;
+          }
+          80% {
+            top: 180px;
+            left: 340px;
+            opacity: 1;
+          }
+          100% {
+            top: 200px;
+            left: 300px;
+            opacity: 0;
+          }
+        }
+      }
+    }
+    .bullshit {
+      position: relative;
+      float: left;
+      width: 100%;
+      padding-top: $container-gap;
+      overflow: hidden;
+      &__oops {
+        @include font-style('large', $base-size, $tit-color2);
+        @include animation-setting(slideUp, 0.5s, 0.2s, forwards);
+      }
+      &__headline {
+        @include font-style('small', $base-size, $tit-color2);
+        @include animation-setting(slideUp, 0.5s, 0.1s, forwards);
+      }
+      &__info {
+        @include font-style('mini', $base-size, $info-color);
+        @include animation-setting(slideUp, 0.5s, 0.2s, forwards);
+        margin-bottom: 30px;
+      }
+      &__return-home {
+        display: block;
+        float: left;
+        width: 110px;
+        height: 36px;
+        background: $tit-color2;
+        border-radius: 100px;
+        text-align: center;
+        color: $page-back;
+        opacity: 0;
+        font-size: 14px;
+        line-height: 36px;
+        cursor: pointer;
+        @include animation-setting(slideUp, 0.5s, 0.3s, forwards);
+
+      }
+      @keyframes slideUp {
+        0% {
+          transform: translateY(60px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    }
+    .epilogue {
+      width: calc(50% - #{$container-gap / 5} * 2);
+      padding: $container-gap $container-gap / 5 0;
+      @include font-style('mini', 12px, $info-color);
+      opacity: 1;
+    }
+  }
+}

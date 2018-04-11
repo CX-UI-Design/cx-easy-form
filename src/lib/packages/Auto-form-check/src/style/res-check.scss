@@ -1,0 +1,20 @@
+@import "../../../../assets/mixin/mixin";
+
+.el-table.res-check {
+  overflow: visible;
+  //单元格内部样式
+  .cell {
+    word-break: normal;
+    text-overflow: clip;
+    overflow: visible;
+    white-space: normal;
+    span.res-check-col2 {
+      display: block;
+      text-align: left;
+    }
+  }
+  //表格样式
+  &.el-table--border td {
+    border-right: 1px solid #d6e2ed;
+  }
+}

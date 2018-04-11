@@ -1,0 +1,120 @@
+@import "../../../../assets/public";
+
+$base-height: 40px; //下拉框 各个栏目高度
+$base-lh: 40px; //下拉框 各个栏目行高
+$handle-modules-letf-gap: 10px; //操作模块左边间隙留白
+$icon-size: 14px; //图标大小
+$icon-gap: 2px; //图标左右间隙
+//select-dropdown option
+$option-left-gap: 10px; //下拉框左间隔留白
+$option-right-gap: 7px; //下拉框右间隔留白
+
+//下拉框ul => li
+li.el-select-dropdown__item.role-group-option {
+  height: $base-height;
+  line-height: $base-lh;
+  padding-left: $option-left-gap;
+  padding-right: $option-right-gap;
+  overflow: hidden;
+  &.hover, &.is-disabled {
+    color: $--color-text-regular;
+    cursor: auto !important;
+  }
+  //鼠标移入出现栏目操作模块
+  &.hover {
+    .handle-modules .handle-modules-action {
+      display: block;
+    }
+  }
+  //add group
+  &.add-group {
+    line-height: $base-height;
+    &.selected.hover, &.selected, &:hover {
+      background: transparent;
+      color: $--color-text-regular;
+      font-weight: normal;
+    }
+    .handle-svg-btn.is-disabled, .handle-svg-btn:hover {
+      color: $--color-text-regular;
+    }
+  }
+  .role-group-text {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    line-height: inherit !important;
+  }
+  //输入框
+  .role-group-input {
+    min-width: 200-($option-left-gap+$option-right-gap+$base-height+$icon-gap*4+$handle-modules-letf-gap); //输入框宽度
+    max-width: 65%;
+    line-height: $base-height;
+    .el-input__inner {
+      box-sizing: border-box;
+    }
+  }
+  //操作模块
+  .handle-modules {
+    height: $base-height;
+    line-height: $base-height;
+    padding-left: 10px;
+    .handle-modules-action {
+      display: none;
+      font-size: 0;
+    }
+    .handle-modules-btn {
+      font-size: 0;
+      svg.cx-svg-icon {
+        &.right {
+          color: $--color-success;
+        }
+        &.cancel {
+          color: $--color-danger;
+        }
+      }
+    }
+  }
+
+  //操作按钮
+  .handle-svg-btn {
+    width: $base-lh/2;
+    height: $icon-size;
+    padding: 0 $icon-gap 0 0;
+    margin: 0 $icon-gap 0 0;
+    text-align: center;
+    border: none;
+    background: transparent;
+    &.el-button.is-disabled:hover {
+      background: transparent;
+    }
+    &.edit-btn {
+      color: $--color-primary;
+    }
+    &.del-btn {
+      color: $--color-danger;
+    }
+    &.add-btn {
+      width: auto;
+      background-color: transparent;
+      border-radius: 0;
+      margin-bottom: $icon-gap;
+      svg.cx-svg-icon {
+        color: $--color-text-regular;
+        font-weight: normal;
+      }
+    }
+
+    span {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      line-height: inherit !important;
+    }
+    svg.cx-svg-icon {
+      width: $icon-size;
+      height: $icon-size;
+      color: inherit;
+      padding: 0;
+    }
+  }
+}

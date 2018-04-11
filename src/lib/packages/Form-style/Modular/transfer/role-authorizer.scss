@@ -1,0 +1,17 @@
+.cx-role-authorizer {
+  .el-transfer-panel {
+    width: 40%;
+    min-width: 132px;
+    .el-transfer-panel__header .el-checkbox {
+      line-height: inherit;
+    }
+    //filter input
+    .el-transfer-panel__filter.el-input {
+      height: 32px;
+    }
+
+  }
+  .el-transfer-panel__footer {
+    display: none;
+  }
+}

@@ -1,0 +1,208 @@
+.login-wrap {
+  width: 100%;
+  height: 100%;
+  font-family: PingFangSC-Semibold;
+}
+
+.ms-login {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  top: 0px;
+  bottom: 0px;
+  right: 0;
+  left: 0;
+  border-radius: 5px;
+  display: flex;
+}
+
+@media screen and (max-width: 780px) {
+  .ms-login {
+    width: 100% !important;
+  }
+
+  .banner {
+    width: 60%;
+    align-content: center;
+  }
+
+  .signIn {
+    left: 40% !important;
+  }
+
+  .information {
+    margin-left: 69px;
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  .ms-login {
+    width: 90% !important;
+  }
+}
+
+.login-logo {
+  margin-left: 209px;
+}
+
+.login-logo img {
+  height: 41px;
+  margin-top: 20px;
+}
+
+.login-btn button {
+  width: 100%;
+  height: 36px;
+}
+
+/*表单部分*/
+.signIn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 55%;
+  background: #ffffff;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.50);
+  border-radius: 8px;
+  width: 430px;
+  height: 412px;
+  z-index: 999999;
+}
+
+.signIn p {
+  font-size: 32px;
+  color: #333333;
+  letter-spacing: 0;
+  text-align: center;
+  margin-top: 33px;
+}
+
+.signIn input {
+  border: 1px solid #d6d6d6;
+  width: 333px;
+  height: 42px;
+  margin-left: 47px !important;
+}
+
+.checked {
+  margin-left: 47px;
+  margin-top: 18px;
+}
+
+.forgotPwd {
+  line-height: 17px;
+  font-size: 12px;
+  color: #1073ff;
+  letter-spacing: 0;
+  text-align: left;
+  position: absolute;
+  right: 49px;
+  top: 226px;
+  cursor: pointer;
+}
+
+.username {
+  margin-top: 28px;
+}
+
+.pwd {
+  margin-top: 20px;
+}
+
+.banner {
+  float: left;
+  height: 90%;
+}
+
+.demo-ruleForm {
+  background: #ffffff;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.50);
+  border-radius: 8px;
+  width: 430px;
+  height: 412px;
+  float: left;
+}
+
+.btnCss {
+  width: 335px;
+  height: 44px;
+  margin-top: 16px;
+  margin-left: 46px !important;
+}
+
+/*头部*/
+.login-header {
+  background: #FFFFFF;
+  height: 78px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.helpOrOperation {
+  position: absolute;
+  right: 184px;
+  top: 33px;
+  font-size: 12px;
+  color: #666666;
+  text-align: left;
+}
+
+.helpOrOperation span {
+  cursor: pointer;
+}
+
+.help {
+  margin-right: 48px;
+}
+
+/*身体*/
+.login-body {
+  position: absolute;
+  top: 77px;
+  left: 0;
+  right: 0;
+  bottom: 39px;
+  background: url(../../../assets/img/logo/loginback.png);
+  background-size: 100% 100%;
+}
+
+/*尾部*/
+.login-footer {
+  background: #FFFFFF;
+  height: 49px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.information {
+  margin-left: 169px;
+}
+
+.information span {
+  cursor: pointer;
+  margin-right: 48px;
+  font-size: 12px;
+  color: #7a8288;
+  letter-spacing: 0;
+  text-align: left;
+  line-height: 49px;
+}
+
+/*覆盖样式*/
+.login-wrap .el-form-item__content {
+  margin: 0 !important;
+}
+
+.login-wrap .el-form-item__error {
+  margin-left: 47px;
+}
+
+.login-wrap .el-form-item {
+  margin-bottom: 0px !important;
+}

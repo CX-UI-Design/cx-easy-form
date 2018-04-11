@@ -1,0 +1,131 @@
+@import "../../assets/public";
+@import "../../assets/mixin/mixin";
+$gap-small: 30px;
+$radio-radius: 9px; //基础单选框半径
+
+.cx-auto-form {
+  margin: 0 auto;
+  .cx-auto-form-container {
+    padding: 1px 0;
+    margin: 0 auto;
+    overflow: hidden;
+    //auto-form item group
+    .cx-group-item {
+      .cx-group {
+
+      }
+    }
+
+    //auto-form item
+    .el-form-item.cx-muster-item {
+      display: block;
+      margin-bottom: 0;
+      //add mockblock template => when item component is not have label, we simulate a label by css change
+      @include setClassByBatch(isMockBlock, 50, 250);
+
+      &.limit-label {
+        label {
+          padding-right: 0;
+        }
+      }
+
+      &.auto-form-part-0 {
+        margin-top: 0;
+      }
+
+      //label
+      label {
+        word-wrap: break-word; //内容强制换行
+        &.el-form-item__label {
+          height: 100%;
+          min-height: 1px;
+          line-height: inherit;
+          padding-top: 0;
+          padding-bottom: 0;
+          overflow: hidden;
+        }
+      }
+      //item-content
+      .el-form-item__content {
+        //width: 100%;
+        //-- role-Authorizer（ 新增授权人 ）--
+        @import "Modular/transfer/role-authorizer";
+
+        //--role-funcButton list ( 用户的功能菜单按钮 组件)--
+        @import "../Checkbox/RoleCheckBtn/src/roleCheckBtn";
+
+        //--base-table  ( 内置基础表单 )--
+        @import "Modular/base-table/index";
+
+        //radio 在 cx-muster-item 中相关调整
+        .cx-radio-group {
+          span.el-radio__input {
+            span.el-radio__inner {
+              position: absolute;
+              top: 50%;
+              margin-top: - $radio-radius - 1;
+            }
+          }
+          span.el-radio__label {
+            margin-left: $radio-radius * 2;
+          }
+        }
+
+        .cx-input, .el-select.cx-select, .el-select.cx-select-remote, .el-cascader.cx-cascader {
+          height: inherit;
+          .el-input {
+            height: inherit;
+            .el-input__inner {
+              height: inherit;
+            }
+          }
+        }
+
+        //checkbox和radio 在 cx-muster-item 中调整一下左右间隔值
+        .el-checkbox-group {
+          .el-checkbox {
+            margin-left: 0;
+            margin-right: 15px;
+          }
+        }
+        .el-radio-group {
+          .el-radio {
+            margin-left: 0;
+            margin-right: 15px;
+          }
+        }
+      }
+    }
+
+    //submit / reset .. - items handle modules
+    .ns-autoForm-handle {
+      position: relative;
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      @include box-sizing;
+      &.e-left {
+        //padding-left: $dialog-padding-left;
+        padding-left: 0;
+      }
+      &.e-right {
+        //padding-right: $dialog-padding-right;
+        padding-right: $dialog-padding-right;
+      }
+    }
+
+  }
+}
+
+.cx-dialog.res-check-dialog {
+  .el-dialog {
+    .win-tit {
+      color: $--color-primary;
+      padding: $gap-small/2 0;
+      &.res-check-tit {
+        padding-top: 0;
+      }
+    }
+  }
+}

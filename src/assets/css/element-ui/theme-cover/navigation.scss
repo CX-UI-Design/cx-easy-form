@@ -1,0 +1,19 @@
+@import "../../../../lib/assets/public";
+@import "../../../../lib/assets/mixin/mixin";
+
+/*Tabs*/
+.el-tabs__item.is-active {
+  color: $--color-text-primary !important;
+  font-weight: bold;
+
+}
+
+/*下拉菜单字体*/
+.el-dropdown {
+  font-size: 14px;
+}
+
+/*下拉菜单内间距*/
+.el-dropdown-menu {
+  padding: 0px;
+}

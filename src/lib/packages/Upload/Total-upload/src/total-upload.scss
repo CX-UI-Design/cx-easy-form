@@ -1,0 +1,64 @@
+@import "../../../../assets/public";
+@import "../../../../assets/mixin/mixin";
+//上传点击框属性
+$upload_width: 148px;
+$upload_height: 148px;
+$upload_radius: 6px;
+$upload_border: 2px dashed $--border-color-light;
+
+.cx-upload {
+  //上传点击框
+  .el-upload {
+    position: relative;
+    @include box-sizing;
+    border: $upload_border;
+    border-radius: $upload_radius;
+    cursor: pointer;
+    overflow: hidden;
+    &:hover {
+      border-color: $--color-primary-light;
+    }
+    svg.avatar-uploader-icon {
+      color: $--color-text-secondary;
+      text-align: center;
+    }
+    .avatar {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .el-upload-list--picture-card .el-upload-list__item {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  //单独头像
+  .avatar-uploader {
+    @include size-inherit;
+    .el-upload {
+      @include size-inherit;
+    }
+  }
+  //照片墙
+  .picture-card {
+    width: 100%;
+    ul {
+      li {
+        width: $upload_width;
+        height: $upload_height;
+        background: $--color-white;
+        border: $upload_border;
+        border-radius: $upload_radius;
+        @include box-sizing;
+        img.el-upload-list__item-thumbnail {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .el-upload {
+      width: $upload_width;
+      height: $upload_height;
+    }
+  }
+}

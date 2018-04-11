@@ -1,0 +1,68 @@
+@import "../public.scss";
+
+
+//右侧内容模块整体（固定不变，占位）
+.app-main {
+  .win {
+    /*-------- 下拉菜单模块 --------*/
+    .el-dropdown {
+      cursor: pointer;
+    }
+    //tab  当前选中项字体颜色
+    .el-tabs .el-tabs__item.is-active {
+      color: $--color-primary;
+    }
+
+    //窗口标题
+    .win-tit {
+      @include tit-base-style(20px, 5px, $--color-primary);
+      text-align: left;
+      span {
+        &.unread {
+          font-size: 16px;
+          padding-left: 20px;
+          i {
+            color: $--color-danger;
+            padding: 0 4px;
+            cursor: pointer;
+          }
+        }
+        font-size: 18px
+      }
+    }
+
+
+    .showModules {
+      padding: 5px 10px;
+      margin: 5px;
+      h2 {
+        padding: 5px 0 20px;
+      }
+      .showModules-result {
+        display: inline-block;
+        width: 220px;
+        color: $--color-success;
+      }
+    }
+    .modulesHighlight {
+      padding: 15px 10px;
+      margin: 10px 0;
+      border: 3px dotted $--color-primary;
+      border-radius: 6px;
+      h1 {
+        padding: 10px 0;
+        font-weight: 600;
+      }
+      h2 {
+        color: $--color-primary;
+      }
+      &:hover {
+        border: 3px dotted $--color-success;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+
+

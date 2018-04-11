@@ -1,0 +1,23 @@
+@import "../../../../assets/mixin/mixin";
+
+.cx-role-organization {
+  .select-modules {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+//option - part
+li.role-organization-option {
+  height: auto;
+  box-sizing: border-box;
+  background-color: transparent;
+  &.hover, &:hover {
+    background-color: transparent;
+  }
+  //tree modules
+  .el-tree.handle-modules {
+    width: 100%;
+    border: none;
+  }
+}

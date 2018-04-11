@@ -1,0 +1,15 @@
+.el-table.cx-base-table {
+  width: 100%;
+  overflow: hidden;
+  .el-table__body-wrapper {
+    overflow: visible;
+    .cell, .el-table__row .cell .td-txt {
+      overflow: visible;
+    }
+  }
+  &.error-table-head {
+    table {
+      border-collapse: separate; //边框会被分开。不会忽略 border-spacing 和 empty-cells 属性。
+    }
+  }
+}

@@ -1,0 +1,149 @@
+@import "../../public";
+//登录注册页背景
+$front-back: rgba(45, 58, 75, 0.98);
+//$front-back: rgba(250, 70, 134, 0.98);
+//前台 内容 背景色
+$content-back: null;
+//服务协定 内容 背景色
+$dialog-back: rgba(0, 0, 0, 0.92);
+
+//前台基本宽度
+$front-base-width: 380px;
+//前台LOGO基本高度
+$front-logo-height: 240px;
+//前台 内部内容左右padding
+$front-content-padLR: 40px;
+//前台 内部内容上下padding
+$front-content-padTB: 40px;
+//前台 基本 间隙值
+$front-base-gap: 10px;
+
+.front {
+  display: flex;
+  align-items: center; /*定义body的元素垂直居中*/
+  justify-content: center; /*定义body的里的元素水平居中*/
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: $front-back;
+  background-size: cover;
+  .el-checkbox, .el-checkbox__label {
+    color: $--color-white;
+  }
+  /*login forget register resetpw successpw  ----- logo*/
+  .big-Logo {
+    width: $front-base-width;
+    height: $front-logo-height;
+    margin: $front-logo-height/6 auto 0;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  /*login forget register resetpw successpw  ----- mainbg*/
+  .front-content {
+    position: relative;
+    width: $front-base-width - $front-content-padLR*2;
+    height: auto;
+    padding: $front-content-padTB $front-content-padLR;
+    margin: 0 auto;
+    background-color: $content-back;
+    border-radius:20px;
+    //操作文字
+    .handle {
+      a {
+        padding-left: 0;
+        color: $--color-white;
+        text-decoration: none;
+        cursor: pointer;
+        &:hover {
+          color: $--color-primary;
+          text-decoration: underline;
+        }
+      }
+    }
+    //返回按钮
+    .handle-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+      svg {
+        padding: 20px;
+        font-size: 28px;
+        color: $--color-white;
+        &:hover {
+          color: $--color-primary;
+        }
+      }
+    }
+    //注册选择模式
+    .mode-main {
+      .fill {
+        display: block;
+        width: 100%;
+        padding: 0;
+        svg.svg-icon {
+          font-size: 2em;
+        }
+      }
+      a {
+        width: calc(100% - 4px);
+        height: 76px;
+        line-height: 84px;
+        border-radius: calc(100% - 4px);
+        border: 2px solid $--color-primary;
+        color: $--color-white;
+        text-align: center;
+        cursor: pointer;
+        margin-top: 40px;
+        margin-bottom: 10px;
+        &:hover {
+          background: $--color-primary;
+        }
+      }
+    }
+    //注册内容
+    .contView {
+      //表单内容
+      .fcont {
+        width: 100%;
+        height: auto;
+        padding-top: $front-base-gap;
+        //验证码
+        .vcode {
+          display: inline-block;
+          &.vcode-ipt {
+            width: 2/3*100%-1%;
+          }
+          &.vcode-btn {
+            width: 1/3*100%-1%;
+          }
+        }
+      }
+    }
+    //服务协定
+    #service-agreement.el-dialog__wrapper {
+      .el-dialog {
+        .el-dialog__title {
+          color: $--color-white;
+        }
+        background: $dialog-back;
+        h3 {
+          color: $--color-white;
+          padding: $front-base-gap 0;
+        }
+        p {
+          color: $--color-white;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+

@@ -1,0 +1,224 @@
+$--color-black: #000; //纯黑
+$--color-text-primary: #333333; //重要文字
+$--color-text-regular: #666666; //主力文字色系
+$--color-text-secondary: #999999; //辅助文字颜色
+$--color-text-placeholder: #CCCCCC; //失效文字颜色
+$--color-text-supply: #e3e3e3; //补充色系
+$--border-color-light: #d9d9d9; //边框颜色-浅
+$--border-color-lighter: #EEEEEE; //边框颜色-更浅
+$--background-color-base: #f4f4f4; //base background-color
+$--color-white: #FFF; //纯白
+//---------- 基础主色 ----------
+$--color-primary: #0A7AF8;
+$--color-ns-form-hover: #33a1ff; //本项目中表单控件鼠标移入边框基础颜色 inpu / select
+$--color-primary-light: #4097f9; //基础主色-浅色
+//---------- 主题色系 ----------
+$--color-success: #16CA37;
+$--color-warning: #FFAE00;
+$--color-danger: #FF5131;
+$--color-info: #0A7AF8;
+
+//---------- dialog - 弹窗  ----------
+$dialog-default-width: 650px; //基础默认宽度
+$dialog-line-height: 24px; //基础默认行高
+$dialog-padding-left: 32px; //左边间距留白
+$dialog-padding-right: 32px; //右边间距留白
+$dialog-padding-top: 24px; //右边间距留白
+$dialog-padding-bottom: 24px; //右边间距留白
+$dialog-body-max-height: 550px; //body内容实际部分最大高度
+$dialog-body-min-height: 350px; //body内容实际部分最小高度
+
+.primary {
+  color: $--color-primary;
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
+}
+
+div, svg {
+  &:focus {
+    outline: none;
+  }
+}
+
+.indent-2em {
+  text-indent: 2em;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+.txtC {
+  text-align: center !important;
+}
+
+.txtL {
+  text-align: left !important;
+}
+
+.txtR {
+  text-align: right !important;
+}
+
+.clr_mt {
+  margin-top: 0 !important;
+}
+
+.clr_mb {
+  margin-bottom: 0 !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.oneline-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* -------------------------  工作台 整体界面参数  ------------------------- */
+@mixin tit-base-style( $base-size,$base-gap,$color) {
+  text-align: center;
+  font-size: $base-size;
+  font-style: normal;
+  color: $color;
+  padding-top: $base-gap;
+  padding-bottom: $base-gap;
+}
+
+@mixin submit-base-style( $base-size,$base-gap,$color) {
+  width: $base-size;
+  height: 40px;
+  margin: $base-gap auto;
+  border: 0;
+  font-size: 18px;
+  color: $color;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* title */
+.large-tit {
+  @include tit-base-style(48px, 20px, rgba(255, 255, 255, .98));
+}
+
+.middle-tit {
+  @include tit-base-style(30px, 15px, rgba(255, 255, 255, .98));
+}
+
+.small-tit {
+  @include tit-base-style(18px, 5px, rgba(255, 255, 255, .98));
+}
+
+/* submit */
+.large-submit {
+  @include submit-base-style(300px, 10px, rgba(255, 255, 255, .98));
+}
+
+.middle-submit {
+  @include submit-base-style(120px, 10px, rgba(255, 255, 255, .98));
+}
+
+.small-submit {
+  @include submit-base-style(60px, 10px, rgba(255, 255, 255, .98));
+}
+
+/* iconfont - Button */
+.el-button.btn-icon {
+  padding: 5px 7.5px;
+}
+
+/*滚动条垂直方向的宽度*/
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* 垂直滚动条的滑动块 */
+::-webkit-scrollbar-thumb:vertical {
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .1);
+  background-color: hsla(220,4%,58%,.5);
+}
+
+/* 水平滚动条的滑动块 */
+::-webkit-scrollbar-thumb:horizontal {
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: rgba(129, 129, 129, 0.5);
+}
+
+::-webkit-scrollbar-thumb:vertical:hover, ::-webkit-scrollbar-thumb:horizontal:hover {
+  background-color: rgba(255, 255, 255, 0.68);
+}
+
+/* lazyload 懒加载模块 */
+.lazyload[lazy=loading] {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  background-position: center top;
+  background-size: cover;
+  //background-image: url("../../assets/img/lazyload/loading/lazyloading4.png");
+}
+
+.lazyload[lazy=loaded] {
+  -webkit-animation: fade 1.2s;
+  -moz-animation: fade 1.2s;
+  -o-animation: fade 1.2s;
+  animation: fade 1.2s;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently not supported by any browser */
+}
+
+//=====================================================================
+
+.el-select.cx-select:not(.cx-select-multiple) {
+  .el-select__tags {
+    overflow: hidden;
+    height: 100%;
+    .el-select__input {
+      width: 0;
+    }
+  }
+  .el-input {
+    height: 100%;
+    .el-input__inner {
+      height: 100%;
+    }
+  }
+}
+
+
