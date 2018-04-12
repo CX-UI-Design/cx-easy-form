@@ -24,7 +24,7 @@
       <div class="firstContent" v-for="(secondItem,secondIndex) in firstItem[firstKeyRefer.children]" :key="secondItem[secondKeyRefer['menu-id']]"
            :class="{'opened':moduleShowList[firstIndex].sw}" v-if="moduleShowList[firstIndex].isLoaded">
         <!-- second module title -->
-        <div class="moduleTit subTit secondModuleTit" :style="{width: titBaseW + 'px'}">
+        <div class="moduleTit subTit secondModuleTit">
           <el-checkbox v-model="secondItem[secondKeyRefer['infoVo']][secondKeyRefer['checkSW']]" class="fl"
                        :indeterminate="secondItem[secondKeyRefer['infoVo']][secondKeyRefer['indeterminate']]"
                        @change="checkAllMethods('third',{vm:vm, value: secondItem[secondKeyRefer['infoVo']][secondKeyRefer['checkSW']],
@@ -33,9 +33,9 @@
           <!--vm / value / secondItem / firstIndex /secondIndex-->
           <span class="subTit-text fl">{{secondItem[secondKeyRefer["menu-name"]]}}</span>
           <!--manage-range component-->
-          <cx-manage-range v-model="childRoleFnBtn[firstIndex][modelKeyRefer['infoVo']][secondIndex][modelKeyRefer['dataSeeModel']]"
-                           width="200px" height="32px" class="fl" v-if="bizType === 'data-permissions'">
-          </cx-manage-range>
+          <component :is="$SN+'manage-range'" width="200px" height="32px" class="fl" v-if="bizType === 'data-permissions'"
+                     v-model="childRoleCheckBtn[firstIndex][modelKeyRefer['infoVo']][secondIndex][modelKeyRefer['dataSeeModel']]">
+          </component>
         </div>
         <!-- second module content -->
         <div :class="['secondContent','fl',{'clear':thirdIndex + 1 === secondItem[secondKeyRefer['infoVo']][secondKeyRefer.btnItems].length}]"

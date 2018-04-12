@@ -140,12 +140,12 @@ const LoadingData = (Vue) => {
     }
     ;
 
-    console.log('处理前的modelData');
-    console.log(vm.formData.modelData);
+    // console.log('处理前的modelData');
+    // console.log(vm.formData.modelData);
     //请求数据成功后的外置操作处理数据
     vm.$emit('afterRequest', vm, vm.formData);
-    console.log('处理后的modelData');
-    console.log(vm.formData.modelData);
+    // console.log('处理后的modelData');
+    // console.log(vm.formData.modelData);
 
 
     //自动表单初始化 model-data 数据存储

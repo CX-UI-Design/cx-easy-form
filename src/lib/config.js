@@ -8,8 +8,8 @@ import {judgeType} from './utils/index'
  * @constructor
  */
 export const ConfFormer = function (Vue, opts) {
-  console.log('插件设置传入的参数：')
-  console.log(opts);
+  // console.log('插件设置传入的参数：')
+  // console.log(opts);
   //default param
   let former = {
     stageName: 'gcx-',//stage name config

@@ -19,7 +19,7 @@ import rulesInfo from './rulesInfo'
  * @private
  */
 function _basevalfun(value, callback, validator, errmsg) {
-  !value || validator ? callback() : callback(new Error(errmsg));
+  !value || validator ? callback() : callback(new Error(errmsg));//空值时，不进行内容验证
 }
 
 let check = {};
@@ -29,7 +29,5 @@ rulesInfo.forEach((item) => {
     _basevalfun(value, callback, validateRule(value, item.type, item), item.msg);
   }
 })
-console.log(444444444)
-console.log(check)
-export default check;
 
+export default check;

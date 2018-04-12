@@ -33,6 +33,8 @@ import RoleGroup from './packages/Select/Role-group/index'
 import RoleEmployee from './packages/Select/Role-employee/index'
 import CustomerInfoSingle from './packages/Select/Customer-info-single/index'
 import CustomerInfoLinkage from './packages/Select/Customer-info-linkage/index'
+import SimpleTreeSelect from './packages/Select/Simple-tree-select'
+
 
 //date
 import TimePicker from './packages/Date/Time-picker/index'
@@ -47,13 +49,14 @@ import TotalUpload from './packages/Upload/Total-upload/index'
 //transfer
 import Authorizer from './packages/Transfer/Authorizer/index'
 
-// //tree
-import Organization from './packages/Tree/Organization/index'
+//tree
+import SimpleTree from './packages/Tree/Simple-tree'
 
-// //other
+//other
 import Text from './packages/Text/index'
 import Avatar from './packages/Avatar/index'
 import Separator from './packages/Separator/index'
+import RoleManageRange from './packages/Other/Role-manage-range'
 
 //table in form
 import BaseTable from './packages/Table-in-form/Base-table/index'
@@ -98,6 +101,7 @@ const components = [
   RoleEmployee,
   CustomerInfoSingle,
   CustomerInfoLinkage,
+  SimpleTreeSelect,
 
   //date
   TimePicker,
@@ -112,12 +116,13 @@ const components = [
   //transfer
   Authorizer,
   //tree
-  Organization,
+  SimpleTree,
 
   //other
   Text,
   Avatar,
   Separator,
+  RoleManageRange,
 
   //table in form
   BaseTable,
@@ -188,12 +193,14 @@ module.exports = {
     RoleEmployee,
     CustomerInfoSingle,
     CustomerInfoLinkage,
+    SimpleTreeSelect,
 
     //date
     TimePicker,
     DatePicker,
     OnlyMMDDPicker,
     TimeInterval,
+
 
     //Upload
     Upload,
@@ -202,12 +209,13 @@ module.exports = {
     //transfer
     Authorizer,
     //tree
-    Organization,
+    SimpleTree,
 
     //other
     Text,
     Avatar,
     Separator,
+    RoleManageRange,
 
     //table in form
     BaseTable,

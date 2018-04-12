@@ -150,16 +150,25 @@
     >
     </component>
 
-    <!--checkbox - get user role func-Button （获取当前用户的功能菜单按钮） -->
-    <component v-if="itemType==='checkbox'&&type === 'roleFnBtn'" :is="$SN+'role-check-btn'"
+    <!--checkbox - get user role check-Button （获取当前用户的功能菜单按钮） -->
+    <component v-if="itemTypeDistribute==='role-check-btn'" :is="$SN+'role-check-btn'"
                v-model="childItem" :bizType="bizType" :size="size" :min="parameConver('min',min)"
                :max="parameConver('max',max)" :width="width" :height="height" :disabled="disabled"
     ></component>
+
 
     <!--transfer （ 获取某个组织下的所有员工（授权人）列表 ） -->
     <component v-if="itemType==='transfer'&&type === 'authorizer'" :is="$SN+'role-authorizer'"
                v-model="childItem" :width="width" :height="height" :disabled="disabled" :dynamicUrl="dynamicUrl"
                :dynamicQuery="dynamicQuery"
+    >
+    </component>
+
+
+    <!--simple tree in select （ 请选择所属部门树状数据 /  ） -->
+    <component v-if="itemTypeDistribute === 'simple-tree-select'" :is="$SN+'simple-tree-select'"
+               v-model="childItem" :bizType="bizType" :width="width" :height="multiple?'auto':height" :size="size" :placeholder="placeholder"
+               :disabled="disabled" :multiple="multiple" :clearable="parameConver('clearable',clearable)"
     >
     </component>
 
@@ -194,7 +203,10 @@
     >
     </component>
 
-
+    <!--manage-range component-->
+    <component v-if="itemTypeDistribute==='manage-range'" :is="$SN+'manage-range'" v-model="childItem"
+               :width="width" :height="height">
+    </component>
   </el-form-item>
 </template>
 <script>
@@ -224,7 +236,7 @@
         defaultLabelWidth: '150px',//default label-width
         blurList: config.blurList,//trigger-blur list （ form-component ）
         blurAndChangeList: config.blurAndChangeList,
-        noValidateList: config.noValidateList,//no-rules list （ form-component ）
+        noValidateList: config.noValidateList,//no-rules-regulation list （ form-component ）
 
         mockBlockList: config.mockBlockList,
         noHeightList: config.noHeightList,//no-height list （ form-component ）
@@ -250,8 +262,19 @@
       //======================================================================
 
       this.childItem = this.fatherItem;
+
+
       //set rule for this form-item component
       this.rule = this.roleDistributor();
+//      this.rule = [
+//        {required: true, message: "请输入nianling", trigger: ["change", "blur"]},
+//        {type: "number",  trigger: ['blur', 'change']}
+//      ]
+
+
+      console.log('rule 规则如下');
+      console.log(this.rule);
+      console.log(JSON.stringify(this.rule, 4, null))
     },
     mounted() {
 
@@ -324,7 +347,7 @@
       /*
          set isValidating status
          1、judge item-type is out of 'noValidateList'? some of items is not required ,so we have't to add class 'validating' to it.
-         2、judge props of 'required' and 'rules' to find this items'area-linkage config
+         2、judge props of 'required' and 'rules-regulation' to find this items'area-linkage config
          3、judge this item is in validating status or not （if it changed or blur，push it'area-linkage ID to checkList in Vuex），
             we can judge checkList is contain this id or not（validate-form-item'area-linkage ID in this checkList）
           只有特定的表单控件才会在失焦/改变等事件的作用下，激活验证状态（想校验列表中增加其自己的唯一ID值），凡是处在验证激活状态下的表单控件，才会
@@ -337,7 +360,7 @@
           return false;
         }
         else {
-          if (this.required || this.rules) {
+          if (this.required || this.rulesRegulation) {
             return this.$Utils.arrContainObj(checkList, checkKey) || this.$Utils.arrContainObj(checkList, 'all-check') ?
               true : false;
           }
@@ -371,7 +394,7 @@
        * @returns {*}
        */
       roleDistributor() {
-        if (!this.rules && !this.required) return null; //not set content validation rules and not set required status
+        if (!this.rulesRegulation && !this.required) return null; //not set content validation rules-regulation and not set required status
 
         /**
          * base blurList and blurAndChangeList to judge which trigger we want
@@ -385,18 +408,21 @@
             return 'blur';
           }
           else if (this.arrContainObj(this.blurAndChangeList, type)) {
-            return 'blur,change';
+            return ['change', 'blur'];
           }
           else {
             return 'change';//other is change trigger
           }
         }
-        console.log("规则！！！！！！！！！！！！！！1")
-        console.log(_T(this.itemType))
-
-        const r = distributor(this.required, this.rules, this.rulesType, _T(this.itemType), this.requireMsg);
-        console.log(r)
-        return r;
+//        console.log("验证触发形式如下：")
+//        console.log(_T(this.itemType))
+//        console.log("内容验证规则名称：")
+//        console.log(this.rulesRegulation)
+//        console.log("值类型：")
+//        console.log(this.rulesType)
+//        console.log("错误提示信息：")
+//        console.log(this.requireMsg)
+        return distributor(this.required, this.rulesRegulation, this.rulesType, _T(this.itemType), this.requireMsg);
       },
       /**
        * parame to conver
@@ -429,6 +455,8 @@
 
       //change - function
       change(value) {
+        //set rule for this form-item component
+        this.rule = this.roleDistributor();
         this.$store.dispatch('setCustomCheck', this.itemId);
         this.$emit('change', value);
       },
@@ -452,17 +480,18 @@
       //judge string contain another string in definite place
       strContainPlace(str, substr, place) {
         return this.$Utils.strContainPlace(str, substr, place);
-      }
+      },
     },
     model: {
       prop: 'fatherItem',
-      event:
-        'change'
+      event: 'muster-item-change'
     },
     watch: {
       //model value binding child to father or father to child.
       childItem() {
-        this.$emit('change', this.childItem)
+        console.log('muster-item 的modeldata 值')
+        console.log(this.childItem)
+        this.$emit('muster-item-change', this.childItem)
       },
       fatherItem() {
         this.childItem = this.fatherItem;
@@ -511,11 +540,12 @@
       readonly: {type: Boolean},//只读
       clearable: {type: [Boolean, String]},//是否支持清空选项
       editable: {type: Boolean, default: true},//文本框可输入
+      multiple: {type: Boolean},//是否多选
 
       //验证
       required: {type: Boolean, default: false},//是否必填 required，如不设置，则会根据校验规则自动生成
-      requireMsg: {type: String, default: null},//只有在rules 为 required 的时候，可以定义出错信息，默认为null
-      rules: {type: [String, Object, Array], default: null},//内容验证规则
+      requireMsg: {type: String, default: null},//只有在rules-regulation 为 required 的时候，可以定义出错信息，默认为null
+      rulesRegulation: {type: [String, Object, Array], default: null},//内容验证规则
       rulesType: {type: String, default: null},//验证字段的内容类型
       prop: {type: String},//表单域 model 字段，在使用 validate、resetFields 方法的情况下，该属性是必填的
 
@@ -545,7 +575,6 @@
       /*=========== JEPF 没有该字段，默认配置，无需暴露 ============*/
 
       error: {type: String}, //表单域验证错误信息, 设置该值会使表单验证状态变为error，并显示该错误信息
-      multiple: {type: Boolean},//是否多选
       allowCreate: {type: Boolean},//是否允许用户创建新条目，需配合 filterable 使用
       changeOnSelect: {type: Boolean, default: true},//选择即改变，可选择任意一级菜单的选项。
       'show-message': {type: Boolean, default: true},//是否显示校验错误信息   写死！

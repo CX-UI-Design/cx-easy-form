@@ -37,7 +37,12 @@ export default function validateRule(val, type, ruleInfo) {
   complex ? = > run _complexValidate method
   simple ? = >  validata value base on reg rule
   -----------------------*/
+
+  // console.log('输入的值 -validateRule ')
+  // console.log(val)
+
   let ruleStatus = info.complex ? _complexValidate(val, info) : reg.test(val);
+
   //throw resault to validate-check
   return ruleStatus;
 }

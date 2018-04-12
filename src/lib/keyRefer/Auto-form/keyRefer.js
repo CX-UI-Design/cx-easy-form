@@ -24,7 +24,7 @@ const keyRefer = {
     //验证
     required: "isfieldRequired",//是否必填 required
     "require-msg": "resourcefieldBinding",//必填出错 提示信息
-    rules: "resourcefieldAllowblankexp",//内容验证规则
+    "rules-regulation": "resourcefieldAllowblankexp",//内容验证规则
     "rules-type": "resourcefieldVtype",//验证字段的内容类型
 
     //编辑
@@ -33,6 +33,7 @@ const keyRefer = {
     readonly: "isResourcefieldReadonly",//是否只读
     editable: "isResourcefieldEditable",//是否可编辑
     clearable: "clearable",//是否支持清空选项
+    multiple: "multiple",
 
     //行 列
     colspan: "resourcefieldColspan",//所占列数

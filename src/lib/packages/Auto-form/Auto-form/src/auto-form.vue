@@ -10,9 +10,9 @@
       <cx-info-table-show v-model="formDataShow" :tableHead="dataListHead" border></cx-info-table-show>
     </component>
     <!--auto-form-->
-    <component :is="$SN+'form'" :model="formData.modelData" :ref="autoFormID" class="cx-auto-form-container clear" :inline="true"
-               v-loading="loading" element-loading-text="拼命加载中" :style="{width: autoFormWidth+'px'}" :validate-on-rule-change="false"
-               v-if="formData && fullRender"
+    <el-form :ref="autoFormID" :model="formData.modelData" class="cx-auto-form-container clear" :inline="true"
+             v-loading="loading" element-loading-text="拼命加载中" :style="{width: autoFormWidth+'px'}" :validate-on-rule-change="true"
+             v-if="formData && fullRender"
     >
       <!--content - 表单内容部分 -->
       <div class="cx-autoForm-content fl">
@@ -50,7 +50,7 @@
         <!--:round="btnItem.round" :disabled="btnItem.disabled" :roleInfo="btnRoleInfo(btnItem)" @click="buttonEvent(btnItem,autoFormID)">-->
         <!--</ns-Button>-->
       </el-form-item>
-    </component>
+    </el-form>
   </div>
 </template>
 <script>

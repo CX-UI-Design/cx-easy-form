@@ -54,6 +54,8 @@
     },
     watch: {
       childIpt() {
+        console.log('childIpt 的modeldata 值')
+        console.log(this.childIpt)
         this.$emit('input', this.childIpt);
       },
       fatherIpt() {
@@ -91,6 +93,10 @@
       onIconClick: {type: Function, default: null},
     },
     methods: {
+      /* -------------
+        change event is not triggered by trying to monitor changes,
+        needs to wait until the focus is lost.
+      -------------*/
       change(value) {
         this.$emit('change', value);
       },

@@ -13,13 +13,14 @@
 
 <script>
   import pickerOptionsMap from './static-data/form/picker-options'
-  import temple from './static-data/form/temple'
+//  import test from './static-data/form/test'
+  import test from './static-data/form/xinjiaru'
 
   export default {
     name: 'App',
     data() {
       return {
-        localData: temple,
+        localData: test,
         autoFormocaldata: {},
         dataListHead: this.$CX.getTableHead('autoFormTest_DataList'),//the table-head of auto-form data list show
 

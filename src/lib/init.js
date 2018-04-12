@@ -8,9 +8,9 @@ import FormEvent from './utils/formEvent/index'
  * @param opts    Vue.former
  */
 const init = (Vue, opts) => {
-  console.log('初始化  -  挂载开始');
-  console.log('融合设置处理后的 ----  插件设置参数')
-  console.log(opts);
+  // console.log('初始化  -  挂载开始');
+  // console.log('融合设置处理后的 ----  插件设置参数')
+  // console.log(opts);
   CX.requestHead.set(Vue.former.requestHead);//storing and setting request header data from config
 
 

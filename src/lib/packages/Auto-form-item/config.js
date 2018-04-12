@@ -1,9 +1,9 @@
 export let config = {
   //trigger-blur list （ form-component ）
-  blurList: ['date'],
+  blurList: ['date',],
 
   //trigger-change && blur list （ form-component ）
-  blurAndChangeList: ['input', 'datepicker', 'timepicker'],
+  blurAndChangeList: [ 'input','datepicker', 'timepicker'],
 
   //no-rules list （ form-component ）
   noValidateList: ['baseTable', 'separator', 'avatar'],
@@ -41,7 +41,7 @@ export let config = {
 
     {firstType: 'select', sexondType: 'role-group', transform: 'role-group'},
     {firstType: 'select', sexondType: 'role-employee', transform: 'role-employee'},
-    {firstType: 'select', sexondType: 'role-organization', transform: 'role-organization'},
+    {firstType: 'select', sexondType: 'simple-tree-select', transform: 'simple-tree-select'},
 
     {firstType: 'select', sexondType: 'customer-info-linkage', transform: 'customer-info-linkage'},
     {firstType: 'select', sexondType: 'customer-info-single', transform: 'customer-info-single'},
@@ -52,7 +52,17 @@ export let config = {
     {firstType: 'select', sexondType: 'area-3', transform: 'area-linkage'},
     {firstType: 'select', sexondType: 'area-4', transform: 'area-linkage'},
 
+    {firstType: 'checkbox', sexondType: 'roleCheckBtn', transform: 'role-check-btn'},
+
+
+
     {firstType: 'date', sexondType: 'interval', transform: 'time-interval'},
+
+    {firstType: 'other', sexondType: 'manage-range', transform: 'manage-range'},
+
+
+
+
   ]
 
 }

@@ -10,7 +10,7 @@
                :prop="dataSources(formItem,'model-key')"
                :required="dataSources(formItem,'required')"
                :require-msg="dataSources(formItem,'require-msg')"
-               :rules="dataSources(formItem,'rules')"
+               :rules-regulation="dataSources(formItem,'rules-regulation')"
                :rules-type="dataSources(formItem,'rules-type')"
 
                :item-type="dataSources(formItem,'item-type')"
@@ -41,7 +41,7 @@
                :icon="dataSources(formItem,'icon')"
                :editable="dataSources(formItem,'editable')"
                :clearable="dataSources(formItem,'clearable')"
-
+               :multiple="dataSources(formItem,'multiple')"
 
                :items="dataSources(formItem,'items')"
                :initItems="dataSources(formItem,'initItems')"

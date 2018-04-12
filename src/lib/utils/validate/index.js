@@ -10,7 +10,6 @@ import check from './validate-check'
 import {judgeType} from '../../utils/index'
 
 
-
 /**
  * Array.prototype.[method name] allows you to define/overwrite an objects method
  * needle is the item you are searching for
@@ -35,8 +34,8 @@ Array.prototype.contains = function (needle) {
  */
 export function distributor(required, ruleMode, type, trigger, msg) {
   let arr1, arr2, arr3;
-  if (required) {
-    arr1 = {required: required, message: msg, trigger: trigger};//required - rule
+  if (required === true) {
+    arr1 = {required: true, message: msg, trigger: 'blur'};//required - rule
     if (!ruleMode) {
       arr3 = {type: type, validator: check['allSpace'], trigger: trigger};//required - space warning
     }
@@ -45,13 +44,9 @@ export function distributor(required, ruleMode, type, trigger, msg) {
     arr2 = type ? {type: type, validator: check[ruleMode], trigger: trigger} ://value validate
       {validator: check[ruleMode], trigger: trigger};
   }
-  console.log(222222222);
-  console.log(arr2);
-  console.log(type)
-  console.log(ruleMode)
-  const newRules = [arr1, arr2, arr3].filter(item => judgeType(item) !== 'undefined');
-  console.log(newRules)
 
+  let newRules = [arr1, arr2, arr3].filter(item => judgeType(item) !== 'undefined');
+  //验证目前存在一定问题：改变验证change时，验证vlue值延迟一步，不能实时验证
   return newRules;
 }
 
