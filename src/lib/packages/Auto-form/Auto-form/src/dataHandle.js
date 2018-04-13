@@ -96,9 +96,9 @@ const LoadingData = (Vue) => {
   vm = Vue;                  //Use the incoming Vue assignment to vm
   Vue.loading = true;
   //set autp-form request Id ( 设置 当前自定义表单请求的ID值 )
-  Vue.$CX.currentRequestFormID.set(Vue, Vue.autoFormID);
+  Vue[Vue.$CXFnName].currentRequestFormID.set(Vue, Vue.autoFormID);
   //存储当前表单组件的vue实例
-  Vue.$CX.formerVm.set(Vue, Vue.autoFormID, Vue);
+  Vue[Vue.$CXFnName].formerVm.set(Vue, Vue.autoFormID, Vue);
   //本地数据和本地数据格式内容符合要求（不为空，''，{}，[]....）
   if (Vue.isLocal) {
     if (!isEmpty(Vue.localData)) {
@@ -113,11 +113,11 @@ const LoadingData = (Vue) => {
     requireData = {
       url: Vue.requestUrl,
       query: Vue.query,
-      head: Vue.$CX.formController.get(Vue, Vue.autoFormID, 'headers'),//interpreter
+      head: Vue[Vue.$CXFnName].formController.get(Vue, Vue.autoFormID, 'headers'),//interpreter
       // head: {
-      //   funcId: Vue.$CX.funcId.get(), //funcId
-      //   interpreter: Vue.$CX.formController.get(Vue.autoFormID, 'interpreter'),//interpreter
-      //   formOperateType: Vue.$CX.formController.get(Vue.autoFormID, 'formOperateType'),//formOperateType
+      //   funcId: Vue[Vue.$CXFnName].funcId.get(), //funcId
+      //   interpreter: Vue[Vue.$CXFnName].formController.get(Vue.autoFormID, 'interpreter'),//interpreter
+      //   formOperateType: Vue[Vue.$CXFnName].formController.get(Vue.autoFormID, 'formOperateType'),//formOperateType
       // }
     }
     dp.remote(requireData, (res) => {

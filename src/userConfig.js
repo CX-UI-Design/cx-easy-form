@@ -29,7 +29,7 @@ import formEvent from './utils/formEvent'
 
 Vue.use(ElementUI);
 Vue.use(vue_formercool_Cx.body, {
-  stageName: 'gcx-',//stage name
+  stageName: 'cx',//stage name
   log: false,//show log information
   store: {},
   formEvent: formEvent,//binding form component interaction method （click / change / blur / fouce ... and so on）

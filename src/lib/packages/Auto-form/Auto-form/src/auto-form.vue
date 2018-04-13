@@ -121,7 +121,7 @@
         formDataShow: {},
         dataCheckResult: [], //the table-data of auto-form data list show
         dialogVisible: {visible: false}, //dialog-visible
-        dataListHead: this.$CX.getTableHead('autoFormTest_DataList'),//the table-head of auto-form data list show
+        dataListHead: this[this.$CXFnName].getTableHead('autoFormTest_DataList'),//the table-head of auto-form data list show
       }
     },
     computed: {

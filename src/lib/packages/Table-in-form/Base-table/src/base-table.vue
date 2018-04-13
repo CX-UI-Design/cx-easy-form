@@ -89,7 +89,7 @@
         const tb = this.tableHead;
         //表头是字符串格式
         if (typeof tb === 'string') {
-          const head = this.$CX.getTableHead(tb);
+          const head = this[this.$CXFnName].getTableHead(tb);
           if (this.$Utils.judgeType(head) === 'array') {
             return head;
           }

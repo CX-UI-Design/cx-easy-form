@@ -12,7 +12,8 @@ export const ConfFormer = function (Vue, opts) {
   // console.log(opts);
   //default param
   let former = {
-    stageName: 'gcx-',//stage name config
+    stageName: 'gcx',//stage name config
+    stageNamelink: '-',//stage name link config
     lan: 'ZH',//language config
     mock: true,//mock data
     log: false,//log information show
@@ -32,9 +33,6 @@ export const ConfFormer = function (Vue, opts) {
       if (_confValidate(opts, key)) {
         if (key === 'keyRefer') {
           former[key] = Object.assign(former[key], opts[key]);
-          console.log(898989898989)
-          console.log(former[key])
-          console.log(898989898989)
         }
         else {
           former[key] = opts[key];

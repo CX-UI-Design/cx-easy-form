@@ -1,4 +1,4 @@
-<!--role-organization 所属组织-->
+<!--simple tree in select -->
 <template>
   <div class="cx-simple-tree__select" v-model="childRoleOrganization" :style="{width: roleOrganization_width ,height: roleOrganization_height}">
     <!--select-container-->
@@ -15,7 +15,6 @@
   </div>
 </template>
 <script>
-  import keyRefer from './keyRefer';
   import {getInitShowData} from '../../../../api/select/simple-tree-select'
 
   export default {
@@ -26,7 +25,7 @@
 //        treeModel: [{"organizationId": 11, "organizationName": "技术部"}, {"organizationId": 12, "organizationName": "财务部"}],
         treeModel: null,//tree model data
         optionSw: false,
-        keyRefer: keyRefer,
+        keyRefer: this.$former.keyRefer['simple-tree-select'],
       };
     },
     computed: {
@@ -96,7 +95,7 @@
           //create select value list to show when select data list has content
           if (dataFrom.length > 0) {
             dataFrom.forEach(item => {
-              this.childRoleOrganization.push(item[keyRefer['value']]);
+              this.childRoleOrganization.push(item[this.keyRefer['value']]);
             });
           }
         }
@@ -106,7 +105,7 @@
             throw('in single situation, the data whitch use to create selectShow value should be object format ---- tree in select component');
           }
           if (dataFrom) {
-            this.childRoleOrganization = dataFrom[keyRefer['value']];
+            this.childRoleOrganization = dataFrom[this.keyRefer['value']];
             console.log('显示值：');
             console.log(this.childRoleOrganization);
             console.log(this.treeModel);
@@ -129,7 +128,7 @@
         //multiple situation
         if (this.multiple) {
           let newArr = [];
-          const v = keyRefer['value'];
+          const v = this.keyRefer['value'];
           for (let i of this.treeModel) {
             for (let j of this.childRoleOrganization) {
               if (i[v] === j) {

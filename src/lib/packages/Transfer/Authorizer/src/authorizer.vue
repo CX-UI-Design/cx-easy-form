@@ -6,9 +6,7 @@
                :style="{width: checkbox_width ,height: 'auto'}">
   </el-transfer>
 </template>
-
 <script>
-  import keyRefer from './keyRefer'
   import {getAuthorizerList} from '../../../../api/role-components/role-authorizer'
 
   export default {
@@ -19,6 +17,7 @@
         loading: true,//loding
         titList: ['待选', '已选'],//transfer - title
         transferList: [],
+        keyRefer: this.$former.keyRefer['role-authorizer']
       };
     },
     computed: {
@@ -50,11 +49,11 @@
         const newList = [];
         list.forEach((item, index) => {
           newList.push({
-            label: item[keyRefer.label],
-            value: item[keyRefer.value],
-            account: item[keyRefer.account],
-            mobile: item[keyRefer.mobile],
-            key: item[keyRefer.key],
+            label: item[this.keyRefer.label],
+            value: item[this.keyRefer.value],
+            account: item[this.keyRefer.account],
+            mobile: item[this.keyRefer.mobile],
+            key: item[this.keyRefer.key],
           });
         });
         return newList;

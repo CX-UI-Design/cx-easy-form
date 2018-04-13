@@ -92,7 +92,7 @@
         uploadRefer: this.$former.keyRefer["auto-form"].components.upload,//上传控件upload指代属性集合
         picSingleUrl: '',   //单张图片上传控件-图片地址
 //        requestHead: store.requestHead.get(),
-        requestHead: this.$CX.requestHead.get(),
+        requestHead: this[this.$CXFnName].requestHead.get(),
         dialogImageUrl: '',
         dialogVisible: false,
         fileList: [],

@@ -13,16 +13,19 @@ const init = (Vue, opts) => {
   // console.log(opts);
   CX.requestHead.set(Vue.former.requestHead);//storing and setting request header data from config
 
-
   let EVE = Object.assign(FormEvent, opts.formEvent);//to mix, cover, and remove repetition
 
-  Vue.prototype.$SN = opts.stageName;//add dynamic custom stage name
+  Vue.prototype.$SN = opts.stageName + opts.stageNamelink;//add dynamic custom stage name
+
+  const CXFnName = '$' + opts.stageName.toUpperCase();
+  Vue.prototype.$CXFnName = CXFnName//add dynamic custom CX methods name
+
+  Vue.prototype[CXFnName] = CX;//绑定此插件的方法 （非基础方法）
   Vue.prototype.$FormEvent = EVE;//binding form component interaction method （click / change / blur / fouce ... and so on）
-  Vue.prototype.$CX = CX;//绑定此插件的方法 （非基础方法）
+
+
   Vue.prototype.$Utils = $Utils;//基础共通方法ku
   Vue.$Utils = $Utils;
-
-
 
 }
 

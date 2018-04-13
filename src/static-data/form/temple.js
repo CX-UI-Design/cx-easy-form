@@ -1067,7 +1067,7 @@ const temple = {
       "resourcefieldAllowblankexp": null,//内容验证规则
       "resourcefieldVtype": 'array',//验证字段的 内容类型
       "resourcefieldOtherconfigObject": {
-        "secondXtype": "authorizer",//表单控件分支小类type,如input=>input-text,input-textere
+        "secondXtype": "role-authorizer",//表单控件分支小类type,如input=>input-text,input-textere
         "dynamicQuery": 'Temp-DynamicQuery',
         "min": undefined,//min
         "max": undefined,//max

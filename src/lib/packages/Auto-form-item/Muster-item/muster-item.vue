@@ -158,7 +158,7 @@
 
 
     <!--transfer （ 获取某个组织下的所有员工（授权人）列表 ） -->
-    <component v-if="itemType==='transfer'&&type === 'authorizer'" :is="$SN+'role-authorizer'"
+    <component v-if="itemTypeDistribute==='role-authorizer'" :is="$SN+'role-authorizer'"
                v-model="childItem" :width="width" :height="height" :disabled="disabled" :dynamicUrl="dynamicUrl"
                :dynamicQuery="dynamicQuery"
     >

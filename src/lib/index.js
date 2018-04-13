@@ -142,12 +142,14 @@ const components = [
 const install = function (Vue, opts = {}) {
   //Former plug-in external param config
   ConfFormer(Vue, opts);
+
+
   //init methods and ready handle
   init(Vue, Vue.former);
 
   //binding component
   components.map((component, index) => {
-    Vue.component(getStageName(component.name, Vue.former.stageName, index), component)
+    Vue.component(getStageName(component.name, Vue.former.stageName, Vue.former.stageNamelink, index), component)
   })
 
   //register global utility filters.

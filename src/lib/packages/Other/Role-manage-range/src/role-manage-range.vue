@@ -81,11 +81,8 @@
         this.childManageRange[this.keyRefer['specialChiose']] = this.treeSelectModel;
       },
       childManageRange() {
-        console.log('model-data 值变化了！！！');
-        console.log(this.childManageRange);
         this.$emit('change', this.childManageRange)
       },
-      //父组件model数据变化，实时变化子组件model
       fatherManageRange() {
         this.childManageRange = this.fatherManageRange;
       }
@@ -108,10 +105,7 @@
       height: {type: [String, Number], default: '32px'},
       keyRefer: {
         type: Object, default: function () {
-          return {
-            normalChiose: 'seeScopeType',
-            specialChiose: "seeOtherOrgIdList"
-          };
+          return this.$former.keyRefer["role-manage-range"];
         }
       },//指代属性
     },

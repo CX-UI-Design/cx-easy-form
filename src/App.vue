@@ -1,20 +1,20 @@
 <template>
   <div id="app">
-    <gcx-auto-form autoFormID="template-auto-form"
-                   :isLocal="true"
-                   :localData="localData"
-                   :cover-data="coverData"
-                   cue-type="only-error"
-                   :isCheck="false"
-                   @afterRequest="afterRequest"
-    ></gcx-auto-form>
+    <cx-auto-form autoFormID="template-auto-form"
+                  :isLocal="true"
+                  :localData="localData"
+                  :cover-data="coverData"
+                  cue-type="only-error"
+                  :isCheck="false"
+                  @afterRequest="afterRequest"
+    ></cx-auto-form>
   </div>
 </template>
 
 <script>
   import pickerOptionsMap from './static-data/form/picker-options'
-//  import test from './static-data/form/test'
-  import test from './static-data/form/temple'
+  //  import test from './static-data/form/test'
+  import test from './static-data/form/xinjiaru'
 
   export default {
     name: 'App',
