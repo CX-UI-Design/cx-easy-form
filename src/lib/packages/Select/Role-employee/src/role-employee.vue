@@ -26,7 +26,6 @@
   </el-select>
 </template>
 <script>
-  import keyRefer from './keyRefer'//指代属性字段值
   import {getInitRoleGroupList, getRoleGroupList} from '../../../../api/role-components/role-employee'
 
   export default {
@@ -34,8 +33,8 @@
     data() {
       return {
         childRoleGroup: '',
-        firstKeyRefer: keyRefer.firstLevel,//指代属性字段值 一级
-        secondKeyRefer: keyRefer.secondLevel,//指代属性字段值 二级
+        firstKeyRefer: this.$former.keyRefer["role-employee"].firstLevel,//指代属性字段值 一级
+        secondKeyRefer: this.$former.keyRefer["role-employee"].secondLevel,//指代属性字段值 二级
         options: [],//下拉数据
         isLoaded: false,//是否加载过下拉数据
       }
@@ -58,7 +57,7 @@
     },
     methods: {
       /**
-       * get role-group-list  (分组获取角色列表)
+       * get init role-group-list
        * @param query
        */
       getInitRoleGroupList(query) {

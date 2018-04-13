@@ -1,4 +1,4 @@
-import {arrRemoveDistinct,getQuery} from "../../../../utils/index"
+import {arrRemoveDistinct, getQuery} from "../../../../utils/index"
 import {errorMap} from "../../../error/error"
 
 /**

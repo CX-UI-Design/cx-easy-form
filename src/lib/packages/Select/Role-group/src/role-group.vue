@@ -51,7 +51,6 @@
   </el-select>
 </template>
 <script>
-  import keyRefer from './keyRefer'
   import {editAddRoleGroup, delRoleGroup, roleGroupList, roleGroupInfo} from '../../../../api/role-components/role-group'
 
   export default {
@@ -59,7 +58,7 @@
     data() {
       return {
         childRoleGroup: '',
-        keyRefer: keyRefer,//指代属性字段值
+        keyRefer: this.$former.keyRefer["role-group"],//指代属性字段值
         iptModel: '',//edit/add input model-value
         iptIndex: null,//编辑输入所在 索引值
         isInputing: false,//是否处于输入编辑状态
@@ -114,7 +113,7 @@
        */
       repeatSet(index, disabled, isInputing, lock) {
         this.iptIndex = index;//设置编辑输入所在的索引值
-        this.options[index][keyRefer.disabled] = disabled;//当前行禁用状态 （在编辑状态中不可选中）
+        this.options[index][this.keyRefer.disabled] = disabled;//当前行禁用状态 （在编辑状态中不可选中）
         this.isInputing = isInputing;//打开编辑输入开关
         this.lock = lock;
         this.addBtnSw = true;//新增按钮 禁用
@@ -125,13 +124,13 @@
        */
       editHandle(index) {
         //如果编辑当前选中项
-//        if (this.childRoleGroup === this.options[index][keyRefer.value]) {
+//        if (this.childRoleGroup === this.options[index][this.keyRefer.value]) {
 //          this.childRoleGroup = '';
 //        }
         //相关设置操作
         this.repeatSet(index, true, true, true);
         //设置输入框model值为当前索引的label值
-        this.iptModel = this.options[index][keyRefer.label];
+        this.iptModel = this.options[index][this.keyRefer.label];
       },
 
       /**
@@ -164,9 +163,9 @@
               //close request switch
               this.requsetSW = false;
               //设置当前索引的label值为输入框model值
-              this.options[index][keyRefer.label] = this.iptModel;
+              this.options[index][this.keyRefer.label] = this.iptModel;
               //get value
-              const val = this.options[index][keyRefer.value];
+              const val = this.options[index][this.keyRefer.value];
               //get this role-value
               const roleVal = val ? val : 0;
               //set query for request
@@ -198,7 +197,7 @@
 //
 //                        //存在新增加/编辑的元素的信息
 //                        this.options[index] = res[index];
-//                        this.options[index][keyRefer.value] = res[index][keyRefer.value];
+//                        this.options[index][this.keyRefer.value] = res[index][this.keyRefer.value];
 //
 //
 //                        console.log(this.options);
@@ -291,7 +290,7 @@
        * @param index
        */
       delHandle(index) {
-        const roleVal = this.options[index][keyRefer.value];
+        const roleVal = this.options[index][this.keyRefer.value];
         //requset switch is opened
         if (this.requsetSW) {
           //delete request handle
@@ -336,9 +335,9 @@
 //          this.isAdd = true;
           //下拉数组中新增空白条目
           this.options.push({
-            [keyRefer.value]: '',
-            [keyRefer.label]: '',
-            [keyRefer.disabled]: false
+            [this.keyRefer.value]: '',
+            [this.keyRefer.label]: '',
+            [this.keyRefer.disabled]: false
           });
           //开启编辑操作
           this.editHandle(this.options.length - 1);
@@ -358,7 +357,7 @@
        */
       judgeRepeat(options, val) {
         return options.some((item, index) => {
-          return item[keyRefer.label] === val;
+          return item[this.keyRefer.label] === val;
         })
       },
       /**

@@ -1,23 +1,22 @@
 /*
  * role employee - keyRefer ( 角色与权限 => 角色组下拉框组件 属性字段配置 )
- * created: 2018/1/03.
+ * created: 2018/1/04.
  * author: Broccoli spring( 高仓雄 - gcx )
  * copyright (c) 2018 Broccoli spring( gcx )
  */
-const keyRefer = {
+export default {
   firstLevel: {
     label: "rolecategoryName",
-    value: "xx",
-    children:"roleVos"
+    value: "value",
+    children: "roleVos"
   },
   secondLevel: {
     label: "rolename",
     value: "roleid",
-    disabled:"disabled",
-    checkSw:"checkSw"
+    disabled: "disabled",
+    checkSw: "checkSw"
   }
 }
 
-export default keyRefer;
 
 

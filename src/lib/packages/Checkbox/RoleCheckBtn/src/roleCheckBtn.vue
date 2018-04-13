@@ -66,7 +66,6 @@
   </div>
 </template>
 <script>
-  import keyRefer from './keyRefer' //key - refer
   import {createInitModel, watchModel, checkAllMethods} from './index' //methods
   import {getRoleFuncButton} from '../../../../api/role-components/role-CheckBtn'//api
 
@@ -76,10 +75,10 @@
       return {
         vm: {},//store this Vue packages
         childRoleCheckBtn: [],
-        firstKeyRefer: keyRefer.firstLevel,//指代属性字段值 一级
-        secondKeyRefer: keyRefer.secondLevel,//指代属性字段值 二级
-        thirdKeyRefer: keyRefer.thirdLevel,//指代属性字段值 三级
-        modelKeyRefer: keyRefer.modelKey,//指代属性字段值 modelData
+        firstKeyRefer: this.$former.keyRefer["roleCheckBtn"].firstLevel,//指代属性字段值 一级
+        secondKeyRefer: this.$former.keyRefer["roleCheckBtn"].secondLevel,//指代属性字段值 二级
+        thirdKeyRefer: this.$former.keyRefer["roleCheckBtn"].thirdLevel,//指代属性字段值 三级
+        modelKeyRefer: this.$former.keyRefer["roleCheckBtn"].modelKey,//指代属性字段值 modelData
         loading: true,//loding
 
         firstStatus: {

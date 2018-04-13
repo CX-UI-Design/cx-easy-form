@@ -28,7 +28,7 @@ const temple = {
     "origin": "",//籍贯
     "nation": "",//民族
     "rolegroup": "",//角色组 - select
-    "roleEmployee": [],//员工角色 - select
+    "roleEmployee": ['frontend'],//员工角色 - select
     "organizationId": 11,
     "customer-info-single": 68,//select -（ 选人控件 ）单个
     "customer-info-linkage": {
@@ -974,7 +974,8 @@ const temple = {
       "resourcefieldAllowblankexp": null,//内容验证规则
       "resourcefieldVtype": 'number',//验证字段的 内容类型
       "resourcefieldOtherconfigObject": {
-        "secondXtype": "role-organization",//表单控件分支小类type,如input=>input-text,input-textere
+        "secondXtype": "simple-tree-select",//表单控件分支小类type,如input=>input-text,input-textere
+        "thirdXtype": "role-organization",//控件-业务划分 三级分类
         "min": undefined,//min
         "max": undefined,//max
       },

@@ -9,11 +9,14 @@
 
 import AF_keyRefer from './Auto-form/AF_keyRefer';//auto-form
 
-import RCB_keyRefer from './RoleCheckBtn/RCB_keyRefer';//auto-form
+import RCB_keyRefer from './RoleCheckBtn/RCB_keyRefer';//role-check-button
+import RE_keyRefer from './Role-employee/RE_keyRefer';//role-employee
+
+import RG_keyRefer from './Role-group/RG_keyRefer';//role-group
 
 export const ALL_keyRefer = {
   "auto-form": AF_keyRefer,
   "roleCheckBtn": RCB_keyRefer,
-
-
+  "role-employee": RE_keyRefer,
+  "role-group":RG_keyRefer
 }

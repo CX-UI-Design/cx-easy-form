@@ -1,12 +1,5 @@
 import {isEmpty, arrContainObj} from '../../../../utils/index'
 
-import keyRefer from './keyRefer'//指代属性字段值
-const firstKeyRefer = keyRefer.firstLevel;//指代属性字段值 一级
-const secondKeyRefer = keyRefer.secondLevel;//指代属性字段值 二级
-const thirdKeyRefer = keyRefer.thirdLevel;//指代属性字段值 三级
-const modelKeyRefer = keyRefer.modelKey;//指代属性字段值 modelData
-
-
 /**
  * create init model and add status for data
  * @param vm                Vue components
@@ -14,6 +7,11 @@ const modelKeyRefer = keyRefer.modelKey;//指代属性字段值 modelData
  * @param modelData         modelData
  */
 export function createInitModel(vm, options, modelData) {
+  const RCB_Key = vm.$former.keyRefer["roleCheckBtn"];
+  const firstKeyRefer = RCB_Key.firstLevel;//指代属性字段值 一级
+  const secondKeyRefer = RCB_Key.secondLevel;//指代属性字段值 二级
+  const modelKeyRefer = RCB_Key.modelKey;//指代属性字段值 modelData
+
   let initData;
   //判断此控件在表单modelData中，初始值是否存在，且不为数组。若不符合要求，直接抛出空数组
   if (!modelData || isEmpty(modelData)) {
@@ -115,7 +113,8 @@ class satusHandle {
    * @param list                handle list
    * @returns {Array}
    */
-  getLenList(list) {
+  getLenList(vm, list) {
+    const modelKeyRefer = vm.$former.keyRefer["roleCheckBtn"].modelKey;//指代属性字段值 modelData
     let lenList = []
     list.forEach((firstItem) => {
       firstItem[modelKeyRefer['infoVo']].forEach((secondItem) => {
@@ -128,10 +127,12 @@ class satusHandle {
   /**
    * get allCheckNum
    * 获取当前3级按钮数据，各个可选按钮的总个数（对显示有分类，但属于同一级，具体参考数据格式）
+   * @param vm
    * @param list
    * @returns {number}
    */
-  allCheckNum(list) {
+  allCheckNum(vm, list) {
+    const thirdKeyRefer = vm.$former.keyRefer["roleCheckBtn"].thirdLevel;//指代属性字段值 三级
     let Num = 0;
     list.forEach((item) => {
       Num = Num + item[thirdKeyRefer['children']].length;
@@ -173,13 +174,15 @@ class satusHandle {
 
   /**
    * loop Temp (循环模板函数)
+   * @param vm            vue
    * @param type          type （ first / second ）
    * @param list          loop list
    * @param index         index
    * @param fatherOBj     father object which we should control status data on it
    * @param cb            callback
    */
-  loopTemp(type, list, index, fatherOBj, cb) {
+  loopTemp(vm, type, list, index, fatherOBj, cb) {
+    const secondKeyRefer = vm.$former.keyRefer["roleCheckBtn"].secondLevel;//指代属性字段值 二级
     const allCheckKey = 'AllCheck-' + type + '-' + index;
     const allIndeterminate = 'allIndeterminate-' + type + '-' + index;
     //当前序列循环体数据下，设置状态开关
@@ -213,12 +216,15 @@ class satusHandle {
  * @param val
  */
 export function watchModel(vm, val) {
+  const RCB_Key = vm.$former.keyRefer["roleCheckBtn"];
+  const firstKeyRefer = RCB_Key.firstLevel;//指代属性字段值 一级
+  const secondKeyRefer = RCB_Key.secondLevel;//指代属性字段值 二级
   //get optons data ( 功能权限按钮组件-渲染数组数据 )
   const opts = vm.options;
   //create new class object
   let SH = new satusHandle();
   //get lenList (store every modules parts length)
-  let lenList = SH.getLenList(val);
+  let lenList = SH.getLenList(vm, val);
 
   // console.log('options 的值，构件组件显示数据如下');
   // console.info(opts);
@@ -230,13 +236,13 @@ export function watchModel(vm, val) {
   //set up the initial count（ 0 =>........ ）
   let index = 0;
   //first cycles calculation ( 第一次循环计算 )
-  SH.loopTemp('first', opts, index, vm.firstStatus, (firstItem, i) => {
+  SH.loopTemp(vm, 'first', opts, index, vm.firstStatus, (firstItem, i) => {
     //second cycles calculation ( 第二次循环计算 )
-    SH.loopTemp('second', firstItem[firstKeyRefer['children']], index, firstItem, (secondItem, j) => {
+    SH.loopTemp(vm, 'second', firstItem[firstKeyRefer['children']], index, firstItem, (secondItem, j) => {
       //funcinfoVo proptype
       const Vo = secondItem[secondKeyRefer['infoVo']];
       //获取当前3级按钮数据，各个可选按钮的总个数（对显示有分类，但属于同一级，具体参考数据格式）
-      const allCheckNum = SH.allCheckNum(Vo[secondKeyRefer['btnItems']]);
+      const allCheckNum = SH.allCheckNum(vm, Vo[secondKeyRefer['btnItems']]);
       // console.log('！！=====================================！！');
       // console.log(i, j)
       // console.log('当前循环序列：' + index);
@@ -285,6 +291,9 @@ export class checkAllMethods {
     if (!param || isEmpty(param)) {
       return;
     }
+    const RCB_Key = param.vm.$former.keyRefer["roleCheckBtn"];
+    const firstKeyRefer = RCB_Key.firstLevel;//指代属性字段值 一级
+    const secondKeyRefer = RCB_Key.secondLevel;//指代属性字段值 二级
     const children = param.firstItem[firstKeyRefer.children];  //second items => it'area-linkage children list
     //change first checkbox model value ( true <=> false )
     param.firstItem[secondKeyRefer['checkSW']] = param.value;
@@ -311,21 +320,20 @@ export class checkAllMethods {
    *  ===========   secondIndex          second index
    */
   checkAllItemsChange(param) {
-    console.log(param);
     if (!param || isEmpty(param)) {
       return;
     }
+    const RCB_Key = param.vm.$former.keyRefer["roleCheckBtn"];
+    const secondKeyRefer = RCB_Key.secondLevel;//指代属性字段值 二级
+    const thirdKeyRefer = RCB_Key.thirdLevel;//指代属性字段值 三级
+    const modelKeyRefer = RCB_Key.modelKey;//指代属性字段值 modelData
+
     const infoVo = param.secondItem[secondKeyRefer["infoVo"]]; //二级分类 infoVo
-    console.log(infoVo)
-
     const btnList = infoVo[secondKeyRefer["btnItems"]]; //二级分类 - 按钮信息列表
-    console.log(btnList)
     const valList = param.vm.childRoleCheckBtn[param.firstIndex][modelKeyRefer['infoVo']][param.secondIndex][modelKeyRefer['btnItems']]; //model value list
-
 
     //change second checkbox model value ( true <=> false )
     infoVo[secondKeyRefer['checkSW']] = param.value;
-
 
     //btn list handle <=> btn model data
     btnList.map((typeItem, thirdIndex) => {
