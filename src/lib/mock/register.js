@@ -2,6 +2,8 @@
 * Created by Broccoli spring( gcx ) on 2018/1/15.
 * register data for mock.
 */
+//表单提交
+import submit from './Form/submit/index'
 //系统管理 模块
 import roleGroup from './Form/component/select/role-group'
 import roleEmployee from './Form/component/select/role-employee'
@@ -19,6 +21,9 @@ import selectAPI from './Form/select'
 
 //data register list
 const registerList = [
+  //submit
+  {url: /\/cx\/form\/submit/, method: 'post', target: submit.submit, remarks: 'form submit'},
+
   //upload
   {url: /\/fastdfs\/fastdfs\/uploadFile/, method: 'post', target: upload.upload, remarks: 'upload'},
   //select other

@@ -121,7 +121,7 @@
         formDataShow: {},
         dataCheckResult: [], //the table-data of auto-form data list show
         dialogVisible: {visible: false}, //dialog-visible
-        dataListHead: this[this.$CXFnName].getTableHead('autoFormTest_DataList'),//the table-head of auto-form data list show
+        dataListHead: this[this.$CXFnName].autoForm.getTableHead('autoFormTest_DataList'),//the table-head of auto-form data list show
       }
     },
     computed: {
@@ -299,7 +299,7 @@
         }
         //before validate handle
         this.$emit('validate-before', params);
-        this.$refs[formName].$refs['form'].validate((valid) => {
+        this.$refs[formName].validate((valid) => {
           //表单提交添加'all-check' 标识到checkList中，开启第一级验证开关（即对所有自定义验证的表单进行验证）。
           this.$store.dispatch('setCustomCheck', 'all-check');   //多张表单 存在bug
           //before submit callback

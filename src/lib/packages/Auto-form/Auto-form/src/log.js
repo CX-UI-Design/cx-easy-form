@@ -12,7 +12,7 @@ class Loginfo {
   remote(type, vm, requireData) {
     this.local(type, vm);
     console.log('%c5、自动表单请求头部信息如下：', log.logStyle('info'))
-    const headers = vm[vm.$CXFnName].formController.get(vm, vm.autoFormID, 'headers');
+    const headers = vm[vm.$CXFnName].autoForm.formController.get(vm, vm.autoFormID, 'headers');
     console.info(headers);
     console.log('%c============', log.logStyle('line'));
   }

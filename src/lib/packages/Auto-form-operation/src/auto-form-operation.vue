@@ -3,13 +3,18 @@
   <div class="cs-auto-form-operation">
     <component :is="$SN+'button'" v-for="(btnItem,index) in buttonInfo" :index="index" :key="index" :type="btnItem.style"
                :size="btnItem.size" :plain="btnItem.plain" :round="btnItem.round" :disabled="btnItem.disabled"
-               :roleInfo="btnRoleInfo(btnItem)" @click="btnItem.event(autoFormID)">
+               :roleInfo="btnRoleInfo(btnItem)" @click="btnItem.event(vm,autoFormID)">
     </component>
   </div>
 </template>
 <script>
   export default {
-    name: 'defalut-auto-form-operation',
+    name: 'default-auto-form-operation',
+    data() {
+      return {
+        vm: this,
+      }
+    },
     props: {
       autoFormID: {type: String},//自动表单唯一ID值（根据业务自定义）
       /*

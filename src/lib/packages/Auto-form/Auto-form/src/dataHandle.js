@@ -1,6 +1,6 @@
 import {isEmpty, deepClone} from '../../../../utils/index'
 
-import {autoForm} from '../../../../api/component/auto-form';//require auto form data API
+import {autoForm} from '../../../../api/auto-form/auto-form';//require auto form data API
 import autoFormResCheck from '../../../Auto-form-check/src/methods/res-check';//data check methods
 import loginfo from './log';//require auto form data API
 
@@ -96,9 +96,9 @@ const LoadingData = (Vue) => {
   vm = Vue;                  //Use the incoming Vue assignment to vm
   Vue.loading = true;
   //set autp-form request Id ( 设置 当前自定义表单请求的ID值 )
-  Vue[Vue.$CXFnName].currentRequestFormID.set(Vue, Vue.autoFormID);
+  Vue[Vue.$CXFnName].autoForm.currentRequestFormID.set(Vue, Vue.autoFormID);
   //存储当前表单组件的vue实例
-  Vue[Vue.$CXFnName].formerVm.set(Vue, Vue.autoFormID, Vue);
+  Vue[Vue.$CXFnName].autoForm.formerVm.set(Vue, Vue.autoFormID, Vue);
   //本地数据和本地数据格式内容符合要求（不为空，''，{}，[]....）
   if (Vue.isLocal) {
     if (!isEmpty(Vue.localData)) {
@@ -113,11 +113,11 @@ const LoadingData = (Vue) => {
     requireData = {
       url: Vue.requestUrl,
       query: Vue.query,
-      head: Vue[Vue.$CXFnName].formController.get(Vue, Vue.autoFormID, 'headers'),//interpreter
+      head: Vue[Vue.$CXFnName].autoForm.formController.get(Vue, Vue.autoFormID, 'headers'),//interpreter
       // head: {
       //   funcId: Vue[Vue.$CXFnName].funcId.get(), //funcId
-      //   interpreter: Vue[Vue.$CXFnName].formController.get(Vue.autoFormID, 'interpreter'),//interpreter
-      //   formOperateType: Vue[Vue.$CXFnName].formController.get(Vue.autoFormID, 'formOperateType'),//formOperateType
+      //   interpreter: Vue[Vue.$CXFnName].autoForm.formController.get(Vue.autoFormID, 'interpreter'),//interpreter
+      //   formOperateType: Vue[Vue.$CXFnName].autoForm.formController.get(Vue.autoFormID, 'formOperateType'),//formOperateType
       // }
     }
     dp.remote(requireData, (res) => {
