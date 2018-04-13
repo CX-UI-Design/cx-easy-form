@@ -27,7 +27,7 @@
         //表单按钮信息
         buttonInfo: [
           {funcType: 'submit', style: 'primary', code: 'formConfirmBtn', name: '确定', areaType: 'FORM', btnType: 'single', coerciveShow: true, event: this.autoFormSubmit},
-//          {funcType: 'custom', style: '', code: 'formCancelBtn', name: '取消', areaType: 'FORM', btnType: 'single', coerciveShow: true, event: this.autoFormCancel},
+          {funcType: 'custom', style: '', code: 'formCancelBtn', name: '取消', areaType: 'FORM', btnType: 'single', coerciveShow: true, event: this.autoFormCancel},
         ],
 
         dataListHead: this.$CX.autoForm.getTableHead('autoFormTest_DataList'),//the table-head of auto-form data list show
@@ -91,6 +91,18 @@
           }
         ).catch(err => {
             console.log(err)
+          }
+        )
+      },
+      /**
+       * auto-form Cancel  ( 取消按钮事件操作 )
+       * @param vm
+       * @param formName       button-info
+       */
+      autoFormCancel(vm, formName) {
+        this.$CX.autoForm.resetForm(vm, formName).then(
+          params => {
+//            this.$CX.autoForm.formController.delete(this, 'template-auto-form');
           }
         )
       },

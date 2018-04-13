@@ -489,8 +489,6 @@
     watch: {
       //model value binding child to father or father to child.
       childItem() {
-        console.log('muster-item 的modeldata 值')
-        console.log(this.childItem)
         this.$emit('muster-item-change', this.childItem)
       },
       fatherItem() {

@@ -25,6 +25,7 @@ function _createParams(vm, formName) {
 }
 
 const CX = {
+  //request
   requestHead: {
     head: {},
     set: function (data) {
@@ -34,6 +35,7 @@ const CX = {
       return this.head;
     }
   },
+  //form methods
   autoForm: {
     // form vue
     formerVm: {
@@ -42,7 +44,6 @@ const CX = {
       },
       //counter add
       get: function (Vue, ID) {
-        console.log('get')
         let getVal = null;
         const vmList = Vue.$store.state.Form.store.formerVm;
         if (vmList.length > 0) {
@@ -155,6 +156,7 @@ const CX = {
 
     /**
      * validate
+     * @param vm
      * @param formName
      */
     validate: (vm, formName) => {
@@ -186,8 +188,36 @@ const CX = {
       })
     },
 
-  },
+    /**
+     * auto form reset
+     * @param vm
+     * @param formName
+     */
+    resetForm: (vm, formName) => {
+      return new Promise((resolve, reject) => {
+        const cp = _createParams(vm, formName);
+        //element base reset function
+        cp.vm.$refs[formName].resetFields();
+        cp.vm.$store.dispatch('setCustomCheck', 'no-check');
+        console.log('表单重置成功（el-reset + custom-reset）');
+        resolve(cp);
+      })
+    },
+    /**
+     * element base reset function
+     * @param vm
+     * @param formName
+     */
+    elResetForm(vm, formName) {
+      return new Promise((resolve) => {
+        const cp = _createParams(vm, formName);
+        cp.vm.$refs[formName].resetFields();
+        console.log('表单重置成功（el-reset + custom-reset）');
+        resolve(cp);
+      })
+    },
 
+  },
 
 }
 export default CX;
