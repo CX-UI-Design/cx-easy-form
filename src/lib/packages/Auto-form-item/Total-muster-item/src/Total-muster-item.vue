@@ -77,7 +77,6 @@
 </template>
 <script>
   import musterItem from '../../Muster-item/muster-item.vue'
-  import keyRefer from '../../../../keyRefer/Auto-form/keyRefer';
   import DP from '../../DP'
 
   export default {
@@ -89,9 +88,8 @@
       return {
         autoFormUpdated: false,// data and view is updated or not
         noLabelList: ['separator'],//no-label list （ form-component ）
-        //代属性集合
-        fieldsRefer: keyRefer.fields,//fields 指代属性
-        infoRefer: keyRefer.info,//info 指代属性
+        fieldsRefer: this.$former.keyRefer["auto-form"].fields,//keyRefer list
+        infoRefer: this.$former.keyRefer["auto-form"].info,//keyRefer list
         //定位及尺寸
         itemLeftGap: 0, //item 左边间隙
         itemRightGap: 0,//item 右边间隙
@@ -144,15 +142,15 @@
           // e.currentTarget.removeEventListener("visible-change", this.visibleChange, false);
           //set params for autoForm function ( 设置参数格式 )
           const params = {
-            vm: this,                               //vue
-            type: type,                             //function-type (click,change,blur)
-            formData: this.formData,                //formData
-            formItemFather: this.formItemFather,    //formItem 的父级数据 (fields  /  fields-group)
-            formItem: formitem,                     //formItem 数据 (fields-items / fields-group-childitems)
-            index: index,                           //index for formItem in fields/fields-group
+            vm: this,                                      //vue
+            type: type,                                    //function-type (click,change,blur)
+            formData: this.formData,                       //formData
+            formItemFather: this.formItemFather,           //formItem 的父级数据 (fields  /  fields-group)
+            formItem: formitem,                            //formItem 数据 (fields-items / fields-group-childitems)
+            index: index,                                  //index for formItem in fields/fields-group
             modelKey: modelKey,
-            groupIndex: this.firstIndex,            //group index in fields
-            keyRefer:keyRefer                       //key refer
+            groupIndex: this.firstIndex,                   //group index in fields
+            keyRefer: this.$former.keyRefer["auto-form"]   //key refer
           }
           //array format （ 数组格式，直接解析，执行其中各个方法 ）;
           if (this.$Utils.judgeType(itemFunc) === 'array') {

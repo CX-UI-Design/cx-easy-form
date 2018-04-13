@@ -6,7 +6,7 @@ const FormEvent = {
    * @param params
    */
   groupSwitch: (params) => {
-    const fieldsRefer = params.keyRefer.fields; //指代属性集合
+    const fieldsRefer = params.keyRefer.fields; //fields keyRefer
     const initiator = 'separator';
     const formItem = params.formItem;
     //judge initiator is 'separator' or not ， because only 'separator' can handle form-items hide or show

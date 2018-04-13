@@ -1,6 +1,5 @@
 import {judgeType, isEmpty, random} from '../../../../utils/index'
-import keyRefer from '../../../../keyRefer/Auto-form/keyRefer';
-import checkKeyRefer from './checkKeyRefer';
+import checkKeyRefer from '../../../../keyRefer/Auto-form/CHECK_KeyRefer';
 
 function _noSetStatus(value) {
   return (!value && value !== false) && !isEmpty(value) ? true : false;
@@ -23,8 +22,8 @@ let autoFormErr = {
 const autoFormResCheck = function (res, formID) {
   const returnErrList = []; //return error list
 
-  const infoRefer = keyRefer.info;//指代属性集合
-  const fieldsRefer = keyRefer.fields;//指代属性集合
+  const infoRefer= this.$former.keyRefer["auto-form"].info;//fields keyRefer
+  const fieldsRefer= this.$former.keyRefer["auto-form"].fields;//info keyRefer
   const checkNecessaryKey = checkKeyRefer.necessaryKey; //数据检测 - 指代属性集合 - 必要字段
 
 

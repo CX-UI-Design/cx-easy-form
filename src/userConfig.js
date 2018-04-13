@@ -33,6 +33,9 @@ Vue.use(vue_formercool_Cx.body, {
   log: false,//show log information
   store: {},
   formEvent: formEvent,//binding form component interaction method （click / change / blur / fouce ... and so on）
+  // keyRefer: {
+  //   "auto-form": 12312
+  // },
   requestHead: {
     'appId': '07d8737811434732',
     "appClientType": "pc",

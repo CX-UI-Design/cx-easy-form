@@ -1,5 +1,5 @@
 import {judgeType} from './utils/index'
-
+import {ALL_keyRefer} from './keyRefer'
 
 /**
  * Former plug-in external param config
@@ -18,7 +18,7 @@ export const ConfFormer = function (Vue, opts) {
     log: false,//log information show
     requestHead: {},//request head config for all components
     formEvent: {},//binding form component interaction method （click / change / blur / fouce ... and so on）
-    store: {},
+    keyRefer: ALL_keyRefer//keyRefer config
   }
   //validate for param user config
   let _confValidate = (obj, key) => {
@@ -30,7 +30,16 @@ export const ConfFormer = function (Vue, opts) {
   if (opts) {
     for (const key of Object.keys(opts)) {
       if (_confValidate(opts, key)) {
-        former[key] = opts[key]
+        if (key === 'keyRefer') {
+          former[key] = Object.assign(former[key], opts[key]);
+          console.log(898989898989)
+          console.log(former[key])
+          console.log(898989898989)
+        }
+        else {
+          former[key] = opts[key];
+        }
+
         // if (key === 'stageName') {
         //   former[key] = opts[key]
         // }

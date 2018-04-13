@@ -1,4 +1,10 @@
-const keyRefer = {
+/*
+ * auto -form - keyRefer
+ * created: 2017/11/03.
+ * author: Broccoli spring( 高仓雄 - gcx )
+ * copyright (c) 2017 Broccoli spring( gcx )
+ */
+export default {
   info: {
     "label-width": "funcinfoFormlabelwidth",//表单整体 lable 宽度
     "form-cols": "funcinfoFormcols",
@@ -81,4 +87,4 @@ const keyRefer = {
     }
   }
 };
-export default keyRefer;
+

@@ -74,7 +74,6 @@
         控件类型为'textere'时，高度为 。。。。。。。。。。。。
         控件类型为其他时，高度为对应字段值
    */
-  import keyRefer from '../../../../keyRefer/Auto-form/keyRefer';
   import {cxResCheckTable, cxInfoTableShow} from '../../../Auto-form-check/index';//data check vue template
   import LoadingData from './dataHandle';//require data (remote/local) methods
 
@@ -110,8 +109,8 @@
     },
     data() {
       return {
-        fieldsRefer: keyRefer.fields,//指代属性集合
-        infoRefer: keyRefer.info,//指代属性集合
+        fieldsRefer: this.$former.keyRefer["auto-form"].fields,//keyRefer list
+        infoRefer: this.$former.keyRefer["auto-form"].info,//keyRefer list
         loading: true,//loding
         itemsRender: false,//items start render
         formData: null,//form data

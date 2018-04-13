@@ -1,6 +1,4 @@
-import {judgeType,arrContainObj,isExitsVariable} from '../../utils/index'
-
-import keyRefer from '../../keyRefer/Auto-form/keyRefer';
+import {judgeType, arrContainObj, isExitsVariable} from '../../utils/index'
 
 const refer = Symbol('refer');
 const canCoverList = Symbol('canCoverList');
@@ -26,8 +24,8 @@ class DP {
   }
 
   [refer] = (vm, prop) => {
-    const fieldsRefer = keyRefer.fields;//fields 指代属性
-    const infoRefer = keyRefer.info;//info 指代属性
+    const fieldsRefer = vm.$former.keyRefer["auto-form"].fields;//fields keyRefer
+    const infoRefer = vm.$former.keyRefer["auto-form"].info;//info keyRefer
     return {
       info: vm.formData.info,
       infoKey: infoRefer[prop],

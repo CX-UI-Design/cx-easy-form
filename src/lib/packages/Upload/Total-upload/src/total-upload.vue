@@ -58,8 +58,6 @@
 
 </template>
 <script>
-  import keyRefer from '../../../../keyRefer/Auto-form/keyRefer';
-
   export default {
     name: 'default-total-upload',
     props: {
@@ -91,7 +89,7 @@
     data() {
       return {
         childUpload: '',
-        uploadRefer: keyRefer.components.upload,//上传控件upload指代属性集合
+        uploadRefer: this.$former.keyRefer["auto-form"].components.upload,//上传控件upload指代属性集合
         picSingleUrl: '',   //单张图片上传控件-图片地址
 //        requestHead: store.requestHead.get(),
         requestHead: this.$CX.requestHead.get(),
