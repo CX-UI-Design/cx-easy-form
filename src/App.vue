@@ -1,27 +1,37 @@
 <template>
   <div id="app">
-    <cx-auto-form autoFormID="template-auto-form"
-                  submit-url="cx/form/submit"
-                  :isLocal="true"
-                  :localData="localData"
-                  :cover-data="coverData"
-                  cue-type="only-error"
-                  :isCheck="false"
-                  @afterRequest="afterRequest"
-    ></cx-auto-form>
-    <cx-auto-form-operation :buttonInfo="buttonInfo" autoFormID="template-auto-form"></cx-auto-form-operation>
+    <div class="show-modules">
+      <el-button :type="!dialogVisible.visible?'success':'danger'" @click.native.prevent="toggleDialog">
+        {{!dialogVisible.visible ? '打开' + title : '关闭' + title}}
+      </el-button>
+    </div>
+    <cx-dialog :title="'自动表单-'+title" width="900px" :visible.sync="dialogVisible" :close-on-click-modal="true">
+      <cx-auto-form autoFormID="template-auto-form"
+                    submit-url="cx/form/submit"
+                    :isLocal="true"
+                    :localData="localData"
+                    :cover-data="coverData"
+                    cue-type="only-error"
+                    :isCheck="false"
+                    @afterRequest="afterRequest"
+      ></cx-auto-form>
+      <div slot="footer">
+        <cx-auto-form-operation :buttonInfo="buttonInfo" autoFormID="template-auto-form"></cx-auto-form-operation>
+      </div>
+    </cx-dialog>
   </div>
 </template>
 
 <script>
   import pickerOptionsMap from './static-data/form/picker-options'
-  //  import test from './static-data/form/test'
   import test from './static-data/form/xinjiaru'
 
   export default {
     name: 'App',
     data() {
       return {
+        title: '测试演示自动表单',
+        dialogVisible: {visible: true}, //dialog-visible
         localData: test,//表单渲染本地数据
         submitUrl: 'cx/form/submit',//表单提交地址
         //表单按钮信息
@@ -55,17 +65,20 @@
       }
     },
     created() {
-      this.$CX.autoForm.formController.set(this, 'template-auto-form', {
-        show: true,
-        headers: {
-          funcId: 'funcId', //funcId
-          interpreter: 'interpreter',//interpreter
-          formOperateType: 'formOperateType',//formOperateType
-        }
-      });
-
+      this.createForm();
     },
     methods: {
+      //创建表单
+      createForm() {
+        this.$CX.autoForm.formController.set(this, 'template-auto-form', {
+          show: true,
+          headers: {
+            funcId: 'funcId', //funcId
+            interpreter: 'interpreter',//interpreter
+            formOperateType: 'formOperateType',//formOperateType
+          }
+        });
+      },
       //自动表单请求获取数据 之后 操作
       afterRequest(vm, data) {
         //..............................  逻辑代码书写
@@ -86,6 +99,7 @@
             this.$CX.autoForm.submit(this.submitUrl, query, () => {
               //..............................  逻辑代码书写
               this.$message({message: '保存成功', type: 'success', duration: 2000});
+              this.$set(this.dialogVisible, 'visible', false);
               this.$CX.autoForm.formController.delete(this, 'template-auto-form');
             })
           }
@@ -102,19 +116,29 @@
       autoFormCancel(vm, formName) {
         this.$CX.autoForm.resetForm(vm, formName).then(
           params => {
-//            this.$CX.autoForm.formController.delete(this, 'template-auto-form');
+            this.$set(this.dialogVisible, 'visible', false);
+            this.$CX.autoForm.formController.delete(this, 'template-auto-form');
           }
         )
       },
+      toggleDialog() {
+        this.dialogVisible.visible = !this.dialogVisible.visible;
+        if (this.dialogVisible.visible) {
+          this.createForm();
+        }
+      }
     }
   }
 </script>
-
-<style>
+<style rel="stylesheet/scss" lang="scss">
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin-top: 60px;
+    .show-modules {
+      text-align: center;
+      margin-top: 50px;
+    }
   }
 </style>
