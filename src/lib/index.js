@@ -35,7 +35,6 @@ import CustomerInfoSingle from './packages/Select/Customer-info-single/index'
 import CustomerInfoLinkage from './packages/Select/Customer-info-linkage/index'
 import SimpleTreeSelect from './packages/Select/Simple-tree-select'
 
-
 //date
 import TimePicker from './packages/Date/Time-picker/index'
 import DatePicker from './packages/Date/Date-picker/index'
