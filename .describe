@@ -1,0 +1,28 @@
+describe for this project package:
+
+1、npm pubilsh => all dist file （cx-easy-form）
+
+（1）formal npm package name : cx-easy-form
+
+（2）test npm package name : cx-easy-form-test        *
+
+（3）newsee npm package name : ns-form-components
+
+2、update
+
+（1）cx-easy-form is formal version，update the code and package half a month
+
+（2）cx-easy-form-test is test version，real-time update
+
+（3）ns-form-components is follow cx-easy-form-test to update
+
+3、use
+
+（1）cx-easy-form is personal project and basic project
+
+（2）in ns-form-components project，import cx-easy-form-test package，and distribute it
+we can use it (auto form and its components) in other project
+
+
+
+
