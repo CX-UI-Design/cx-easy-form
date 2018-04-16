@@ -212,10 +212,6 @@
       //submit operation module render
       this.submitRender = true;
     },
-    updated: function () {
-
-    },
-    filters: {},
     methods: {
       /**
        * Load data for auto-form (local / request)
