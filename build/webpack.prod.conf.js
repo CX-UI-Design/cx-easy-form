@@ -30,8 +30,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.bundle.assetsRoot,
     publicPath: config.bundle.assetsPublicPath,
-    filename: 'vue-formercool-cx.min.js',
-    library: 'VueFormercoolCx',
+    filename: 'cx-easy-form.min.js',
+    library: 'CxEasyForm',
     libraryTarget: 'umd'
   },
 
@@ -57,7 +57,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: 'vue-formercool-cx.min.css'
+      filename: 'cx-easy-form.min.css'
       // filename: utils.assetsPath('css/[name].[contenthash].css'),
 
       // Setting the following option to `false` will not extract CSS from codesplit chunks.
