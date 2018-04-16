@@ -163,12 +163,10 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 }
 
-
 module.exports = {
   body: {
-    version: '1.0.1',
+    version: require('../../package.json').version,
     install,
-
 
     //Baisc
     Button,
