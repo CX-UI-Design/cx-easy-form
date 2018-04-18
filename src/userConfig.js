@@ -26,6 +26,7 @@ import '../dist/cx-easy-form.min.css';
 import formEvent from './utils/formEvent'
 
 Vue.use(ElementUI);
+
 Vue.use(cxEasyForm.body, {
   stageName: 'cx',//stage name
   log: false,//show log information
