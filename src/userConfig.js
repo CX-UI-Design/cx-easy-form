@@ -9,20 +9,9 @@ import cxEasyForm from '../dist/cx-easy-form.min';//cx formercool
 import formEvent from './utils/formEvent'
 
 import 'cx-theme/dist/cx-theme.min.css'
+import './assets/css/theme-cover.scss'
 import './assets/css/public.scss'//public css
-
-//ele cover css
-import './assets/css/element-ui/theme-cover/base.scss'
-import './assets/css/element-ui/theme-cover/data.scss'
-import './assets/css/element-ui/theme-cover/navigation.scss'
-import './assets/css/element-ui/theme-cover/notice.scss'
-import './assets/css/element-ui/theme-cover/other.scss'
-import './assets/css/element-ui/theme-cover/form.scss'
-
 import '../dist/cx-easy-form.min.css';
-
-
-
 
 Vue.use(ElementUI);
 Vue.use(cxEasyForm.body, {
