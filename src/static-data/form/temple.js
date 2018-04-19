@@ -29,7 +29,8 @@ const temple = {
     "nation": "",//民族
     "rolegroup": "",//角色组 - select
     "roleEmployee": ['frontend'],//员工角色 - select
-    "organizationId": 11,
+    "organizationId-single": 11,
+    "organizationId-multiple": [11, 12, 13],
     "customer-info-single": 68,//select -（ 选人控件 ）单个
     "customer-info-linkage": {
       address: "天堂软件园 ",
@@ -104,7 +105,30 @@ const temple = {
       tradeId: "0",
       tradeName: "",
     }, //select - 信息联动（ 选人控件 ）
-    "roleFnBtn": [],//功能按钮权限 - checkbox
+    "roleCheckBtn": [
+      {
+        "jeCoreMenuId": "2",
+        "functionVos": [
+          {"jeCoreFuncinfoId": "2-1", "buttonIds": ["search2"]},
+          {"jeCoreFuncinfoId": "2-2", "buttonIds": [], "dataSeeScopeVo": {"seeScopeType": 4, "seeOtherOrgIdList": [2, 12, 13]}}
+        ]
+      },
+      {
+        "jeCoreMenuId": "1",
+        "functionVos": [
+          {"jeCoreFuncinfoId": "1-1", "buttonIds": ["search1", "edit1"], "dataSeeScopeVo": {"seeScopeType": 1, "seeOtherOrgIdList": [1]}},
+          {"jeCoreFuncinfoId": "1-2", "buttonIds": [], "dataSeeScopeVo": {"seeScopeType": 2, "seeOtherOrgIdList": [1, 11]}}
+        ]
+      },
+    ],//功能按钮权限 - checkbox
+    "manageRange": {seeScopeType: 1, seeOtherOrgIdList: [11, 12, 13]},//manage-range component
+    "interval": {
+      type: 'year',
+      mounthAndDay: '04-03',//第几个月第几号
+      day: '',//当月几号号
+      week: '',//星期几
+      time: '09:55:20'//时间
+    },
     "addAuthorizer": ['gcx', 'wyq', 'xss'], //新增授权人 - transfer
     "searchInfo": "",//搜寻信息
     "hobby": [],//兴趣爱好
@@ -964,10 +988,10 @@ const temple = {
       "isResourcefieldHidden": false,       //是否隐藏
       "resourcefieldBindingfnList": [],//事件名称集合
     },
-    //所属部门 - select -（ 模拟下拉，内含树状数据 ）
+    //所属部门 - select single -（ 模拟下拉，内含树状数据, 单选 ）
     {
       "resourcefieldXtype": "select",    //表单类型
-      "resourcefieldCode": "organizationId",  //表单model字段名称
+      "resourcefieldCode": "organizationId-single",  //表单model字段名称
       "resourcefieldName": "所属组织",   //表单字段 lable 名称
       "isfieldRequired": true, //是否必填 required
       "resourcefieldBinding": "请选择所属组织",//必填出错 提示信息
@@ -984,6 +1008,37 @@ const temple = {
       "isResourcefieldReadonly": false,//是否只读
       "fieldWidth": 350,//表单元素部分宽度
       "fieldHeight": 32,//表单元素部分高度
+      "resourcefieldStep": null,//step 步长
+      "resourcefieldRowspan": null,//row 值 - 所占 行数 （textarea / avatar / span ......）
+      "resourcefieldFieldcls": null,//表单控件图标
+      "isResourcefieldEditable": false,//是否可编辑
+      "resourcefieldColspan": 1,//所占列数
+      "items": null,//表单控件内容部分（checkbox，radio......）
+      "resourcefieldGroupname": "group-addHolder", //分组名称
+      "isResourcefieldHidden": false,       //是否隐藏
+      "resourcefieldBindingfnList": [],//事件名称集合
+    },
+    //所属部门 - select multiple -（ 模拟下拉，内含树状数据, 多选 ）
+    {
+      "resourcefieldXtype": "select",    //表单类型
+      "resourcefieldCode": "organizationId-multiple",  //表单model字段名称
+      "resourcefieldName": "所属组织",   //表单字段 lable 名称
+      "isfieldRequired": true, //是否必填 required
+      "resourcefieldBinding": "请选择所属组织",//必填出错 提示信息
+      "resourcefieldAllowblankexp": null,//内容验证规则
+      "resourcefieldVtype": 'number',//验证字段的 内容类型
+      "resourcefieldOtherconfigObject": {
+        "secondXtype": "simple-tree-select",//表单控件分支小类type,如input=>input-text,input-textere
+        "thirdXtype": "role-organizationList",//控件-业务划分 三级分类
+        "multiple": true,
+        "min": undefined,//min
+        "max": undefined,//max
+      },
+      "resourcefieldEmptytext": "请选择所属组织",//placeholder的值
+      "isResourcefieldRemoved": false,//是否禁用
+      "isResourcefieldReadonly": false,//是否只读
+      "fieldWidth": 350,//表单元素部分宽度
+      "fieldHeight": 'auto',//表单元素部分高度
       "resourcefieldStep": null,//step 步长
       "resourcefieldRowspan": null,//row 值 - 所占 行数 （textarea / avatar / span ......）
       "resourcefieldFieldcls": null,//表单控件图标
@@ -1013,13 +1068,13 @@ const temple = {
       "resourcefieldEmptytext": "请输入客户姓名",//placeholder的值
       "isResourcefieldRemoved": false,//是否禁用
       "isResourcefieldReadonly": false,//是否只读
-      "fieldWidth": 350,//表单元素部分宽度
+      "fieldWidth": 700,//表单元素部分宽度
       "fieldHeight": 32,//表单元素部分高度
       "resourcefieldStep": null,//step 步长
       "resourcefieldRowspan": null,//row 值 - 所占 行数 （textarea / avatar / span ......）
       "resourcefieldFieldcls": null,//表单控件图标
       "isResourcefieldEditable": false,//是否可编辑
-      "resourcefieldColspan": 1,//所占列数
+      "resourcefieldColspan": 2,//所占列数
       "items": null,//表单控件内容部分（checkbox，radio......）
       "resourcefieldGroupname": "group-addHolder", //分组名称
       "isResourcefieldHidden": false,       //是否隐藏
@@ -1090,14 +1145,15 @@ const temple = {
     //功能按钮权限 - checkbox
     {
       "resourcefieldXtype": "checkbox",    //表单类型
-      "resourcefieldCode": "roleFnBtn",  //表单model字段名称
+      "resourcefieldCode": "roleCheckBtn",  //表单model字段名称
       "resourcefieldName": "功能按钮权限",   //表单字段 lable 名称
       "isfieldRequired": false, //是否必填 required
       "resourcefieldBinding": "请选择功能按钮权限",//必填出错 提示信息
-      "resourcefieldAllowblankexp": null,//内容验证规则
+      "resourcefieldAllowblankexp": 'roleFnBtn',//内容验证规则
       "resourcefieldVtype": 'array',//验证字段的 内容类型
       "resourcefieldOtherconfigObject": {
-        "secondXtype": "roleFnBtn",//表单控件分支小类type,如input=>input-text,input-textere
+        "secondXtype": "roleCheckBtn",//表单控件分支小类type,如input=>input-text,input-textere
+        "thirdXtype": "data-permissions",//控件-业务划分 三级分类
         "min": undefined,//min
         "max": undefined,//max
       },
@@ -1113,6 +1169,65 @@ const temple = {
       "resourcefieldColspan": 2,//所占列数
       "items": null,//表单控件内容部分（checkbox，radio......）
       "resourcefieldGroupname": "group-addHolder", //分组名称
+      "isResourcefieldHidden": false,       //是否隐藏
+      "resourcefieldBindingfnList": [],//事件名称集合
+    },
+    //manage-range component
+    {
+      "resourcefieldXtype": "other",    //表单类型
+      "resourcefieldCode": "manageRange",  //表单model字段名称
+      "resourcefieldName": "管理范围",   //表单字段 lable 名称
+      "funcinfoFormlabelwidth": 150,//表单字段 lable 宽度
+      "isfieldRequired": true, //是否必填 required
+      "resourcefieldBinding": "请选择管理范围",//必填出错 提示信息
+      "resourcefieldAllowblankexp": null,//内容验证规则
+      "resourcefieldVtype": "object",//验证字段的 内容类型
+      "resourcefieldOtherconfigObject": {
+        "secondXtype": "manage-range",//表单控件分支小类type,如input=>input-text,input-textere
+        "min": undefined,//min
+        "max": undefined,//max
+      },
+      "resourcefieldEmptytext": "请选择出生日期",//placeholder的值
+      "isResourcefieldRemoved": true,//是否禁用
+      "isResourcefieldReadonly": false,//是否只读
+      "fieldWidth": 350,//表单元素部分宽度
+      "fieldHeight": 32,//表单元素部分高度
+      "resourcefieldStep": null,//step 步长
+      "resourcefieldRowspan": null,//row 值 - 所占 行数 （textarea / avatar / span ......）
+      "resourcefieldFieldcls": null,//表单控件图标
+      "isResourcefieldEditable": false,//是否可编辑
+      "resourcefieldColspan": 1,//所占列数
+      "items": null,//表单控件内容部分（checkbox，radio......）
+      "resourcefieldGroupname": "base-info", //分组名称
+      "isResourcefieldHidden": false,       //是否隐藏
+      "resourcefieldBindingfnList": [],//事件名称集合
+    },
+    //时间频率选择，定位到时间点 （年/月/周/日） - date-interval
+    {
+      "resourcefieldXtype": "date",    //表单类型
+      "resourcefieldCode": "interval",  //表单model字段名称
+      "resourcefieldName": "时间频率",   //表单字段 lable 名称
+      "isfieldRequired": false, //是否必填 required
+      "resourcefieldBinding": "请选择时间频率",//必填出错 提示信息
+      "resourcefieldAllowblankexp": null,//内容验证规则
+      "resourcefieldVtype": "string",//验证字段的 内容类型
+      "resourcefieldOtherconfigObject": {
+        "secondXtype": "interval",//表单控件分支小类type,如input=>input-text,input-textere
+        "min": undefined,//min
+        "max": undefined,//max
+      },
+      "resourcefieldEmptytext": null,//placeholder的值
+      "isResourcefieldRemoved": false,//是否禁用
+      "isResourcefieldReadonly": false,//是否只读
+      "fieldWidth": 700,//表单元素部分宽度
+      "fieldHeight": 32,//表单元素部分高度
+      "resourcefieldStep": null,//step 步长
+      "resourcefieldRowspan": null,//row 值 - 所占 行数 （textarea / avatar / span ......）
+      "resourcefieldFieldcls": null,//表单控件图标
+      "isResourcefieldEditable": false,//是否可编辑
+      "resourcefieldColspan": 2,//所占列数
+      "items": [],//表单控件内容部分（checkbox，radio......）
+      "resourcefieldGroupname": "base-info", //分组名称
       "isResourcefieldHidden": false,       //是否隐藏
       "resourcefieldBindingfnList": [],//事件名称集合
     },
@@ -1163,7 +1278,7 @@ const temple = {
         "max": 5,//max
       },
       "resourcefieldEmptytext": null,//placeholder的值
-      "isResourcefieldRemoved": false,//是否禁用
+      "isResourcefieldRemoved": true,//是否禁用
       "isResourcefieldReadonly": false,//是否只读
       "fieldWidth": 700,//表单元素部分宽度
       "fieldHeight": 32,//表单元素部分高度
@@ -1208,7 +1323,7 @@ const temple = {
         "max": undefined,//max
       },
       "resourcefieldEmptytext": "请输入民族",//placeholder的值
-      "isResourcefieldRemoved": false,//是否禁用
+      "isResourcefieldRemoved": true,//是否禁用
       "isResourcefieldReadonly": false,//是否只读
       "fieldWidth": 700,//表单元素部分宽度
       "fieldHeight": null,//表单元素部分高度
@@ -1331,7 +1446,7 @@ const temple = {
             "max": null,
           },
           "resourcefieldEmptytext": null,//placeholder的值
-          "isResourcefieldRemoved": false,//是否禁用
+          "isResourcefieldRemoved": true,//是否禁用
           "isResourcefieldReadonly": false,//是否只读
           "fieldWidth": 700,
           "fieldHeight": 32,
