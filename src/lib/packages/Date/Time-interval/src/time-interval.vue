@@ -1,26 +1,29 @@
 <!--time-interval 选择时间频率-->
 <template>
-  <div class="cx-time-interval" v-model="childTimeInterval" :style="{width: interval_width ,height: interval_height }">
+  <div class="cx-time-interval" v-model="childTimeInterval" :style="{width: interval_width ,height: interval_height,'line-height':interval_height }">
     <!--选择执行频率的类型 （年/月/周/日）-->
-    <el-select class="cx-time-interval-part fl" v-model="childTimeInterval.type" size="small" placeholder="请选择" @change="typeChange" style="width: 100px">
+    <el-select class="cx-time-interval-part firstPart fl" v-model="childTimeInterval.type" size="small" placeholder="请选择"
+               :disabled="disabled" @change="typeChange">
       <el-option v-for="item in typeOpt" :key="item.value" :label="item.label" :value="item.value"></el-option>
     </el-select>
     <!--联动选择-内容切换部分-->
-    <div class="cx-time-interval-part fl">
+    <div class="cx-time-interval-part secondPart fl">
       <!--选择星期-->
-      <el-select class="" v-model="childTimeInterval.week" v-if="childTimeInterval.type ==='week' " style="width: 90px">
+      <el-select v-model="childTimeInterval.week" :disabled="disabled" v-if="childTimeInterval.type ==='week'">
         <el-option v-for="item in weekOpt" :key="item.value" :label="item.label" :value="item.value"></el-option>
       </el-select>
       <!--选择月-->
-      <el-select v-model="childTimeInterval.day" v-if="childTimeInterval.type ==='mounth' " style="width: 90px">
+      <el-select v-model="childTimeInterval.day" :disabled="disabled" v-if="childTimeInterval.type ==='mounth'">
         <el-option v-for="item in monthOpt" :key="item.value" :label="item.label" :value="item.value"></el-option>
       </el-select>
       <!--选择年 => onlyMMDD-Picker-->
       <component :is="$SN+'onlyMMDDPicker'" class="onlyMMDD" v-model="childTimeInterval.mounthAndDay" type="date" placeholder="选择日期"
-                          v-if="childTimeInterval.type ==='year' " style="width: 150px"></component>
+                 v-if="childTimeInterval.type ==='year' "></component>
     </div>
     <!--选择时间点-->
-    <el-time-picker class="cx-time-interval-part fl" v-model="childTimeInterval.time" placeholder="任意时间点" format="HH:mm:ss" value-format="HH:mm:ss" style="width: 150px"></el-time-picker>
+    <el-time-picker class="cx-time-interval-part thirdPart fl" v-model="childTimeInterval.time"
+                    placeholder="任意时间点" format="HH:mm:ss" value-format="HH:mm:ss" :disabled="disabled">
+    </el-time-picker>
   </div>
 </template>
 <script>
@@ -86,6 +89,7 @@
               this.delProperty(['mounthAndDay', 'week']);
               break;
             case 'year':
+              this.initModel('mounthAndDay', '01-01');
               this.delProperty(['day', 'week']);
               break;
             default:
@@ -136,43 +140,37 @@
       typeChange(value) {
         this.$emit('change', value);
       },
-      //选中日期后会执行的回调，只有当 daterange 或 datetimerange 才生效
-      onPick({maxDate, minDate}) {
-        this.$emit('onPick', {maxDate, minDate});
-      }
     },
     props: {
       fatherTimeInterval: [Object],
       width: {type: [String, Number], default: '100%'},
       height: {type: [String, Number], default: '32px'},
-      readonly: {type: Boolean, default: false},//完全只读
       disabled: {type: Boolean, default: false},//禁用
-      editable: {type: Boolean, default: false},//文本框可输入
-      clearable: {type: Boolean, default: true},//是否显示清除按钮
-      size: {type: String},//尺寸
-      placeholder: {type: String}, //占位内容
-      type: {type: String, default: 'data'},//显示类型
-      format: {type: String, default: 'yyyy-MM-dd'}, //显示在输入框中的格式
-      valueFormat: {type: String}, //时间日期绑定值格式，不指定则绑定Data对象
-      align: {type: String, default: 'left'},//对齐方式
-      popperClass: {type: String},//DateTimePicker 下拉框的类名
-      rangeSeparator: {type: String, default: ' - '}, //选择范围时的分隔符
-      //当前时间日期选择器特有的选项参考下表
-      pickerOptions: {
-        type: Object,
-        default: function () {
-          return {}
-        }
-      },
     },
   }
 </script>
 <style rel="stylesheet/scss" lang="scss">
   .cx-time-interval {
     .cx-time-interval-part {
+      height: 100%;
       margin-right: 10px;
+      &.firstPart {
+        width: 100px;
+      }
+      &.thirdPart {
+        width: 150px;
+      }
+      .el-select {
+        float: left;
+        width: 90px;
+      }
+      .cx-onlyMMDD-picker.onlyMMDD {
+        float: left;
+        width: 150px;
+      }
+    }
+    .el-select, .el-input {
+      height: 100%;
     }
   }
-
-
 </style>
