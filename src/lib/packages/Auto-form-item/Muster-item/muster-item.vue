@@ -28,7 +28,7 @@
     <!--2、checkbox-->
     <component v-if="itemType==='checkbox'" :is="$SN+'checkbox'"
                v-model="childItem" :type="type" :items="items" :min="parameConver('min',min)" :max="parameConver('max',max)" :size="size"
-               :fill="fill" :text-color="textColor" :dynamic="dynamic" :width="width" :height="height"
+               :fill="fill" :text-color="textColor" :dynamic="dynamic" :width="width" :height="height" :disabled="disabled"
     ></component>
     <!--3、select-->
     <component v-if="itemTypeDistribute==='select'" :is="$SN+'select'"
@@ -89,7 +89,7 @@
     </component>
     <!--12、base-table - ( 基础表格 )-->
     <component v-if="itemType==='baseTable'" :is="$SN+'base-table'"
-               v-model="childItem" :tableHead="tableHead" :tableItems="tableItems" showIndex>
+               v-model="childItem" :tableHead="tableHead" :tableItems="tableItems" :disabled="disabled" showIndex>
     </component>
     <!--13、separator （分割线/划分线/下拉展开线）-->
     <component v-if="itemType==='separator'" :is="$SN+'separator'"
@@ -114,8 +114,8 @@
     </component>
     <!--17、select - 区域联动-->
     <component v-if="itemTypeDistribute === 'area-linkage'" :is="$SN+'area-linkage'"
-               v-model="childItem" :items="initItems" :type="type" :width="width" :height="height" :dynamicUrl="dynamicUrl"
-               :dynamicQuery="dynamicQuery" @change="change" @visible-change="visibleChange">
+               v-model="childItem" :items="initItems" :type="type" :width="width" :height="height" :disabled="disabled"
+               :dynamicUrl="dynamicUrl" :dynamicQuery="dynamicQuery" @change="change" @visible-change="visibleChange">
     </component>
     <!--18、Button 按钮-->
     <ns-autoForm-button v-if="itemType==='button'"
@@ -134,14 +134,14 @@
     </ns-add-holder>
 
 
-    <!--role-group （ 角色组操作组件 ）-->
+    <!--select role-group component（ 角色组操作组件 ）-->
     <component v-if="itemTypeDistribute==='role-group'" :is="$SN+'role-group'"
                v-model="childItem" :items="items" :size="size" :placeholder="placeholder" :disabled="disabled"
                :width="width" :height="height" :clearable="parameConver('clearable',clearable)" :filterable="filterable"
                :dynamicUrl="dynamicUrl" :dynamicQuery="dynamicQuery" @change="change" @visible-change="visibleChange"
     >
     </component>
-    <!--role-employee （ 员工角色权限 ）-->
+    <!--select role-employee component（ 员工角色权限 ）-->
     <component v-if="itemTypeDistribute==='role-employee'" :is="$SN+'role-employee'"
                v-model="childItem" :items="items" :size="size" :placeholder="placeholder" :disabled="disabled"
                :clearable="parameConver('clearable',clearable)" :multiple="true" :multiple-limit="0"
@@ -150,14 +150,14 @@
     >
     </component>
 
-    <!--checkbox - get user role check-Button （获取当前用户的功能菜单按钮） -->
+    <!--checkbox - get user role check-Button component （获取当前用户的功能菜单按钮） -->
     <component v-if="itemTypeDistribute==='role-check-btn'" :is="$SN+'role-check-btn'"
                v-model="childItem" :bizType="bizType" :size="size" :min="parameConver('min',min)"
                :max="parameConver('max',max)" :width="width" :height="height" :disabled="disabled"
     ></component>
 
 
-    <!--transfer （ 获取某个组织下的所有员工（授权人）列表 ） -->
+    <!--transfer role-authorizer component（ 获取某个组织下的所有员工（授权人）列表 ） -->
     <component v-if="itemTypeDistribute==='role-authorizer'" :is="$SN+'role-authorizer'"
                v-model="childItem" :width="width" :height="height" :disabled="disabled" :dynamicUrl="dynamicUrl"
                :dynamicQuery="dynamicQuery"
@@ -165,7 +165,7 @@
     </component>
 
 
-    <!--simple tree in select （ 请选择所属部门树状数据 /  ） -->
+    <!--simple tree in select component（ 请选择所属部门树状数据 /  ） -->
     <component v-if="itemTypeDistribute === 'simple-tree-select'" :is="$SN+'simple-tree-select'"
                v-model="childItem" :bizType="bizType" :width="width" :height="multiple?'auto':height" :size="size" :placeholder="placeholder"
                :disabled="disabled" :multiple="multiple" :clearable="parameConver('clearable',clearable)"
@@ -173,7 +173,7 @@
     </component>
 
 
-    <!--select （ 请选择所属部门树状数据 ） -->
+    <!--select role-organization component （ 请选择所属部门树状数据 ） -->
     <component v-if="itemTypeDistribute === 'role-organization'" :is="$SN+'role-organization'"
                v-model="childItem" :type="type" :width="width" :height="height" :size="size" :placeholder="placeholder"
                :disabled="disabled" :clearable="parameConver('clearable',clearable)"
@@ -181,7 +181,7 @@
     </component>
 
 
-    <!--客户/企业选择 - 信息联动 （ 远程搜索 ）-->
+    <!--customer-info-linkage component（ 客户/企业选择 - 信息联动 （ 远程搜索 ））-->
     <component v-if="itemTypeDistribute==='customer-info-linkage'" :is="$SN+'customer-info-linkage'"
                v-model="childItem" :required="required" :type="bizType" :items="items" :placeholder="placeholder"
                :disabled="disabled" :clearable="parameConver('clearable',clearable)" :multiple="multiple" :multiple-limit="multipleLimit"
@@ -189,7 +189,7 @@
                :labelWidth="infoLabelWidth" :dynamicUrl="dynamicUrl" @change="change" @visible-change="visibleChange"
     >
     </component>
-    <!--客户/企业选择 - 单个 - 信息不联动（ 远程搜索 ）-->
+    <!--customer-info-single component（ 客户/企业选择 - 单个 - 信息不联动（ 远程搜索 ））-->
     <component v-if="itemTypeDistribute==='customer-info-single'" :is="$SN+'customer-info-single'"
                v-model="childItem" :type="bizType" :items="items" :placeholder="placeholder" :disabled="disabled"
                :clearable="parameConver('clearable',clearable)" :multiple="multiple" :multiple-limit="multipleLimit" :filterable="true"
@@ -197,16 +197,18 @@
                :dynamicUrl="dynamicUrl" :dynamicQuery="dynamicQuery" @change="change" @visible-change="visibleChange"
     >
     </component>
-    <!--时间频率选择，定位到时间点 （年/月/周/日）-->
+    <!--time-interval component （ 时间频率选择，定位到时间点 （年/月/周/日））-->
     <component v-if="itemTypeDistribute==='time-interval'" :is="$SN+'time-interval'"
-               v-model="childItem" :type="bizType" :width="width" :height="height"
+               v-model="childItem" :type="bizType" :width="width" :height="height" :disabled="disabled" @change="change"
     >
     </component>
 
-    <!--manage-range component-->
+    <!--manage-range component （ 数据权限范围管理设定 ）-->
     <component v-if="itemTypeDistribute==='manage-range'" :is="$SN+'manage-range'" v-model="childItem"
-               :width="width" :height="height">
+               :width="width" :height="height" :disabled="disabled">
     </component>
+
+
   </el-form-item>
 </template>
 <script>
