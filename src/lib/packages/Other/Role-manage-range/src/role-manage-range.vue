@@ -1,3 +1,4 @@
+<!--manage-range component-->
 <template>
   <div class="cx-manage__range" v-model="childManageRange" :style="{width: manageRange_width ,height: manageRange_height}">
     <a @click="openChiose">{{interText}}</a>
@@ -10,15 +11,15 @@
       <div class="manage-range__container">
         <!--常规选择-->
         <el-radio-group v-model="normalChiose">
-          <el-radio v-for="(item,index) in radioGroup" :key="index" :index="index" :label="item.value" :disabled="item.disabled">
+          <el-radio v-for="(item,index) in radioGroup" :key="index" :index="index" :label="item.value" :disabled="disabled||item.disabled">
             {{item.label}}
           </el-radio>
         </el-radio-group>
         <!--特定选择-->
-        <el-checkbox v-model="specialSwitch">特定部门</el-checkbox>
+        <el-checkbox v-model="specialSwitch" :disabled="disabled">特定部门</el-checkbox>
         <!--select （ 请选择所属部门树状数据 ） -->
         <component :is="$SN+'simple-tree-select'" v-model="treeSelectModel" bizType="role-organizationList"
-                   width="200px" height="auto" size="small" placeholder="请选择" :disabled="false" :clearable="true"
+                   width="200px" height="auto" size="small" placeholder="请选择" :disabled="disabled" :clearable="true"
                    :multiple="true" v-show="specialSwitch">
         </component>
       </div>
@@ -103,6 +104,7 @@
       fatherManageRange: {type: Object},
       width: {type: [String, Number], default: '100%'},
       height: {type: [String, Number], default: '32px'},
+      disabled: {type: Boolean, default: false},
       keyRefer: {
         type: Object, default: function () {
           return this.$former.keyRefer["role-manage-range"];
