@@ -31,7 +31,7 @@
                        v-model="scope.row[item.key]"
                        :type="item.formItemData[scope.$index].type"
                        :placeholder="item.formItemData[scope.$index].placeholder"
-                       :disabled="item.formItemData[scope.$index].disabled"
+                       :disabled="disabled||item.formItemData[scope.$index].disabled"
                        :readonly="item.formItemData[scope.$index].readonly"
                        :row="item.formItemData[scope.$index].row"
                        :width="item.width - cellpading*2"
@@ -49,7 +49,7 @@
                        v-model="scope.row[item.key]"
                        :type="item.formItemData[scope.$index].type"
                        :placeholder="item.formItemData[scope.$index].placeholder"
-                       :disabled="item.formItemData[scope.$index].disabled"
+                       :disabled="disabled||item.formItemData[scope.$index].disabled"
                        :readonly="item.formItemData[scope.$index].readonly"
                        :min="item.formItemData[scope.$index].min"
                        :max="item.formItemData[scope.$index].max"
@@ -174,6 +174,7 @@
       showSelect: {type: Boolean, default: false},//is show select col
       tableHead: {type: [Object, Array, String]},//table-head
       tableItems: {type: [Object, Array], defalut: []},  //table-packages-items ( the packages whitch need load items )
+      disabled: {type: Boolean, default: false}
     },
     methods: {
       //judge array contain another Obj
