@@ -12,6 +12,7 @@
       :size="size"
       :fill="fill"
       :text-color="textColor"
+      :disabled="disabled"
       @change="change"
       :style="{width: checkbox_width,'line-height': checkbox_height}"
     >
@@ -27,8 +28,9 @@
 </template>
 <script>
   import {getsCheckboxGroup} from '../../../../api/component/form-component'
+
   export default {
-    name:'default-checkbox',
+    name: 'default-checkbox',
     data() {
       return {
         childCheckbox: [],
@@ -87,6 +89,7 @@
       max: {type: Number}, //可被勾选的 checkbox 的最大数量
       fill: {type: String, default: '#20a0ff'},//背景颜色
       textColor: {type: String, default: '#ffffff'},//字体颜色
+      disabled: {type: Boolean},
       //指代属性字段值
       keyRefer: {
         type: Object, default: function () {
