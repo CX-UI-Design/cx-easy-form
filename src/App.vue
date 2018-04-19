@@ -24,7 +24,7 @@
 
 <script>
   import pickerOptionsMap from './static-data/form/picker-options'
-  import test from './static-data/form/xinjiaru'
+  import test from './static-data/form/temple'
 
   export default {
     name: 'App',
