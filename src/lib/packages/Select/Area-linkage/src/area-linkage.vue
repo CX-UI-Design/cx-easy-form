@@ -4,7 +4,7 @@
        v-loading="loading" element-loading-text="加载中"
   >
     <el-select v-for="(selectPart,index) in select_info" :index="index" :key="index" class="cx-select area-link-part fl" v-if="isRendered"
-               v-model="areaLinkageStroe[selectPart.modelKey]" :disabled="selectPart.disabled" :clearable="clearable"
+               v-model="areaLinkageStroe[selectPart.modelKey]" :disabled="disabled||selectPart.disabled" :clearable="clearable"
                :placeholder="selectPart.placeholder" @visible-change="visibleChange(index)" @change="change(index)"
                :style="{width: selectPart.width+'px' ,height: selectPart.height,
                'margin-right':selectPart.index === select_info.length? 0:areaGap+'px' }">
@@ -179,6 +179,7 @@
       type: {type: String, default: 'area'},
       width: {type: [String, Number], default: '100%'},
       height: {type: [String, Number], default: '32px'},
+      disabled: {type: Boolean, default: true},
       clearable: {type: Boolean, default: true},//单选时是否可以清空选项
     },
     model: {
