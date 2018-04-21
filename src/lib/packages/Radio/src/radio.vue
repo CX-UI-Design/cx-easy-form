@@ -1,14 +1,14 @@
 <template>
-  <el-radio-group v-model="childRadio" :disabled="disabled" :size="size" @change="change"
+  <el-radio-group v-model="childRadio" :disabled="disabled"  @change="change"
                   :style="{width: radio_width,'line-height': radio_baseHeight}" class="cx-radio-group"
   >
     <el-radio-button v-for="(item,index) in group" :key="index" :index="index"
-                     :label="item.value" :disabled="item.disabled" v-if="type === 'button'"
+                     :label="item.value" :disabled="disabled||item.disabled" v-if="type === 'button'"
                      :class="['cx-radio-Button',parseInt(radio_baseHeight)>baseHeight?'cx-radio-big-Button':'cx-radio-normal-Button']">
       {{item.label}}
     </el-radio-button>
     <el-radio v-for="(item,index) in group" :key="index" :index="index"
-              :label="item.value" :disabled="item.disabled" v-if="type === 'normal'" :style="{height: radio_baseHeight}">
+              :label="item.value" :disabled="disabled||item.disabled" v-if="type === 'normal'" :style="{height: radio_baseHeight}">
       {{item.label}}
     </el-radio>
   </el-radio-group>
@@ -83,7 +83,6 @@
       width: {type: [String, Number], default: '100%'},
       height: {type: [String, Number], default: '32px'},
       type: {type: String, default: 'normal'}, //Radio 类型     normal /  Button
-      size: {type: String},//Radio 尺寸，在有传入高度的情况下，不建议使用size
       disabled: {type: Boolean, default: false},
     },
     methods: {
