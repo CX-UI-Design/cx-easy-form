@@ -36,6 +36,7 @@
         childCheckbox: [],
         group: [],
         checkAll: true,
+        checkAllOpt: [],
         isIndeterminate: false   //控制 indeterminate 模块的显示
       }
     },
@@ -48,6 +49,7 @@
         getsCheckboxGroup(param)
           .then(response => {
               this.group = response.resultData;
+              this.getCheckAllOpt()
             }
           ).catch(err => {
           console.log(err);
@@ -56,15 +58,28 @@
       }
       else {
         this.group = this.items;
+        this.getCheckAllOpt();
       }
     },
-    computed: {
-      checkbox_width() {
-        return this.$Utils.convertUnits(this.width, 'width');
+    methods: {
+      getCheckAllOpt() {
+        this.group.forEach(item => {
+          this.checkAllOpt.push(item[this.keyRefer.value]);
+        })
       },
-      checkbox_height() {
-        return this.$Utils.convertUnits(this.height, 'height', 'auto');
+      //全选操作事件
+      handleCheckAllChange(val) {
+        this.childCheckbox = val ? this.checkAllOpt : [];
+        this.isIndeterminate = false;
       },
+      change(value) {
+        this.$emit('change', value);
+        if (this.indeterminate) {
+          let checkedCount = value.length;
+          this.checkAll = checkedCount === this.items.length;
+          this.isIndeterminate = checkedCount > 0 && checkedCount < this.items.length;
+        }
+      }
     },
     props: {
       fatherCheckbox: Array,
@@ -87,8 +102,8 @@
       size: {type: String},//尺寸
       min: {type: Number, default: 0}, //可被勾选的 checkbox 的最小数量
       max: {type: Number}, //可被勾选的 checkbox 的最大数量
-      fill: {type: String, default: '#20a0ff'},//背景颜色
-      textColor: {type: String, default: '#ffffff'},//字体颜色
+      fill: {type: String, default: 'transparent'},//背景颜色
+      textColor: {type: String, default: '#666'},//字体颜色
       disabled: {type: Boolean},
       //指代属性字段值
       keyRefer: {
@@ -101,28 +116,21 @@
         }
       },
     },
-    methods: {
-      //全选操作事件
-      handleCheckAllChange(event) {
-        this.childCheckbox = event.target.checked ? this.items : [];
-        this.isIndeterminate = false;
+    computed: {
+      checkbox_width() {
+        return this.$Utils.convertUnits(this.width, 'width');
       },
-      change(value) {
-        this.$emit('change', value);
-        if (this.indeterminate) {
-          let checkedCount = value.length;
-          this.checkAll = checkedCount === this.items.length;
-          this.isIndeterminate = checkedCount > 0 && checkedCount < this.items.length;
-        }
-      }
+      checkbox_height() {
+        return this.$Utils.convertUnits(this.height, 'height', 'auto');
+      },
     },
     model: {
       prop: 'fatherCheckbox',
-      event: 'change'
+      event: 'checkboxChange'
     },
     watch: {
       childCheckbox() {
-        this.$emit('change', this.childCheckbox)
+        this.$emit('checkboxChange', this.childCheckbox)
       },
       fatherCheckbox() {
         this.childCheckbox = this.fatherCheckbox;
