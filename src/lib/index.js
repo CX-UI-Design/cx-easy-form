@@ -11,7 +11,7 @@ import './utils/svgConfig'
 /* ------------- About Form , its components and other components we need------------- */
 //Basic
 import Button from './packages/Button/index'
-import IconClass from './packages/Icon/Icon-svg/index'
+import IconClass from './packages/Icon/Icon-class/index'
 import IconSvg from './packages/Icon/Icon-svg/index'
 
 //form base
