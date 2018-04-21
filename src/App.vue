@@ -30,6 +30,7 @@
     name: 'App',
     data() {
       return {
+        checkboxModel1: true,
         title: '测试演示自动表单',
         dialogVisible: {visible: true}, //dialog-visible
         localData: test,//表单渲染本地数据
