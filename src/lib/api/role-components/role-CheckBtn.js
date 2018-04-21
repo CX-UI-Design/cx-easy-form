@@ -4,11 +4,7 @@
  * author: Broccoli spring( 高仓雄 - gcx )
  * copyright (c) 2018 Broccoli spring( gcx )
  */
-/*==========================================================================================================================*/
-import fetch from '@/lib/utils/fetch/fetch'
-import {dataFilter} from '@/lib/utils/fetch/fetchDataType'
-
-/*==========================================================================================================================*/
+import fetch from '../../../lib/utils/fetch/fetch'
 
 /**
  * get user role-components func-button （获取当前用户的功能菜单按钮）

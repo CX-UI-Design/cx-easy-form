@@ -5,8 +5,8 @@
  * copyright (c) 2017 Broccoli spring( gcx )
  */
 /*==========================================================================================================================*/
-import fetch from '@/lib/utils/fetch/fetch'
-import {dataFilter} from '@/lib/utils/fetch/fetchDataType'
+import fetch from '../../../lib/utils/fetch/fetch'
+import {dataFilter} from '../../../lib/utils/fetch/fetchDataType'
 
 /**
  * init area-linkage （ 省市区-select 初始化下拉数据显示 ）

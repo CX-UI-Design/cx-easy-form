@@ -6,8 +6,8 @@
  */
 /*==========================================================================================================================*/
 import qs from 'querystring';
-import fetch from '@/lib/utils/fetch/fetch'
-import {dataFilter} from '@/lib/utils/fetch/fetchDataType'
+import fetch from '../../../lib/utils/fetch/fetch'
+import {dataFilter} from '../../../lib/utils/fetch/fetchDataType'
 
 /*==========================================================================================================================*/
 /**

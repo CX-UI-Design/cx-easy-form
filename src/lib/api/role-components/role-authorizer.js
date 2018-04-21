@@ -4,13 +4,15 @@
  * author: Broccoli spring( 高仓雄 - gcx )
  * copyright (c) 2018 Broccoli spring( gcx )
  */
-import fetch from '@/lib/utils/fetch/fetch'
-import {dataFilter} from '@/lib/utils/fetch/fetchDataType'
+import fetch from '../../../lib/utils/fetch/fetch'
+import {dataFilter} from '../../../lib/utils/fetch/fetchDataType'
 
 /**
  * get authorizer list （ 获取某个组织下的所有员工（授权人）列表 ）
  */
 export function getAuthorizerList(params) {
+  //Filter data
+  dataFilter(params);
   //fetch out
   return fetch({
     url: '/system/user/list-user-by-organizationId',
