@@ -274,9 +274,9 @@
 //      ]
 
 
-      console.log('rule 规则如下');
-      console.log(this.rule);
-      console.log(JSON.stringify(this.rule, 4, null))
+//      console.log('rule 规则如下');
+//      console.log(this.rule);
+//      console.log(JSON.stringify(this.rule, 4, null))
     },
     mounted() {
 
