@@ -7,27 +7,36 @@
 /*==========================================================================================================================*/
 import fetch from '../../../lib/utils/fetch/fetch'
 import {dataFilter} from '../../../lib/utils/fetch/fetchDataType'
+import {config} from "../../packages/Auto-form-item/config";
 
 /*==========================================================================================================================*/
 
 /**
- * auto-form
+ * auto-form request
  * @param url
+ * @param method
  * @param head
  * @param query
  */
-export function autoForm(url, head, query) {
+export function autoForm(url, method, head, query) {
   //Filter data
   dataFilter(head);
   dataFilter(query);
-  //fetch out
-  return fetch({
-    url: url,
-    method: 'get',
-    params: query,
-    // data: null,
-    headers: head
-  })
+  if (method === 'get') {
+    return fetch({
+      url: url,
+      method: method,
+      params: query,
+      headers: head
+    });
+  } else {
+    return fetch({
+      url: url,
+      method: method,
+      data: query,
+      headers: head
+    });
+  }
 }
 
 /**
