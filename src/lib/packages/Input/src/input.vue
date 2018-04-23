@@ -1,5 +1,5 @@
 <template>
-  <div class="cx-input">
+  <div class="cx-input" :style="{width: input_width ,height: input_height,'line-height': input_height}">
     <el-input
       v-model="childIpt"
       :type="type"
@@ -15,7 +15,6 @@
       @change="change"
       @blur="blur"
       @focus="focus"
-      :style="{width: input_width ,height: input_height}"
     >
     </el-input>
     <div class="cx-input__icon success">
@@ -40,12 +39,6 @@
       }
     },
     created() {
-//      console.log(this.$store);
-//      console.log(this.$store.state);
-//      this.$Store.set(this, 'hello gcx!!!');
-//      this.$store.dispatch('customerSearchInfo', 'hello world!!');
-
-
       this.childIpt = this.fatherIpt;
     },
     model: {
@@ -54,8 +47,6 @@
     },
     watch: {
       childIpt() {
-        console.log('childIpt 的modeldata 值')
-        console.log(this.childIpt)
         this.$emit('input', this.childIpt);
       },
       fatherIpt() {
@@ -67,7 +58,14 @@
         return this.$Utils.convertUnits(this.width, 'width');
       },
       input_height() {
-        return this.$Utils.convertUnits(this.height, 'height');
+        let h = null;
+        if (this.height || this.height === 0) {
+          h = this.height
+        }
+        else {
+          h = this.type === 'text' ? '32px' : 'auto';
+        }
+        return this.$Utils.convertUnits(h, 'height');
       },
       maxlen() {
         return this.maxlength ? parseInt(this.maxlength) : this.LimitLen;
@@ -76,7 +74,7 @@
     props: {
       fatherIpt: [String, Number],
       width: {type: [String, Number], default: '100%'},
-      height: {type: [String, Number], default: '32px'},
+      height: {type: [String, Number]},
       name: {type: String, default: ''},
       type: {type: String, default: 'text'},
       placeholder: {type: String, default: null},
@@ -90,7 +88,6 @@
       disabled: {type: Boolean, default: false},
       autofocus: {type: Boolean, default: false},
       readonly: {type: Boolean, default: false},
-      onIconClick: {type: Function, default: null},
     },
     methods: {
       /* -------------
@@ -99,6 +96,9 @@
       -------------*/
       change(value) {
         this.$emit('change', value);
+      },
+      iconClick(value) {
+        this.$emit('iconClick', value);
       },
       blur(value) {
         this.$emit('blur', value);

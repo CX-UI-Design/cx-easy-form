@@ -4,8 +4,18 @@
 
 .cx-input {
   position: relative;
+  .el-input, .el-textarea {
+    width: 100%;
+    height: inherit;
+    line-height: inherit;
+  }
   .el-textarea {
     textarea {
+      height: inherit;
+    }
+  }
+  .el-input {
+    .el-input__inner {
       height: inherit;
     }
   }
