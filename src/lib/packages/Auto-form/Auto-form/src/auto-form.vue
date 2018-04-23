@@ -91,6 +91,7 @@
       isFreeSubmit: {type: Boolean, default: false},//is custom submit model data
       localData: {type: Object, default: null},//local Data - formData (not {} / [] / null /undefined / false .......)
       requestUrl: {type: String},//request url
+      method: {type: String, default: 'get'},//request method
       submitUrl: {type: String},//submit url
       isCheck: {type: Boolean, default: false},//is check auto-form data
       //request query
