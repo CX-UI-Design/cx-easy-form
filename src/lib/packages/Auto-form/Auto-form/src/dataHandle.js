@@ -47,7 +47,7 @@ class dataProject {
    * @param cb
    */
   remote(requireData, cb) {
-    autoForm(requireData.url, requireData.head, requireData.query)
+    autoForm(requireData.url, requireData.method ,requireData.head, requireData.query)
       .then(response => {
         cb(response.resultData);
       }).catch(response => {
@@ -112,6 +112,7 @@ const LoadingData = (Vue) => {
     //require data
     requireData = {
       url: Vue.requestUrl,
+      method: Vue.method,
       query: Vue.query,
       head: Vue[Vue.$CXFnName].autoForm.formController.get(Vue, Vue.autoFormID, 'headers'),//interpreter
       // head: {
