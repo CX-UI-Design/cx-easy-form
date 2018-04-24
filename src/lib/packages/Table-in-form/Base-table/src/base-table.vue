@@ -248,6 +248,12 @@
     }
   }
 </script>
-<style rel="stylesheet/scss" lang="scss">
-
+<style rel="stylesheet/scss" lang="scss" scoped>
+  .cx-base-table {
+    .cx-simple-item {
+      .cx-select {
+        display: block;
+      }
+    }
+  }
 </style>
