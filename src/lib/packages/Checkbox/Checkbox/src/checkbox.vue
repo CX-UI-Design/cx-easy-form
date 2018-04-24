@@ -49,7 +49,6 @@
         getsCheckboxGroup(param)
           .then(response => {
               this.group = response.resultData;
-              this.getCheckAllOpt()
             }
           ).catch(err => {
           console.log(err);
@@ -58,15 +57,9 @@
       }
       else {
         this.group = this.items;
-        this.getCheckAllOpt();
       }
     },
     methods: {
-      getCheckAllOpt() {
-        this.group.forEach(item => {
-          this.checkAllOpt.push(item[this.keyRefer.value]);
-        })
-      },
       //全选操作事件
       handleCheckAllChange(val) {
         this.childCheckbox = val ? this.checkAllOpt : [];
