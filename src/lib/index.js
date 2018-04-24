@@ -10,7 +10,10 @@ import './utils/svgConfig'
 
 /* ------------- About Form , its components and other components we need------------- */
 //Basic
-import Button from './packages/Button/index'
+import Button from './packages/Button/Button/index'
+import RoleButton from './packages/Button/Role-button/index'
+import FormButton from './packages/Button/Form-button/index'
+
 import IconClass from './packages/Icon/Icon-class/index'
 import IconSvg from './packages/Icon/Icon-svg/index'
 
@@ -78,6 +81,8 @@ import Dialog from './packages/Dialog/src/dialog.vue'
 const components = [
   //Baisc
   Button,
+  RoleButton,
+  FormButton,
   IconClass,
   IconSvg,
 
@@ -170,6 +175,8 @@ module.exports = {
 
     //Baisc
     Button,
+    RoleButton,
+    FormButton,
     IconClass,
     IconSvg,
 
