@@ -5,13 +5,13 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import Cookies from 'js-cookie';
-import cxEasyForm from './lib/index';//cx formercool
+import cxEasyForm from '../dist/cx-easy-form.min';//cx formercool
 import formEvent from './utils/formEvent'
 
 import 'cx-theme/dist/cx-theme.min.css'
 import './assets/css/theme-cover.scss'
 import './assets/css/public.scss'//public css
-// import '../dist/cx-easy-form.min.css';
+import '../dist/cx-easy-form.min.css';
 
 Vue.use(ElementUI);
 Vue.use(cxEasyForm.body, {
