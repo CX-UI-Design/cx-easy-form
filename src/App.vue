@@ -16,7 +16,7 @@
                     @afterRequest="afterRequest"
       ></cx-auto-form>
       <div slot="footer">
-        <cx-auto-form-operation :buttonInfo="buttonInfo" autoFormID="template-auto-form"></cx-auto-form-operation>
+        <cx-auto-form-operation type="form" :buttonInfo="buttonInfo1" autoFormID="template-auto-form"></cx-auto-form-operation>
       </div>
     </cx-dialog>
   </div>
@@ -36,11 +36,14 @@
         localData: test,//表单渲染本地数据
         submitUrl: 'cx/form/submit',//表单提交地址
         //表单按钮信息
-        buttonInfo: [
+        buttonInfo1: [
           {funcType: 'submit', style: 'primary', code: 'formConfirmBtn', name: '确定', areaType: 'FORM', btnType: 'single', coerciveShow: true, event: this.autoFormSubmit},
           {funcType: 'custom', style: '', code: 'formCancelBtn', name: '取消', areaType: 'FORM', btnType: 'single', coerciveShow: true, event: this.autoFormCancel},
         ],
-
+        buttonInfo2: [
+          {name: '确定', style: 'primary', event: this.autoFormSubmit},
+          {name: '取消', style: '', event: this.autoFormCancel},
+        ],
         dataListHead: this.$CX.autoForm.getTableHead('autoFormTest_DataList'),//the table-head of auto-form data list show
 
         /* ===================== 覆盖/补充自动表单数据：=====================
@@ -122,6 +125,8 @@
           }
         )
       },
+
+
       toggleDialog() {
         this.dialogVisible.visible = !this.dialogVisible.visible;
         if (this.dialogVisible.visible) {
