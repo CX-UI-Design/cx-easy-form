@@ -24,7 +24,7 @@
         </el-option>
       </el-select>
       <!--信息联动部分-->
-      <component :is="$SN+'input'" v-model="firstItem.modelVal" type="text" :disabled="true" size="small" :width="select_width"
+      <component :is="$SN+'input'" class="fl" v-model="firstItem.modelVal" type="text" :disabled="true" size="small" :width="select_width"
                  :height="select_height" v-if="firstIndex!==0">
       </component>
     </div>
