@@ -135,6 +135,7 @@
        * @param e           event
        */
       autoFormFunc(type, formitem, index, value) {
+
         //updated 组件渲染完成的情况下执行以下操作
         if (this.autoFormUpdated) {
           const modelKey = formitem[this.fieldsRefer['model-key']];//在field中有值对应model-data中对应的key值，
@@ -152,6 +153,7 @@
             groupIndex: this.firstIndex,                   //group index in fields
             keyRefer: this.$former.keyRefer["auto-form"]   //key refer
           }
+
           //array format （ 数组格式，直接解析，执行其中各个方法 ）;
           if (this.$Utils.judgeType(itemFunc) === 'array') {
             itemFunc.forEach((event, i) => {
@@ -170,7 +172,7 @@
             })
           }
           //function format，直接执行
-          if (this.$Utils.judgeType(itemFunc) === 'function') {
+          else if (this.$Utils.judgeType(itemFunc) === 'function') {
             itemFunc(params);//执行方法
           }
           else {
