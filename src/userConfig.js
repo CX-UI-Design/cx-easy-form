@@ -5,7 +5,11 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import Cookies from 'js-cookie';
-import cxEasyForm from '../dist/cx-easy-form.min';//cx formercool
+// import cxEasyForm from '../dist/cx-easy-form.min';//cx formercool
+
+import cxEasyForm from './lib/index';//cx formercool
+
+
 import formEvent from './utils/formEvent'
 
 import 'cx-theme/dist/cx-theme.min.css'
