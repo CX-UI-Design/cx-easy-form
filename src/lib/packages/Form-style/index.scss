@@ -1,5 +1,6 @@
 @import "../../assets/public";
 @import "../../assets/mixin/mixin";
+
 $gap-small: 30px;
 $radio-radius: 9px; //基础单选框半径
 
@@ -114,7 +115,13 @@ $radio-radius: 9px; //基础单选框半径
         padding-right: $dialog-padding-right;
       }
     }
-
+  }
+  //footer
+  .cx-auto-form-footer {
+    margin: 20px auto 0;
+    .cx-auto-form-operation {
+      text-align: right;
+    }
   }
 }
 
