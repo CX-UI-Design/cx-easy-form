@@ -42,7 +42,6 @@ const CX = {
       set: function (Vue, ID, query) {
         Vue.$store.dispatch('formerVmHandle', {type: 'set', ID: ID, query: query});
       },
-      //counter add
       get: function (Vue, ID) {
         let getVal = null;
         const vmList = Vue.$store.state.Form.store.formerVm;
