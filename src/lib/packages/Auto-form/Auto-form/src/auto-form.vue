@@ -1,5 +1,5 @@
 <template>
-  <div class="cx-auto-form">
+  <div class="cx-auto-form" v-if="formData && fullRender">
     <!--dialog - auto-form response check infomation-->
     <component :is="$SN+'dialog'" class="res-check-dialog" title="自动表单数据检测" :visible.sync="dialogVisible" width="900px">
       <p class="win-tit res-check-tit" v-if="dataCheckResult.length>0"><span>▌</span>&nbsp;表单数据错误信息</p>
@@ -9,10 +9,9 @@
       <!--data details-->
       <cx-info-table-show v-model="formDataShow" :tableHead="dataListHead" border></cx-info-table-show>
     </component>
-    <!--auto-form-->
+    <!--auto-form-container-->
     <el-form :ref="autoFormID" :model="formData.modelData" class="cx-auto-form-container clear" :inline="true"
              v-loading="loading" element-loading-text="拼命加载中" :style="{width: autoFormWidth+'px'}" :validate-on-rule-change="true"
-             v-if="formData && fullRender"
     >
       <!--content - 表单内容部分 -->
       <div class="cx-autoForm-content fl">
@@ -43,14 +42,19 @@
           </component>
         </div>
       </div>
+
       <!--handle 操作按钮部分-->
-      <el-form-item :is="$SN+'auto-form-operation'" :class="handleModulesClass" :style="handleModulesStyle" v-if="submitRender&&buttonInfo">
-        <component :autoFormID="autoFormID" :buttonInfo="buttonInfo"></component>
-        <!--<ns-Button v-for="(btnItem,index) in buttonInfo" :index="index" :key="index" :type="btnItem.style" :size="btnItem.size" :plain="btnItem.plain"-->
-        <!--:round="btnItem.round" :disabled="btnItem.disabled" :roleInfo="btnRoleInfo(btnItem)" @click="buttonEvent(btnItem,autoFormID)">-->
-        <!--</ns-Button>-->
-      </el-form-item>
+      <!--<el-form-item :is="$SN+'auto-form-operation'" :class="handleModulesClass" :style="handleModulesStyle" v-if="submitRender&&buttonInfo">-->
+      <!--<component :autoFormID="autoFormID" :buttonInfo="buttonInfo"></component>-->
+      <!--&lt;!&ndash;<ns-Button v-for="(btnItem,index) in buttonInfo" :index="index" :key="index" :type="btnItem.style" :size="btnItem.size" :plain="btnItem.plain"&ndash;&gt;-->
+      <!--&lt;!&ndash;:round="btnItem.round" :disabled="btnItem.disabled" :roleInfo="btnRoleInfo(btnItem)" @click="buttonEvent(btnItem,autoFormID)">&ndash;&gt;-->
+      <!--&lt;!&ndash;</ns-Button>&ndash;&gt;-->
+      <!--</el-form-item>-->
     </el-form>
+    <!--auto-form-footer-->
+    <div class="cx-auto-form-footer" :style="{width: autoFormWidth+'px'}">
+      <slot name="operation"></slot>
+    </div>
   </div>
 </template>
 <script>
