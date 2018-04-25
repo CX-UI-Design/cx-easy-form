@@ -1,6 +1,6 @@
 <!--auto-form-operation 自动表单-操作模块部分-->
 <template>
-  <div class="cs-auto-form-operation">
+  <div class="cx-auto-form-operation">
     <div v-if="type === 'role'">
       <component :is="$SN+'role-button'" v-for="(btnItem,index) in buttonInfo" :index="index" :key="index" :type="btnItem.style"
                  :name="btnItem.name" :size="btnItem.size" :plain="btnItem.plain" :round="btnItem.round" :disabled="btnItem.disabled"
@@ -46,6 +46,9 @@
     },
     created() {
 
+    },
+    mounted() {
+//      this.vm = this.$CX.autoForm.formerVm.get(this, this.autoFormID);
     },
     methods: {
       /**
