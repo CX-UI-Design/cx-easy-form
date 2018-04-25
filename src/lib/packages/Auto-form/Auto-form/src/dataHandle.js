@@ -47,7 +47,7 @@ class dataProject {
    * @param cb
    */
   remote(requireData, cb) {
-    autoForm(requireData.url, requireData.method ,requireData.head, requireData.query)
+    autoForm(requireData.url, requireData.method, requireData.head, requireData.query)
       .then(response => {
         cb(response.resultData);
       }).catch(response => {
