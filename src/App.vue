@@ -14,9 +14,13 @@
                     cue-type="only-error"
                     :isCheck="false"
                     @afterRequest="afterRequest"
-      ></cx-auto-form>
+      >
+        <div slot="operation" >
+          <cx-auto-form-operation type="form" :buttonInfo="buttonInfo1" autoFormID="template-auto-form"></cx-auto-form-operation>
+        </div>
+      </cx-auto-form>
+
       <div slot="footer">
-        <cx-auto-form-operation type="form" :buttonInfo="buttonInfo1" autoFormID="template-auto-form"></cx-auto-form-operation>
       </div>
     </cx-dialog>
   </div>
@@ -65,6 +69,23 @@
             searchInfo: 700 //覆盖改变 - 搜索信息字段的组件 宽度为700
           },
           tableHead: {mainHouseList: 'autoFormTest'},
+          //覆盖属性-绑定事件
+          resourcefieldBindingfnList: {
+            sex: (params) => {
+//              const webVm = store.vm.get('customerManagement');
+              alert(params.type);
+              if (params.type === 'change' && params.type !== 'visibleChange') {
+                const val = params.formData.modelData[params.modelKey]
+                alert(val);
+                if (val === '0') {
+
+                }
+                if (val === '1') {
+
+                }
+              }
+            }
+          },
         },
       }
     },
