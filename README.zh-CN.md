@@ -142,6 +142,6 @@ npm run lint -- --fix
 
 ## License
 
-[MIT](https://github.com/PanJiaChen/vue-element-admin/blob/master/LICENSE)
+[MIT](https://github.com/CX-UI-Design/cx-easy-form/blob/master/LICENSE)
 
 Copyright (c) 2018-present BroccoliSpring <Lensgcx@163.com>
