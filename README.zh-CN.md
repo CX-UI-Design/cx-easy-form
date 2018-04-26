@@ -118,7 +118,7 @@ npm run build
 
 ## Donate
 如果你觉得这个项目帮助到了你，你可以帮作者买一杯咖啡表示鼓励 :tropical_drink:
-![donate](https://panjiachen.github.io/donate/donation.png)
+![donate](http://p7sbfcwqc.bkt.clouddn.com/QR-code/WeChatAlipay.png)
 
 ## License
 
