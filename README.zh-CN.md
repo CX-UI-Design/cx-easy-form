@@ -97,7 +97,7 @@
 ## 开发
 ```bash
 # 克隆项目
-git clone https://github.com/PanJiaChen/vue-element-admin.git
+git clone https://github.com/CX-UI-Design/cx-easy-form.git
 
 # 安装依赖
 npm install
@@ -108,7 +108,7 @@ npm install --registry=https://registry.npm.taobao.org
 # 启动服务
 npm run dev
 ```
-浏览器访问 http://localhost:9527
+浏览器访问 http://localhost:8083
 
 ## 发布
 ```bash
