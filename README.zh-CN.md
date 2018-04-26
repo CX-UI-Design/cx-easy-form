@@ -23,14 +23,10 @@
 简体中文 | [English](./README.md)
 
 ## 简介
-
+`cx-easy-form` 为 `CX-UI Design` 框架生态中表单部分内容
 `cx-easy-form` 是一个前端form生态组件集成解决方案，它基于 [Vue.js](https://github.com/vuejs/vue) 和 [element](https://github.com/ElemeFE/element)。它使用了最新的前端技术栈，内置了i18国际化解决方案，参数配置，字段配置，用法名自定义等很多功能特性，相信本项目都能帮助到你。
 
 - [使用文档](https://panjiachen.github.io/vue-element-admin-site/#/zh-cn/)
-
-**本项目的定位是后台集成方案，不适合当基础模板来开发。**
- - 模板建议使用: [vueAdmin-template](https://github.com/PanJiaChen/vueAdmin-template)  
- - 桌面端: [electron-vue-admin](https://github.com/PanJiaChen/electron-vue-admin)
 
 **注意：该项目使用 element-ui@2.2.2+ 版本，所以最低兼容 vue@2.5.0+**
 
@@ -134,16 +130,13 @@ npm run lint
 npm run lint -- --fix
 ```
 
-更多信息请参考 [使用文档](https://panjiachen.github.io/vue-element-admin-site/#/zh-cn/deploy)
-
-## Changelog
-Detailed changes for each release are documented in the [release notes](https://github.com/PanJiaChen/vue-element-admin/releases).
+更多信息请参考 [使用文档项目 CX-UI Design](https://github.com/CX-UI-Design/CX-UI-Design)
 
 ## Online Demo
-[在线 Demo](http://panjiachen.github.io/vue-element-admin)
+[在线 Demo](https://github.com/CX-UI-Design/cx-easy-form)
 
 ## Donate
-如果你觉得这个项目帮助到了你，你可以帮作者买一杯果汁表示鼓励 :tropical_drink:
+如果你觉得这个项目帮助到了你，你可以帮作者买一杯咖啡表示鼓励 :tropical_drink:
 ![donate](https://panjiachen.github.io/donate/donation.png)
 
 [Paypal Me](https://www.paypal.me/panfree23)
@@ -152,4 +145,4 @@ Detailed changes for each release are documented in the [release notes](https://
 
 [MIT](https://github.com/PanJiaChen/vue-element-admin/blob/master/LICENSE)
 
-Copyright (c) 2017-present PanJiaChen
+Copyright (c) 2018-present BroccoliSpring <Lensgcx@163.com>
