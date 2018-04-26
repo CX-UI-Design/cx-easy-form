@@ -26,7 +26,7 @@
 `cx-easy-form` 为 `CX-UI Design` 框架生态中表单部分内容
 `cx-easy-form` 是一个前端form生态组件集成解决方案，它基于 [Vue.js](https://github.com/vuejs/vue) 和 [element](https://github.com/ElemeFE/element)。它使用了最新的前端技术栈，内置了i18国际化解决方案，参数配置，字段配置，用法名自定义等很多功能特性，相信本项目都能帮助到你。
 
-- [使用文档](https://panjiachen.github.io/vue-element-admin-site/#/zh-cn/)
+- [使用文档详见CX—UI Design](https://github.com/CX-UI-Design/CX-UI-DesignLICENSE)
 
 **注意：该项目使用 element-ui@2.2.2+ 版本，所以最低兼容 vue@2.5.0+**
 
@@ -36,8 +36,6 @@
 
  **如有问题请先看上述使用文档和文章，若不能满足，欢迎 issue 和 pr**
 
- **本项目并不是一个脚手架，更倾向于是一个集成解决方案**
-
  **该项目不支持低版本浏览器(如ie)，有需求请自行添加polyfill [详情](https://github.com/PanJiaChen/vue-element-admin/wiki#babel-polyfill)**
 
  <p align="center">
@@ -45,7 +43,7 @@
 </p>
 
 ## 功能
-### 已开发功能
+已开发功能
 ```
 - Icon 图标
 - Button 按钮
@@ -81,7 +79,7 @@
 - Muster item 表单单元体
 - Auto form operation 表单按钮操作模块
 ```
-### 即将开功能
+即将开功能
 ```
 - JSON editor Json编辑器
 - Rich text editor 富文本编辑器
