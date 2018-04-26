@@ -46,7 +46,7 @@
 
 ## 功能
 ```
-- 已开发功能
+===== 已开发功能 =====
 - Icon 图标
 - Button 按钮
 - Radio 单选框
@@ -81,7 +81,8 @@
 - Muster item 表单单元体
 - Auto form operation 表单按钮操作模块
 ```
-- 即将开发功能
+```
+===== 即将开发功能 =====
 - JSON editor Json编辑器
 - Rich text editor 富文本编辑器
 - Markdown editor Markdown编辑器
