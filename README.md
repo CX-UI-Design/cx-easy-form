@@ -119,16 +119,13 @@ Refer to [Documentation CX-UI Design](https://github.com/CX-UI-Design/CX-UI-Desi
 Detailed changes for each release are documented in the [release notes](https://github.com/CX-UI-Design/cx-easy-form).
 
 ## Online Demo
-[Preview](http://panjiachen.github.io/vue-element-admin)
+[Demo template](https://github.com/CX-UI-Design/cx-easy-form)
 
 ## Donate
 If you find this project useful, you can buy author a cup of coffee :tropical_drink:
 
 ![donate](https://wpimg.wallstcn.com/bd273f0d-83a0-4ef2-92e1-9ac8ed3746b9.png)
 
-[Paypal Me](https://www.paypal.me/panfree23)
-
-[Buy me a coffee](https://www.buymeacoffee.com/Pan)
 
 ## License
 
