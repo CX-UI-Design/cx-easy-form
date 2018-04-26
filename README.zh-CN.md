@@ -132,13 +132,11 @@ npm run lint -- --fix
 更多信息请参考 [使用文档项目 CX-UI Design](https://github.com/CX-UI-Design/CX-UI-Design)
 
 ## Online Demo
-[在线 Demo](https://github.com/CX-UI-Design/cx-easy-form)
+[Demo 示例](https://github.com/CX-UI-Design/cx-easy-form)
 
 ## Donate
 如果你觉得这个项目帮助到了你，你可以帮作者买一杯咖啡表示鼓励 :tropical_drink:
 ![donate](https://panjiachen.github.io/donate/donation.png)
-
-[Paypal Me](https://www.paypal.me/panfree23)
 
 ## License
 
