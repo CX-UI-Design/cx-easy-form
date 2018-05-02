@@ -3,9 +3,9 @@
 * register data for mock.
 */
 
-import vue_formercool_Cx from '../lib/index';
+import  cxEasyForm from '../lib/index';
 
-let easyFormMock = vue_formercool_Cx.mock
+let easyFormMock =  cxEasyForm.mock
 
 //data register list
 const registerList = [
