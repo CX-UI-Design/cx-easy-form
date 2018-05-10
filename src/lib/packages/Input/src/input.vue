@@ -79,12 +79,12 @@
       type: {type: String, default: 'text'},
       placeholder: {type: String, default: null},
       size: {type: String},
-      'prefix-icon': {type: String},//输入框头部图标
-      'suffix-icon': {type: String},//输入框尾部图标
+      'prefix-icon': {type: String},
+      'suffix-icon': {type: String},
       customIcon: {type: String},
       rows: {type: Number, default: 3},
-      minlength: {type: [Number, String]},//最小输入长度
-      maxlength: {type: [Number, String], default: 300},//最大输入长度
+      minlength: {type: [Number, String]},
+      maxlength: {type: [Number, String], default: 300},
       disabled: {type: Boolean, default: false},
       autofocus: {type: Boolean, default: false},
       readonly: {type: Boolean, default: false},
