@@ -169,6 +169,38 @@ const temple = {
   },
   //表单控件循环信息
   "fields": [
+    //custom
+    {
+      "resourcefieldXtype": "slot",    //表单类型
+      "resourcefieldCode": "prop",  //表单model字段名称
+      "resourcefieldName": "",   //表单字段 lable 名称
+      "isfieldRequired": false, //是否必填 required
+      "resourcefieldBinding": null,//必填出错 提示信息
+      "resourcefieldAllowblankexp": null,//内容验证规则
+      "resourcefieldVtype": null,//验证字段的 内容类型
+      "resourcefieldOtherconfigObject": {
+        "secondXtype": "normal",//表单控件分支小类type,如input=>input-text,input-textere
+        "min": undefined,//min
+        "max": undefined,//max
+        "label-width": 0,//表单字段 lable 宽度
+      },
+      "resourcefieldEmptytext": null,//placeholder的值
+      "isResourcefieldRemoved": false,//是否禁用
+      "isResourcefieldReadonly": false,//是否只读
+      "fieldWidth": 700,//表单元素部分宽度
+      "fieldHeight": 188,//表单元素部分高度
+      "resourcefieldStep": null,//step 步长
+      "resourcefieldRowspan": null,//row 值 - 所占 行数 （textarea / avatar / span ......）
+      "resourcefieldFieldcls": null,//表单控件图标
+      "isResourcefieldEditable": false,//是否可编辑
+      "resourcefieldColspan": 2,//所占列数
+      "items": null,//表单控件内容部分（checkbox，radio......）
+      "resourcefieldGroupname": "base-info", //分组名称
+      "isResourcefieldHidden": false,       //是否隐藏
+      "resourcefieldBindingfnList": [],//事件名称集合
+    },
+
+
     //avatar
     {
       "resourcefieldXtype": "avatar",    //表单类型
