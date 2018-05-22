@@ -50,6 +50,7 @@
       <!--&lt;!&ndash;:round="btnItem.round" :disabled="btnItem.disabled" :roleInfo="btnRoleInfo(btnItem)" @click="buttonEvent(btnItem,autoFormID)">&ndash;&gt;-->
       <!--&lt;!&ndash;</ns-Button>&ndash;&gt;-->
       <!--</el-form-item>-->
+
     </el-form>
     <!--auto-form-footer-->
     <div class="cx-auto-form-footer" :style="{width: autoFormWidth+'px'}">
