@@ -15,11 +15,10 @@
                     :isCheck="false"
                     @afterRequest="afterRequest"
       >
-        <div slot="operation" >
+        <div slot="operation">
           <cx-auto-form-operation type="form" :buttonInfo="buttonInfo1" autoFormID="template-auto-form"></cx-auto-form-operation>
         </div>
       </cx-auto-form>
-
       <div slot="footer">
       </div>
     </cx-dialog>
