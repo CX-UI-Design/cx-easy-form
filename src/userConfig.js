@@ -15,7 +15,8 @@ import formEvent from './utils/formEvent'
 import 'cx-theme/dist/cx-theme.min.css'
 import './assets/css/theme-cover.scss'
 import './assets/css/public.scss'//public css
-import '../dist/cx-easy-form.min.css';
+// import '../dist/cx-easy-form.min.css';
+import  'cx-easy-form/dist/cx-easy-form.min.css'
 
 Vue.use(ElementUI);
 Vue.use(cxEasyForm.body, {
