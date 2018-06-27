@@ -32,7 +32,7 @@ Vue.use(cxEasyForm.body, {
     "appClientType": "pc",
     "Set-Cookie": Cookies.get('token'),
   },
-})
+});
 
 new Vue({
   ElementUI,
