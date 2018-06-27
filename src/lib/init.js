@@ -17,7 +17,7 @@ const init = (Vue, opts) => {
 
   Vue.prototype.$SN = opts.stageName + opts.stageNamelink;//add dynamic custom stage name
 
-  const CXFnName = '$' + opts.stageName.toUpperCase();
+  const CXFnName = '$' + opts.st$UtilsageName.toUpperCase();
   Vue.prototype.$CXFnName = CXFnName//add dynamic custom CX methods name
 
   Vue.prototype[CXFnName] = CX;//绑定此插件的方法 （非基础方法）
