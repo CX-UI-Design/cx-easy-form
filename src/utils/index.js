@@ -19,7 +19,6 @@ export const dynamicLoading = {
     }
     let body = document.getElementsByTagName('body')[0];
     let script = document.createElement('script');
-    script.src = path;
     script.type = 'text/javascript';
     body.appendChild(script);
   }
@@ -621,7 +620,7 @@ export const log = {
         break;
     }
   }
-}
+};
 
 
 export const form = {
