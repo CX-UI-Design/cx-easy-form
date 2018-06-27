@@ -7,7 +7,7 @@ import store from './store/index'
 import userConfig from './userConfig'
 import './mock'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   el: '#app',
@@ -16,4 +16,4 @@ new Vue({
   userConfig,
   components: {App},
   template: '<App/>'
-})
+});
