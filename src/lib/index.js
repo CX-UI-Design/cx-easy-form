@@ -141,7 +141,7 @@ const components = [
   //dialog
   Dialog
 
-]
+];
 
 const install = function (Vue, opts = {}) {
   //Former plug-in external param config
@@ -154,14 +154,14 @@ const install = function (Vue, opts = {}) {
   //binding component
   components.map((component, index) => {
     Vue.component(getStageName(component.name, Vue.former.stageName, Vue.former.stageNamelink, index), component)
-  })
+  });
 
   //register global utility filters.
   Object.keys(filters).forEach(key => {
     Vue.filter(key, filters[key])
   });
 
-}
+};
 
 /* istanbul ignore if */
 if (typeof window !== 'undefined' && window.Vue) {
@@ -238,8 +238,8 @@ module.exports = {
   },
   store: store,
   mock: mock
-}
+};
 
 
-module.exports.default = module.exports
+module.exports.default = module.exports;
 
