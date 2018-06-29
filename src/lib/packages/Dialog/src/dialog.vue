@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    class="cx-dialog" :width="width" :title="title" :visible.sync="visible.visible"
+    class="cx-dialog" :width="dialogWidth" :title="title" :visible.sync="visible.visible"
     :top="top" :modal="modal" :modal-append-to-body="modalAppendToBody" append-to-body
     :lock-scroll="lockScroll" :custom-class="customClass" :close-on-click-modal="closeOnClickModal"
     :close-on-press-escape="closeOnPressEscape" :show-close="showClose" :before-close="beforeClose"
@@ -15,6 +15,19 @@
 <script>
   export default {
     name: 'default-dialog',
+    data() {
+      return {
+        //尺寸值
+        sizeList: ['small', 'normal', 'medium', 'large'],
+        //尺寸对照宽度表
+        sizeMap: {
+          small: '500px',
+          normal: '650px',
+          medium: '764px',
+          large: '900px'
+        }
+      }
+    },
     props: {
       //是否显示 Dialog，支持 .sync 修饰符
       visible: {
@@ -36,12 +49,20 @@
       'close-on-press-escape': {type: Boolean, default: true},  //是否可以通过按下 ESC 关闭 Dialog
       'show-close': {type: Boolean, default: true}, //是否显示关闭按钮
       'before-close': {type: Function}, //关闭前的回调，会暂停 Dialog 的关闭
-      /*
-     * auto-form button information
-     * type:  'submit','reset','custom'
-     * style: primary,success,warning,danger,info,text
-     */
-      buttonInfo: {type: Array},
+    },
+    computed: {
+      dialogWidth() {
+        if (this.width) {
+          return this.width;
+        }
+        else {
+          if (!this.size) this.size = 'normal';
+          if (!this.$Utils.arrContainObj(this.sizeList, this.size)) {
+            throw 'The size of the dialog property must be small, normal, medium or large, find it.';
+          }
+          return this.sizeMap[this.size];
+        }
+      }
     },
     created() {
     },
