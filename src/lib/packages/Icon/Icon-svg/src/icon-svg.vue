@@ -19,14 +19,6 @@
         return `#icon-${this.iconClass ? this.iconClass : ''}`
       }
     },
-    created() {
-    },
-    mounted() {
-
-    },
-    beforeUpdate() {
-
-    },
     methods: {
       //click时触发的事件
       click() {
