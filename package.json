@@ -36,6 +36,7 @@
     "crypto-js": "^3.1.9-1",
     "css-loader": "^0.28.0",
     "cx-easy-form": "^1.0.1",
+    "cx-theme": "^1.0.5",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
