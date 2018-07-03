@@ -53,7 +53,7 @@
                   let arr = [];
                   this.childTreeData.map(item => {
                     arr.push(item[this.keyRefer['value']]);
-                  })
+                  });
                   this.defaultCheckedkeys = arr;// set default checked list （设置默认选中的列表）
                   this.LastCheck = arr;//bind LastCheck
                 }
@@ -206,7 +206,7 @@
           const v = this.keyRefer['value'];
           //multiple situation
           if (this.multiple) {
-            console.log('multiple')
+            console.log('multiple');
             this.defaultCheckedkeys = [];
             newValue.forEach(item => {
               this.defaultCheckedkeys.push(item[v]);
@@ -214,7 +214,7 @@
           }
           //single situation
           else {
-            console.log('single')
+            console.log('single');
             this.defaultCheckedkeys = [newValue[v]];
           }
         }
