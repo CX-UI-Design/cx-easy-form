@@ -37,7 +37,13 @@ $dialog-body-min-height: 350px; //body内容实际部分最小高度
 }
 
 .clear {
-  clear: both;
+  &:after {
+    clear: both;
+  }
+  &:after, &:before {
+    display: table;
+    content: "";
+  }
 }
 
 .txtC {
