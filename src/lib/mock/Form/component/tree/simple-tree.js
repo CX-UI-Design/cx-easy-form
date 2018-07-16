@@ -149,20 +149,20 @@ export default {
   },
   //base default get child role-organization data （ 选择部门组件 - 按需获取子节点数据 ）
   getChildRoleOrganization: config => {
-    const List = []
-    const count = 3
+    const List = [];
+    const count = 3;
     for (let i = 0; i < count; i++) {
       List.push(Mock.mock({
         "organizationId": '@float(0, 1000, 0, 0)',
         "organizationName": '@cname',
         "childOrganizations": [],
-      }))
+      }));
       List[i]['organizationName'] = List[i]['organizationName'] + '部';
     }
     roleMap.getChildRoleOrganization.resultData = {
       "level": 1,
       "organizationVos": List
-    }
+    };
     return roleMap.getChildRoleOrganization;
   }
 }
