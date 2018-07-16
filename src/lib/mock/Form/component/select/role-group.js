@@ -1,6 +1,6 @@
-import {getQuery,arrRemoveDistinct} from "../../../../utils/index"
+import {getQuery,arrRemoveDistinct} from "../../../../utils/index";
 
-import {errorMap} from "../../../error/error"
+import {errorMap} from "../../../error/error";
 
 /**
  * create new init array data
@@ -20,7 +20,7 @@ function _createInitData(dataList, queryList) {
       })
     })
   });
-  return arr
+  return arr;
 }
 
 const roleMap = {
@@ -97,7 +97,7 @@ const roleMap = {
     "resultMsg": "操作成功。",
     "resultData": true
   },
-}
+};
 
 export default {
   //init data
@@ -126,7 +126,6 @@ export default {
   handleRoleGroup: config => {
     return roleMap.handleRoleGroup;
   }
-
 }
 
 
