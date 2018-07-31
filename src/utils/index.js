@@ -627,11 +627,13 @@ export const form = {
   /**
    * 校验特定范围内是否所有表单元素都通过验证  vaildate
    * @param range
+   * @param target
    * @returns {boolean}
    */
-  checkRange: function (range) {
-    const allError = document.querySelectorAll(range + ' .cx-is-error');
-    return allError.length > 0 ? false : true;
+  checkRange: (range, target) => {
+    const t = range + ' ' + target;
+    const allError = document.querySelectorAll(t);
+    return !allError.length > 0;
   },
 }
 
