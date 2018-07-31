@@ -11,7 +11,7 @@ import {autoFormSubmit} from '../../api/auto-form/auto-form';
 
 /**
  * create params for validate/reset
- * @param VM                  this vm is sample object whitch use it (in this ,it's )
+ * @param vm                  this vm is sample object whitch use it (in this ,it's )
  * @param formName
  * @returns {{vm, formData, formName: *}}
  */
@@ -147,10 +147,16 @@ const CX = {
       })
     },
 
-    //校验特定范围内是否所有表单元素都通过验证  vaildate
-    checkRange: (range) => {
-      const allError = document.querySelectorAll(range + ' .ns-is-error');
-      return allError.length > 0 ? false : true;
+    /**
+     * 校验特定范围内是否所有表单元素都通过验证  vaildate
+     * @param range
+     * @param target
+     * @returns {boolean}
+     */
+    checkRange: (range, target) => {
+      const t = range + ' ' + target;
+      const allError = document.querySelectorAll(t);
+      return !allError.length > 0;
     },
 
     /**
@@ -170,7 +176,7 @@ const CX = {
             //表单提交添加'all-check' 标识到checkList中，开启第一级验证开关（即对所有自定义验证的表单进行验证）。
             cp.vm.$store.dispatch('setCustomCheck', 'all-check');   //多张表单 存在bug
             //start validate
-            if (valid && vm[vm.$CXFnName].autoForm.checkRange('.cx-auto-form-container')) {
+            if (valid && vm[vm.$CXFnName].autoForm.checkRange('.cx-auto-form-container', '.cx-is-error')) {
               console.log('表单验证成功');
               resolve(cp);
             }
