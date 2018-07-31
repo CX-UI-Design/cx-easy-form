@@ -298,7 +298,7 @@
           vm: this,                               //vue
           formData: this.formData,                //formData
           formName: formName                      //form name
-        }
+        };
         //before validate handle
         this.$emit('validate-before', params);
         this.$refs[formName].validate((valid) => {
@@ -307,7 +307,7 @@
           //before submit callback
           this.$emit('submit-before', params);
           //validate right
-          if (valid && this.$Utils.form.checkRange('.ns-form')) {
+          if (valid && this.$Utils.form.checkRange('.ns-form','.cx-is-error')) {
             //sure quert for auto-form submit
             const query = this.isFreeSubmit ? this.customModelData : this.formData.modelData;
             console.log(query);
@@ -333,7 +333,7 @@
           vm: this,                               //vue
           formData: this.formData,                //formData
           formName: formName                      //form name
-        }
+        };
         //element base reset function
         this.elResetForm(formName);
         this.$store.dispatch('setCustomCheck', 'no-check');
