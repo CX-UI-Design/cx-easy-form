@@ -2,7 +2,7 @@
 <template>
   <div class="cx-simple-tree__select" v-model="childRoleOrganization" :style="{width: roleOrganization_width ,height: roleOrganization_height}">
     <!--select-container-->
-    <el-select class="select-container" v-model="childRoleOrganization" :placeholder="placeholder" :size="size" :multiple="multiple"
+    <el-select class="select-container" v-model="childRoleOrganization" :placeholder="placeholder" :size="size" :multiple="multiple" popper-class="cx-simple-tree-select__option"
                :disabled="disabled" :clearable="clearable" @visible-change="visibleChange" @remove-tag="removeTag" @clear="initTreeModel"
     >
       <el-option class="not-render" v-for="item in multiple?treeModel:[treeModel]" :key="item[keyRefer['value']]" :label="item[keyRefer['label']]"
@@ -193,6 +193,7 @@
     height: auto;
     box-sizing: border-box;
     background-color: transparent;
+    padding: 0;
     &.hover, &:hover {
       background-color: transparent;
     }
