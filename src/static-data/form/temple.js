@@ -1429,7 +1429,7 @@ const temple = {
           "isResourcefieldHidden": false,       //是否隐藏
           "resourcefieldBindingfnList": ["click-groupSwitch"],//事件名称集合
         },
-        //省市区 - cascader
+        //省市区 - select
         {
           "resourcefieldXtype": "select",//表单类型
           "resourcefieldCode": "provinceCityArea",//表单model字段名称
@@ -1446,7 +1446,7 @@ const temple = {
             "max": null,
           },
           "resourcefieldEmptytext": null,//placeholder的值
-          "isResourcefieldRemoved": true,//是否禁用
+          "isResourcefieldRemoved": false,//是否禁用
           "isResourcefieldReadonly": false,//是否只读
           "fieldWidth": 700,
           "fieldHeight": 32,
