@@ -52,7 +52,7 @@ export const ConfFormer = function (Vue, opts) {
   }
   Vue.prototype.$former = former;
   Vue.former = former
-}
+};
 
 
 
