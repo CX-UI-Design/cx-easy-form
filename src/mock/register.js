@@ -5,12 +5,12 @@
 
 import  cxEasyForm from '../lib/index';
 
-let easyFormMock =  cxEasyForm.mock
+let easyFormMock =  cxEasyForm.mock;
 
 //data register list
 const registerList = [
   ...easyFormMock
-]
+];
 
 export default registerList;
 
