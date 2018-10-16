@@ -62,7 +62,7 @@ export function setRemoteOption(resList) {
   let remoteOption = [];
   resList.map((item) => {
     remoteOption.push({"label": item.ownerName, "value": item.ownerId, "disabled": false})
-  })
+  });
   return remoteOption;
 }
 
@@ -85,6 +85,5 @@ export const customerInfo = {
         }
       })
     }
-    return;
   }
-}
+};
