@@ -13,7 +13,7 @@ import rulesInfo from './rulesInfo'
  * validate rule private
  * @param val
  * @param type          rule type
- * @param ruleinfo      rule information list
+ * @param ruleInfo      rule information list
  * @returns {*}
  */
 export default function validateRule(val, type, ruleInfo) {
@@ -90,7 +90,7 @@ let _complexValidate = (val, info) => {
         return firstItem.functionVos.some((secItem) => {
           return secItem.buttonIds.length > 0;
         })
-      })
+      });
       /*=================== warm prompt ===================*/
       _throwWarmPrompt(info.warmPrompt, isRequire);//throw warm prompt message
       isRequire = !isRequire ? !isRequire : isRequire;
@@ -103,7 +103,7 @@ let _complexValidate = (val, info) => {
     default:
       break;
   }
-}
+};
 
 
 /**
@@ -130,7 +130,7 @@ let _ObjectSingleLayer = (val, info) => {
     }
   }
   return true;
-}
+};
 
 
 /**
@@ -152,4 +152,4 @@ let _throwWarmPrompt = (msg, status) => {
       }, 500))();
     }
   }
-}
+};
