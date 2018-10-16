@@ -28,6 +28,6 @@ rulesInfo.forEach((item) => {
   check[item.type] = (rule, value, callback) => {
     _basevalfun(value, callback, validateRule(value, item.type, item), item.msg);
   }
-})
+});
 
 export default check;
