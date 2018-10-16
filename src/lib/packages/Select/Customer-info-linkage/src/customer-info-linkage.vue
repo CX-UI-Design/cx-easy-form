@@ -13,7 +13,7 @@
                  :disabled="disabled" :clearable="clearable" :placeholder="placeholder"
                  :size="size" :remote="remote" :remote-method="remoteMethod" :filterable="filterable"
                  :loading="loading" :style="{width: select_width}"
-                 @change="change(firstItem.modelVal,linkageInfo)">
+                 @change="customerChange(firstItem.modelVal,linkageInfo)">
         <el-option
           v-for="item in options"
           :key="item.value"
@@ -55,26 +55,33 @@
       },
     },
     created() {
-      this.remoteList = this.fatherCustomLinkage;
+      this.childCustomLinkage = this.fatherCustomLinkage;
+
       //init data => change model-value in linkage-Info-List => change display-value in component
       this.initDataReady(this.fatherCustomLinkage, linkageInfoList);
       this.judgeSelectType();//judge select type and handle
     },
     methods: {
+      /**
+       *ready for init data
+       * @param initData
+       * @param linkageInfoList
+       * @returns {boolean}
+       */
       initDataReady(initData, linkageInfoList) {
         const Linfo = JSON.parse(JSON.stringify(linkageInfoList));
-        this.linkageInfo = this.getlinkageInfo(Linfo, this.type);
-        if (this.$Utils.judgeType(initData) === 'object') {
+        try {
+          this.linkageInfo = this.getlinkageInfo(Linfo, this.type);
           this.linkageInfo.forEach(item => {
             const key = item['modelKey'];
-            if (initData.hasOwnProperty(key)) {
-              item['modelVal'] = initData[key];
-            }
-          })
+            item['modelVal'] = initData[key];
+          });
+          this.remoteList = [initData];
           this.options = setRemoteOption([initData]);//set remote option
         }
-        else {
-          return;
+        catch (e) {
+          console.log('初始化获取车主的信息存在错误');
+          return false;
         }
       },
 
@@ -94,7 +101,7 @@
 
       //judge select type and handle
       judgeSelectType() {
-        this.remoteSW = this.remote && this.filterable ? true : false;  // is open remote switch （ 是否开启远程搜索 ）
+        this.remoteSW = this.remote && this.filterable; // is open remote switch （ 是否开启远程搜索 ）
       },
       /**
        * remote method（ 远程搜索方法 ）
@@ -110,12 +117,27 @@
           this.options = this.items;
         }
       },
-      //chenge
-      change(value, linkageInfo) {
-        linkageInfo.forEach((item, index) => {
-          item.modelVal = value ? this.remoteList[0][item.modelKey] : '';
-        })
-        this.childCustomLinkage = value ? this.remoteList[0] : null;
+      /**
+       * change event
+       * @param value
+       * @param linkageInfo
+       */
+      customerChange(value, linkageInfo) {
+        const isVal = value || value === 0;
+        //if car owner select is empty => this option is empty
+        if (!isVal) {
+          this.options = [];
+        }
+        //get current information list,length = 0, just one
+        let infoList = this.remoteList.filter(item => {
+          return item.ownerId === value;
+        });
+        //change linkageInfo data
+        linkageInfo.forEach((item) => {
+          item.modelVal = isVal ? infoList[0][item.modelKey] : '';
+        });
+        //change childCustomLinkage
+        this.childCustomLinkage = isVal ? infoList[0] : {};
       }
     },
     props: {
