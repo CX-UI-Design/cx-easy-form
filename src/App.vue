@@ -70,6 +70,12 @@
           tableHead: {mainHouseList: 'autoFormTest'},
           //覆盖属性-绑定事件
           resourcefieldBindingfnList: {
+            mobile: (params) => {
+              if (params.type === 'blur') {
+                alert('失焦事件');
+              }
+            },
+
             sex: (params) => {
 //              const webVm = store.vm.get('customerManagement');
               alert(params.type);
