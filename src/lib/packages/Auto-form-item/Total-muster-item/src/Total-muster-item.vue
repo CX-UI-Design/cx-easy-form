@@ -70,6 +70,7 @@
                            'margin-bottom':cueType ==='normal'?itemBottomGap +'px':0}"
 
                @change="autoFormFunc('change',formItem,index)"
+               @blur="autoFormFunc('blur',formItem,index)"
                @click="autoFormFunc('click',formItem,index)"
                @visible-change="autoFormFunc('visibleChange',formItem,index)"
   >
