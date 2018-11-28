@@ -1350,7 +1350,6 @@ const temple = {
         "secondXtype": "textarea",//表单控件分支小类type,如input=>input-text,input-textere
         "min": undefined,//min
         "max": 300,//max
-        "resourcefieldRowspan": 100,
       },
       "resourcefieldEmptytext": "",//placeholder的值
       "isResourcefieldRemoved": false,//是否禁用
@@ -1929,6 +1928,6 @@ const temple = {
       ]//表头对应内容区域 items 内容
     },
   ]
-}
+};
 
 export default temple;
