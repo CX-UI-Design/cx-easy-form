@@ -18,7 +18,7 @@ const init = (Vue, opts) => {
   Vue.prototype.$SN = opts.stageName + opts.stageNamelink;//add dynamic custom stage name
 
   const CXFnName = '$' + opts.stageName.toUpperCase();
-  Vue.prototype.$CXFnName = CXFnName//add dynamic custom CX methods name
+  Vue.prototype.$CXFnName = CXFnName; //add dynamic custom CX methods name
 
   Vue.prototype[CXFnName] = CX;//绑定此插件的方法 （非基础方法）
   Vue.prototype.$FormEvent = EVE;//binding form component interaction method （click / change / blur / fouce ... and so on）
@@ -27,6 +27,6 @@ const init = (Vue, opts) => {
   Vue.prototype.$Utils = $Utils;//基础共通方法ku
   Vue.$Utils = $Utils;
 
-}
+};
 
 export default init;
