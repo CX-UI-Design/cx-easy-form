@@ -12,4 +12,4 @@ export const getStageName = function (name, prefix, link, index) {
   else {
     return name;
   }
-}
+};
